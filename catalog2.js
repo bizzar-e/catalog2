@@ -3119,17 +3119,13 @@ function fix_center_pult_inner () {
 
 
 
-
-/* Большой сырой кусок из старого каталога */
-
-
-
+/* 
+	20_05_14
+	Переработка отработчика завершения запроса ajax
+*/
 	$(document).ajaxComplete(function(event, xhr, settings) {
 		// $( ".con" ).append( ">>>> " + settings.url );
 		if (/load_uni.pl/m.test(settings.url)) {
-
-
-		// alert(1);
 
 		$( ".con2" ).append( ">>>> load_uni executed <br/>" );
 
@@ -3140,11 +3136,11 @@ function fix_center_pult_inner () {
 			подсвечиваем иконку корзины
 		*/
 		for(var key in hash) {
-			// $('#wrk_area').append('<div id="wrap_cont_m3"><div id="block_a"><span id="cat_name">СУПЕРЦЕНА</span></div><div id="block_b"><div id="block_b_img" class="lit_e"></div></div><div id="block_c"><img src="img/cat/rabochaya/' + k + '.png" alt=""></div><div id="block_d"><div id="w_close"></div><div id="block_d_hollow"></div><div id="block_d_basket"></div></div><div id="block_e"><span id="cat_name">' + k + '</span><img id="more" src="img/blocks/marks/p_more.png"></div></div>');
-/*
+						// $('#wrk_area').append('<div id="wrap_cont_m3"><div id="block_a"><span id="cat_name">СУПЕРЦЕНА</span></div><div id="block_b"><div id="block_b_img" class="lit_e"></div></div><div id="block_c"><img src="img/cat/rabochaya/' + k + '.png" alt=""></div><div id="block_d"><div id="w_close"></div><div id="block_d_hollow"></div><div id="block_d_basket"></div></div><div id="block_e"><span id="cat_name">' + k + '</span><img id="more" src="img/blocks/marks/p_more.png"></div></div>');
+			/*
 			$('#wrk_area').append(key + '<br/>');
 			$('#wrk_area').append(key + '<br/>');
-*/
+			*/
 			// $('div#wrap_cont_m3').find('span#cat_name').eq(1).each(function () {
 			
 			// $('div#wrap_cont_m3').find('span#cat_name').each(function () {
@@ -3170,13 +3166,14 @@ function fix_center_pult_inner () {
 
 				}
 			});
+
 		} // for(var key in hash)
 
 		/*
 			Привязка события click к кнопке корзины в каталоге
 		*/
 	 	$('div#block_d_basket').bind('click', function() {
-      		// $(this).css("opacity","1");
+		      		// $(this).css("opacity","1");
       		// a = $(this).parent().parent().find('span#cat_name').eq(1).html();
       		a = $(this).parent().parent().find('div#block_c img').attr('src');
 
@@ -3227,43 +3224,12 @@ function fix_center_pult_inner () {
 			var bsize = Object.size(hash); 
 			$('div#basket_count').html(bsize);
 
+
   		});
 
 
-		/*
-			Красивости для деревни. Показываем участки на которые надо обратить внимание
-			UPD: Наброски от Светы-30.
-		*/
-
-		/* // Устарело
-		$('div#block_d_basket').eq(1).css('outline','6px solid #FE4040');
-		$('div#block_d_basket').eq(1).bind('click', function() {
-			$(this).css('outline','none');
-			$('div#basket_count').css('outline','none');
-		});
-
-		$('div#basket_count').css('outline','6px solid #FE4040');
-		// $('div#basket_count').bind('click', function() {
-		// 	$(this).css('outline','none');
-		// });
-		*/
-
-		// $('div.con2').append('<div id="hint1">hint1</div>');
-		
-		
-		/* Отрисовка подсказок. Происходит проверка нет ли их сейчас на экране, чтобы не рисовать их повторно */
-		/*
-			Кнопка управления подсказками
-			UPD: Однократно
-			UPD: Все в одном флаконе
-
-			UPD Проверка переменной as_options
-		*/
-		
-		// $('.con2').append('A<br/>');
-
-		// alert(2);
-
+	 	/* Секция работы с подсказками для старого каталога */
+		// [fold~ UFDX]
 		h = $('div#cat_hint_but');
 		if (h.length >= 1) {
 			// Если подсказки уже отрисованы, то не рисуем их снова
@@ -3352,31 +3318,10 @@ function fix_center_pult_inner () {
 							Вторая, самая капризная подсказка
 							Прикручиваем к film, а потом вычисляем смещение по высоте блока филм
 						*/
-/*
+				/*
 					// Временное отключение внедрения и просчета второй подсказки
-
-					$('div#film').append('<div id="hint2"></div>');
-					
-
-					var br2=$('#film').get(0).getBoundingClientRect();
-
-					len = br2.bottom - br2.top;
-
-					$('.con2').append('film len: ' + len + '<br/>');
-
-					res = len - 5;
-					// $('.con').append("res: " + res +'<br/>')
-					// res.toString();					
-					// $('.con2').append('res: ' + res + '<br/>');
-
-					var br3=$('#hint2').get(0).getBoundingClientRect();
-
-					res = br3.top - res * 2 + 1325;
-					res.toString();
-
-					$('#hint2').css("top", res);
-					// $('#hint2').css("top", res);
-*/						
+					// [fold~ D8hy]
+				*/						
 					$('div#basket_wrap').append('<div id="hint3"></div>');
 					    
 					}
@@ -3384,32 +3329,19 @@ function fix_center_pult_inner () {
 
 					// $('div#hint_button').bind('click', function() {
 					$('div#cat_hint_but').bind('click', function() {
-							// $('.con2').append('h1<br/>');
-							// $('.con2').append('class ' + $(this).attr('class') + '<br/>');
-						
+						// [fold~ ehSp]
 						// Показать подсказки
 						if ($(this).hasClass('hint_en')) { 
 							// $('.con2').append('hint_en-1<br/>');
 
-
 							// Рисуем подсказки только если они были удалены функцией remove()
-/*
-							// Старый способ, уже не актуален
-							if ($('div#hint1').length==0) {
-									$('div#sideLeft').append('<div id="hint1"></div>');
-										$('div#hint1').bind( 'click', side_color_sel_click); // Открыть палитру 
-									
-									$('div#basket_count').append('<div id="hint3"></div>');
-							}
-*/
+							// [fold~ JS4Q]
 							// Показать подсказки
 							$('div#hint1').css('visibility', 'visible');
 							$('div#hint3').css('visibility', 'visible');
 
 							// Анимация кнопки управления подсказками
-				      		// $(this).css('background', 'url(../img/common/catalog/basket/q_on.png)');
-				      		// $(this).css('background-size', '100%');
-
+							// [fold~ rMcm]
 				      		$('div#img_hint_but').css('background', 'url(../img/common/catalog/basket/q_on.png)');
 				      		$('div#img_hint_but').css('background-size', '100%');
 
@@ -3424,18 +3356,15 @@ function fix_center_pult_inner () {
 			      		// Убрать подсказки
 						if ($(this).hasClass('hint_dis')) {
 							// $('.con2').append('hint_dis<br/>');
-
-/*							
+							/*							
 				      		$('div#hint1').remove();
 				      		$('div#hint3').remove();
-*/				      	
+							*/				      	
 							$('div#hint1').css('visibility', 'hidden');
 							$('div#hint3').css('visibility', 'hidden');
 
 				      		// Анимация кнопки управления подсказками
-				      		// $(this).css('background', 'url(../img/common/catalog/basket/q_off.png)');
-				      		// $(this).css('background-size', '100%');
-
+							// [fold~ V8oQ]
 				      		$('div#img_hint_but').css('background', 'url(../img/common/catalog/basket/q_off.png)');
 				      		$('div#img_hint_but').css('background-size', '100%');
 
@@ -3450,124 +3379,46 @@ function fix_center_pult_inner () {
 				} // if 1
 		//*/
 			} // else dev-machine
-
-
-
-		}
+		} // else 
 
 		/*
 			Отрисовка подсказок. Происходит проверка нет ли их сейчас на экране, чтобы не рисовать их повторно
 		*/
-/*
-		h = $('div#hint1');
-		if (h.length >= 1) {
-			// Если подсказки уже отрисованы, то не рисуем их снова
-		}
-		else {
-			$('div#sideLeft').append('<div id="hint1"></div>');
-
-			 // Как сделать подсказку к кнопке корзины в каталоге? 
-			// Пока отключаю
-			// $('div#sideLeft').append('<div id="hint2"></div>');
-
-			// $('div#sideLeft').append('<div id="hint3"></div>');
-			$('div#basket_count').append('<div id="hint3"></div>');
-		}
-*/
-
-
-
-	
-
+		// [fold~ g82B]
 		/*
 			Расчеты для работы семафора. Перебираем все секции frame, определяем габариты и тип кадра.
 			Прибавляем высоту каждого кадра, чтобы получить абсолютное смещение для каждого элемента.
 		*/
-
-		// fh = $('div#frame').css('height');
-		// fh = $('div#frame').css('height');
-		// $('.con2').append(fn)
+		// [fold~ Skz2]
+		/*
+			08_11_13 Нужно откорректировать семафор, а то он брешет дико ...
+			// [fold~ JmUC]
+		*/
 
 		/*
-			08_11_13 Нужно откорректировать семафор, а то он брешет дико
-			Похоже, что неверно строиться хеш с длинами. Ага! Ошибка в том, что первое значение
-			хеша - это длина первого блока, а не точка от которой он начинает строится...
-			UPD Для корректировки семаформа в зависимости от меню, пробую переделать 
-			расчет семафора отдельной функцией
-			Функция не видна из других частей программы, пробую перенести в глобальную область видимости
+		// Какие-то старые куски кода
+		// [fold~ BnSb]
 		*/
-/*
-		var fr_hash 	= {}; // frames_hash, хеш кадров
-function recalc_semafor () {
-		// var fr_offset   = 0; // Может начинать надо не с нуля?
-		var fr_offset   = 150; // Значение для свернутого меню
-
-		var mstate = localStorage.getItem('as_menu_state')
-		if (mstate=='initial_state') fr_offset = 150;
-		if (mstate=='opened_lit_e')  fr_offset = 0;
-
-		$('div#frame').each(function () {
-			fr_offset += parseInt($(this).css('height'));
-			fr_class   = $(this).attr('class');
-			// $('.con2').append(fr_offset + " " + fr_class + "<br/>");
-
-			//	Создаем хеш для хранения таблицы смещений и соотв. расположенных по этому адресу кадров - reg, sup, zak
-
-			// fr_hash[fr_offset] = "aa"; //fr_class.toString();
-
-			fr_hash[fr_offset] = fr_class;
-		});
-		
-		// Отладка
-		// for(var key in fr_hash) { $('.con2').append(key + " : " + fr_hash[key] + "<br/>") }; // Проверка хеша
-		
-	} // recalc_semafor
-
-*/
-			// Просчет данных для семафора при его создании
-			// Нужно перенести ниже!
-			// recalc_semafor();
-
-
-		// alert(3);
+		// [fold~ xBo7]
 
 		// Внедрение блока semafor - ярлыка для отображения имени секции
 		if ($('div#semafor').size()==0) { // Если метка еще не определена
-/*			
+			/*			
 			// Отключение семафора
-
 			$('body').append('<div id="semafor" class="s_floating"></div><br/>');
-*/		
+			*/		
 		}
 ///*
 		fix_semafor();
-
 //*/
 
-/*
+		/*
 		// Ляпанина по плавающему окну (plashka)
-		br=$('#plashka').get(0).getBoundingClientRect();
-		b = br.left + 'px';
+		// [fold~ eMp1]
+		*/
 
-		$('.floating1').css({left: b});
-
-		$(function(){
-				$(window).scroll(function() {
-			  var top = $(document).scrollTop();
-			  if (top > 675) $('.floating1').addClass('fixed1'); //200 - это значение высоты прокрутки страницы для добавления класс
-			  else $('.floating1').removeClass('fixed1');
-			});
-		});
-*/
 		/* Пересчет позиции семафора при скроллинге */
-
-	// function recalc_semafor () {
-			
-/*
-		var pnt1=$('#footer').get(0).getBoundingClientRect();
-		$('.con2').append('footer top: ' + pnt1.top + '<br/>');
-
-*/			
+		// [fold~ oxD8]
 		$(function(){
 			$(window).scroll(function() {
 				/*
@@ -3578,29 +3429,8 @@ function recalc_semafor () {
 				/*
 					Доп. модиф. кода для учитывания момента, после которого нужно скрыть пульт
 				*/
-/*
-				hold_pult = pnt1.top - 1000;
-
-				if (offset > hold_pult) {
-					$('#sideLeft').css('visibility', 'hidden');
-				}
-
-				if (offset < hold_pult) {
-					$('#sideLeft').css('visibility', 'visible');
-				}
-
-
-*/
-/*
-				$('div#counter_1').html(offset); 						// Текущее смещение страницы
-
-				// Расчет смещения (позиции) long_block
-					$('div#counter_2').html($('div#long_block').position().top); 
-
-*/
-/*
-				$('div#counter_2').html($('div#film').css('height')); 	// Длина фрейма в текущей выдаче
-//*/
+				// Устаревшие фрагменты кода
+				// [fold~ poTu]
 				/*
 					Сверяем значение текущего смещения со значениями из хеша, начиная с младшего
 				*/
@@ -3609,21 +3439,15 @@ function recalc_semafor () {
 				var x = {}; // Инициализация хеша
 				for(var key in fr_hash) { 
 					cnt++; // Какой ключ по счету?
-
 					/*	
 						Тут надо отстроить поведение семафора путем правки значения offset, т.к. 
 						offset расчитывается от верхней кромки экрана
 						Т.е. offset + 300?
 					*/
-
 					corr = offset - 320;
 					// if (key>offset) {
 					if (key>corr) {
-/*						
-						$('.con2').append("off = " + offset + " > " + key + " : " + fr_hash[key] + "<br/>");
-						$('.con2').append("hash key number = " + cnt + "<br/>");
-						$('div#counter_2').html(fr_hash[key]); 
-*/
+					// [fold~ rFhH]
 						// Меняем картинку в семафоре
 						if (fr_hash[key]=="regular") 	{ $('div#semafor').css('background','url(../img/common/catalog/banner_regular.png)') }
 						if (fr_hash[key]=="regular") 	{ $('div#semafor').css('background-size','100%') }
@@ -3635,14 +3459,7 @@ function recalc_semafor () {
 						break;
 					}
 				};
-
-/*
-				// В новом дизайне не подключено
-				var top = $(document).scrollTop();
-				// if (top > 620) $('.s_floating').addClass('s_fixed'); //200 - это значение высоты прокрутки страницы для добавления класс
-				if (top > 420) $('.s_floating').addClass('s_fixed'); //200 - это значение высоты прокрутки страницы для добавления класс
-				else $('.s_floating').removeClass('s_fixed');
-*/
+				// [fold~ pNx4]
 			});
 		});
 	
@@ -3650,13 +3467,7 @@ function recalc_semafor () {
 		08_11_13, ночь
 		Правки по вопросу "черные квадраты"
 	*/
-
-	// alert(1);
-	// Может перенести где-то в заголовок?
-	/*
-		UPD а ie не понимает такого! const нельзя использовать
-	*/
-	// const x = 4; // Кол-во пряжек в ряд в каталоге
+	// [fold~ nPZu]
 	var x = 4; // Кол-во пряжек в ряд в каталоге
 
 		// Секция обработки нового дизайна
@@ -3664,14 +3475,9 @@ function recalc_semafor () {
 		// Бирка сбоку с отображением имени секции
 		$('body').append('');
 
-		// Удаление из выдачи пустых секций - (вариант в противовес тому, где баннеры)
 		/*
-			Из-за этого фрагмента некорректно рассчитываются перходы семафора. Получается, что 
-			на самом деле при использовании remove() элементы не удаляются на самом деле?
-			СТОП! Просто пересчет выполняется до remove()!
-
-			UPD Из-за некорректности реализации метода find() для iOS нужно использовать 
-			замену children() - метод, корректный и для iOS и для десктопа
+			Удаление пустых секций (описание)
+			// [fold~ pOnW]
 		*/
 		$('div#frame').each(function () {
 			// a = $(this).find('#wrap_cont_m3').size();
@@ -3681,131 +3487,60 @@ function recalc_semafor () {
 		});
 
 		// Корректное место для пересчета переключений семафора по классам
-		
-///*
 		recalc_semafor();
-//*/
 
 		// Раскрашивание. Если секция относится к типу super или zakaz, то расцвечиваем ее в более серый цвет
-		// $('.con2').html('');
-		// cnt = 0;
-
+		// [fold~ VLjS]
 		/* Альтернативное решение для iPad */
-
-
-/*
-$('.con2').html('AAA<br/>');
-		var elements = document.querySelectorAll('div#frame');
-		Array.prototype.forEach.call(elements, function(el, i){
-
-				$('.con2').append("i> " + i + " " + el.hasClass('regular') + '<br/>');
-		});
-
-$('.con2').html('ddd<br/>');
-
-
-*/
-
+		// [fold~ mgAv]
 		$('div#frame').each(function () {
-		// $('div.regular').each(function () {
-			  //   				cnt = $(this).find('#wrap_cont_m3').size();
-					// $('.con2').append("! cnt = " + cnt + ", ");
-
-			// alert(31);
-				/*
-					Правка проблемы "черных квадратов"
-					Ок!
-					Ок!
-				*/
-
-				// $('.con2').append($(this).hasClass('regular') + '<br/>');
+		// [fold~ nss5]
 				/*
 					05_02_15
-					Проблемы с черными квадратами на iPad/iPhone
-
-					Айпад некорректно обрабатывает 
-					$(this).find('div#wrap_cont_m3').size(); 
-					возвращает всю пряжку на странице вместо кол-ва в текущем блоке
-					Почему? Везде на обычных компах работает корректно
-
-					cnt  = $(this).parent().find('div#wrap_cont_m3').size();
-					выполненное на десктопе дает тот же некорректный результат что и на айпаде
-					
-					UPD Из-за некорректности реализации метода find() для iOS нужно использовать 
-					замену children() - метод, корректный и для iOS и для десктопа
+					Проблемы с черными квадратами на iPad/iPhone (описание)
+					// [fold~ H57M]
 				*/
-
-
-
-
-
 				var res = 0; // Предварительная инициализация перед каждой итерацией
-				// cnt = 0;
-				// var aaa = 0;
-				// el = $(this);
+				// [fold~ WACA]
     			if ($(this).hasClass('regular')) {
-    			// if (el.hasClass('regular')) {
-/*
-					$('.con2').append("Обработка regular<br/>");
-					$('.con2').append("id > " + $(this).attr('id') + "<br/>");
-					$('.con2').append("class > " + $(this).attr('class') + "<br/>");
-*/
+				// [fold~ x3ZK]
     				// Нахождение числа блоков, которыми нужно дополнить секцию до кратности 4
     				// Вычисляем число блоков и если число не кратно  4, то бополняем
 
     				// w рабочий вариант для десктопов
     				// cnt = $(this).find('div#wrap_cont_m3').size();
     				cnt = $(this).children('div#wrap_cont_m3').size();
-
-					// $('.con2').append("! cnt = " + cnt + ", ");
-    	// 			aaa = $(this).find('#wrap_cont_m3').size();
-					// $('.con2').append("! aaa = " + aaa + ", ");
-
+					// [fold~ V8Hx]
 					if ((cnt % x) == 0) {
 						// $('.con2').append("БЕЗ ОСТАТКА<br/>");
-						
-							// Вот эта ветка допускала ошибку в алгоритме расчета "черных квадратов"
-							// при возврате на страницу, если число пряжки в самом первом регулярном блоке
-							// кратно 4, то присваивания res не происходит и в него попадает произвольное число
-							// Но уже в следующих категория все нормально, так как ниже res сбрасывается
-						
+
+						// Комментарий по поводу правок
+						// [fold~ dwfV]
 					}
 					else {
 						n = cnt / x | 0; // Такое вот хитрое бинарное извлечение целой части деления
 						// $('.con2').append("n " + n + ", ");
-
 						res = (n+1)*x - cnt;
-
 						// $('.con2').append("дополнить " + res + "<br/>");
 					}
-
-
-					// $('.con2').append("res "+ res + ", ");
-					
+					// [fold~ y6Td]
 						for (var i = 0; i < res; i++) {
 							$(this).append('<div id="wrap_cont_m3_hollow"></div>');
 							// $('.con2').prepend(i + " ");
 						};
 						// $('.con2').append("<br/>");
 						res = 0; // Сбрасываем счетчик дополнения
-///*
+					
+					// (!) Правка с заменой children в данном случае не дает желаемого результата
+    				// $(this).children('div#block_a').css("background","#9b9b9b");
 
     				$(this).contents('div#block_a').css("background","#5a5a5a");
     				$(this).contents('div#block_b').css("background","#5a5a5a");
 	    			$(this).contents('div#block_d').css("background","#5a5a5a");
 	    			$(this).contents('div#block_e').css("background","#5a5a5a");
 	    			$(this).contents('div#wrap_cont_m3_hollow').css("background","#5a5a5a");
-//*/
-/*
-    				$(this).children('div#block_a').css("background","#5a5a5a");
-    				$(this).children('div#block_b').css("background","#5a5a5a");
-	    			$(this).children('div#block_d').css("background","#5a5a5a");
-	    			$(this).children('div#block_e').css("background","#5a5a5a");
-	    			$(this).children('div#wrap_cont_m3_hollow').css("background","#5a5a5a");
-*/
     			}
-    						// alert(32);
-
+    			// alert(32);
 		});
 
 		$('div#frame').each(function () {
@@ -3826,20 +3561,12 @@ $('.con2').html('ddd<br/>');
 
 					for (var i = 0; i < res; i++) {$(this).append('<div id="wrap_cont_m3_hollow"></div>');};
 					res = 0; // Сбрасываем счетчик дополнения
-///*
+
     				$(this).find('div#block_a').css("background","#747474");
     				$(this).find('div#block_b').css("background","#747474");
 	    			$(this).find('div#block_d').css("background","#747474");
 	    			$(this).find('div#block_e').css("background","#747474");
 	    			$(this).find('div#wrap_cont_m3_hollow').css("background","#747474");
-//*/
-/*
-    				$(this).children('div#block_a').css("background","#747474");
-    				$(this).children('div#block_b').css("background","#747474");
-	    			$(this).children('div#block_d').css("background","#747474");
-	    			$(this).children('div#block_e').css("background","#747474");
-	    			$(this).children('div#wrap_cont_m3_hollow').css("background","#747474");
-*/
 	    		}
 		});
 
@@ -3858,46 +3585,24 @@ $('.con2').html('ddd<br/>');
 					}
 					for (var i = 0; i < res; i++) {$(this).append('<div id="wrap_cont_m3_hollow"></div>');};
 					res = 0; // Сбрасываем счетчик дополнения
-///*
+
     				$(this).find('div#block_a').css("background","#9b9b9b");
     				$(this).find('div#block_b').css("background","#9b9b9b");
 	    			$(this).find('div#block_d').css("background","#9b9b9b");
 	    			$(this).find('div#block_e').css("background","#9b9b9b");
 	    			$(this).find('div#wrap_cont_m3_hollow').css("background","#9b9b9b");
-//*/
-/*
-    				$(this).children('div#block_a').css("background","#9b9b9b");
-    				$(this).children('div#block_b').css("background","#9b9b9b");
-	    			$(this).children('div#block_d').css("background","#9b9b9b");
-	    			$(this).children('div#block_e').css("background","#9b9b9b");
-	    			$(this).children('div#wrap_cont_m3_hollow').css("background","#9b9b9b");
-*/
     			}
 		});
 
-
-		// alert(2);
-
 		/* Что-то от механизма обработки возврата */
 
-
-			if (isBack == "") {
-			}
-			else
-			{
-				// alert(3);
-				window.scrollTo(0, scroll);
-				// $('html').scrollTop(scroll);
-
-			}
-
-
-
+			if (isBack == "") {}
+			else { window.scrollTo(0, scroll); }
 
 			localStorage.as_back_scroll = "0";
 
-
 			// (!) Хак, подводка раздела хольнитенов к заданному виду
+			// UPD (!) Это еще актуально?!
 			if (pryajka_type=='holnitenu') {
 				// alert(1);
 				
@@ -3917,22 +3622,15 @@ $('.con2').html('ddd<br/>');
 
 			}
 
-			// 
-
-
 			// Всем картинкам-указателям установить обработчик - выбор палитры
 		 	$('img#clink').each(function () {
 		 		// $('this').remove();
 		 		$(this).bind('click', function() {
 					$('div#side_color_sel').trigger('click');
 
-
-
 					// ToDo
 						// - Включить обработку
 						// - Изменить цветовую отрисовку для корректоной работы алгоритма
-
-
 
 				});
 		 	});
@@ -3944,55 +3642,15 @@ $('.con2').html('ddd<br/>');
 				});
 		 	});
 
-
-			
-
-		 /* Зачем это было? */
+		  // (!) Зачем это было? 
+		  // (!) UPD Актуально?
 
 			if (pryajka_type=='holnitenu') {
 				$('div#bline').eq(1).find("div#wrap_cont").remove();
 			}
 
-
-			// alert(3);
-
-			/* Эксперименты по zoom */
-
-/*
-		// [fold~ wZJb]
-//*/
-
-			// $("#zoom_01").elevateZoom();
-
-			/*
-				Эксперименты с инерционным скроллингом каталога
-
-				Что-то по простому это нифига не работает
-			*/
-
-/*
-		$('div#frame').mCustomScrollbar({
-   			verticalScroll:true
-		});
-*/
-
-		/* 
-			Сокрытие пульта и прочего ниже определенного уровня
-
-		var pnt1=$('#footer').get(0).getBoundingClientRect();
-		$('.con2').append('footer top: ' + pnt1.top + '<br/>');
-
-		*/
-
-	// 	try {
-	// }
-	// [catch (exception_var) {
-	//    catch_statements
-	// }]
-
-	// [finally {
-	//    finally_statements
-	// }]
+			// Эксперименты разные
+// [fold~ adxK]
 	try {
 		var pnt1=$('#footer').get(0).getBoundingClientRect();
 		$('.con2').append('footer top: ' + pnt1.top + '<br/>');
@@ -4035,16 +3693,7 @@ $(window).scroll(function() {
 					$('#basket_wrap').css('visibility', 'hidden');
 					$('#semafor').css('visibility', 'hidden');
 //*/
-					// $('#basket_wrap').animate({'opacity':'0.1'});
-/*
-					$('#box_a2').css('position', 'relative'); //position: relative;
-					$('#box_a2').css('top', offset);
-*/					
-
-
-					// $('#box_a2').animate({'opacity':'0'});
-					// .animate({'opacity':'0.2'})
-
+					// [fold~ 8mWm]
 				}
 
 				// Восстановление поведения пульта
@@ -4056,24 +3705,15 @@ $(window).scroll(function() {
 					$('#basket_wrap').css('visibility', 'visible');
 					$('#semafor').css('visibility', 'visible');
 //*/
-					// $('#basket_wrap').animate({'opacity':'1'});
-					// $('#basket_wrap').css('opacity','1');
-/*
-					$('#box_a2').css('position', 'fixed'); //position: relative;
-					$('#box_a2').css('top', '15%');
-*/
-
+					// [fold~ nMpz]
 				}
-
-
-});
+}); // $(window).scroll(function()
 
 
 
 /* Высплывающее меню сверху */
 	 $(function() {
-		
-
+				
 	 	est_pos = $('#long_block #film').position().top;
 
 		var offset = $("#stripe").offset(); // запоминаем первоначальные отсупы
@@ -4086,12 +3726,15 @@ $(window).scroll(function() {
 				$("#stripe").stop().animate({marginTop: 0 }, 50); // Иначе отступ нулевой
 			}
 		});
+		
+
 	});
 
 // (!) Не нужно ли это перенести в куда-то в иное место?
 	 /* Реакция на прокрутку "длинного блока" */
 $(function(){
   $('div#long_block').scroll(function(){
+
     var aTop = $('#ad').height();
     // if($(this).scrollTop()>=aTop){
     if($(this).scrollTop()>=500){
@@ -4103,21 +3746,12 @@ $(function(){
     else {
 		$("#stripe").stop().animate({marginTop: 0 }, 50); // Иначе отступ нулевой
 	}
-
   });
+  
+
 });
 
-
-
-
 		} // if(/load_uni/)
-
-
-
-
-
-
-
 
 		/* Скрипт загрузки результатов запроса по контенту */
 		if (/get_stats.pl/m.test(settings.url)) {
@@ -4139,12 +3773,8 @@ $(function(){
 			// После загрузки информации помещаем ее в соотв. переменную
 			portions = parseInt(ajax_data);
 
-			// $('.con2').append("portions: " + portions + "<br/>");
-			// (!) Прикол в том, что ajax_data меняется не только в ajax7, но и в ajax4
-			// таким образом возможны трудноуловимые коллизии
-			// (!) Какоч это место и саму ф. ajax7 надо модифицировать в каком-то более
-			// специфичном и безопасном виде
-			// $('.con2').append("portions: " + parseInt(ajax_data) + "<br/>");
+			// Объясняющие комменты
+			// [fold~ h8fM]
 			$('.con2').append("portions: " + portions + "<br/>");
 
 		} // if(/get_stats/)
@@ -4190,13 +3820,9 @@ $(function(){
   });
 });
 
-
-
-// $('.con3').append("div#film height: " + $('div#film').height()  + "<br/>");
+// [fold~ w6wr]
 
 ///*
-
-
 /*
 	Детектирование дна проктутки блока film, наступает когда сколл достигает 
 	~последних пряжек. Затем событие должно анбиндиться и загружается 
@@ -4230,19 +3856,13 @@ $(function(){
 	});
 //*/
 
-/*
 // check if a user has scrolled to the bottom
-$(window).scroll(function() {
-	// $('div#long_block').scroll(function(){
-   // if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-   if($('div#long_block').scrollTop() + $(window).height() > $(document).height() - 100) {
-       // alert("near bottom!");
-       $('.con3').append("near bottom!<br/>");
-   }
-});
-*/
+// [fold~ pHW9]
+
 		} // if(/load_portion/)
 
+
+/* --- --- --- --- */
 
 
 		if (/load_sizes.pl/m.test(settings.url)) {
@@ -4340,20 +3960,11 @@ $(window).scroll(function() {
 				$('div#ind_pryajka_m2').find('div#pr_block_c img').attr('src', res);
 
 			}); // $('div#sizes_el_img, div#sizes_el_mark').bind()
-
-
-
-
-
 		} // if(/load_sizes/)
 		
 
 
-
-
-
-
-
+		// $('body').append("CORRECT<br/>");
 
 	}); // ajaxComplete 'load_uni.pl'
 
