@@ -162,6 +162,9 @@ var cur_portion = 0; // Счетчик текущей порции
 
 $(document).ready(function(){
 // [fold~ 4wfR]
+
+
+
 	
 	// $('body').prepend(col_hash['7P'] + '<br/>');
 	// $('body').prepend('jjj<br/>');
@@ -3058,13 +3061,63 @@ function fix_center_pult_inner () {
 
 
 }
-
-
-
 	// Центровка при старте страницы
 	fix_center_pult();
 
+// Просчет высоты блока с контентом в зависимости от высоты области отображения
+function fix_long_block () {
+	$('.con3').append('FIX long_block<br/>');
+
+	// Вывод информации о габаритах области вывода
+	// Для коррекции расчета границы автоматической подачи контента
+	// var wwidth  = (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
+	var wheight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
+
+	// $('div#counter_1').html(wwidth);
+	$('div#counter_2').html(wheight);
+
+	// $('div#long_block').css('height', wheight - 15);
+	
+	lbH = $('div#long_block').css('height');
+	sbH = $('div#short_block').css('height');
+	// 1000px -> 1000 
+	var lbH_ = parseInt(lbH); 
+	var shH_ = parseInt(sbH);
+
+	$('.con3').prepend('lbH > ' + lbH_  + ' wheight ' + wheight + '<br/>');
+	// Отладка	
+	// $('div#counter_3').html(lbH);	
+	// $('.con2').prepend('short_block height > ' + sbH +'<br/>');
+	
+	// Зазор блока контента от нижнего края области вывода браузера
+	treshold = 10; // px
+	// Проверка чтобы длинный блок не выступал за границу короткого при масштабировании
+	// Некорректный вариант
+		// [fold~ jaar]
+	// Правильный
+	if (wheight > lbH_) {
+		// if ((lbH_ + treshold) < shH_) {
+		if ((wheight - treshold) < shH_) {
+			$('div#long_block').css('height', wheight - treshold);
+		}
+		else {
+			$('div#long_block').css('height', shH_ - treshold);
+		}
+	}
+	else {
+		$('div#long_block').css('height', wheight - treshold);
+	}
+
+
+		$('div#counter_3').html($('div#long_block').css('height'));	
+}
+
+// Расчет высоты блока с контентом при старте страницы
+fix_long_block();
+
+
 /* Реакция на масштабирование окна */
+// #winresize
 	$(window).resize(function() {
 // [fold~ V9Je]
 		
@@ -3099,6 +3152,10 @@ function fix_center_pult_inner () {
 // [fold~ 8GoS]
 
 
+		/* Пересчет границы блока вывода контента */
+		fix_long_block();
+
+
 	});
 
 
@@ -3107,9 +3164,21 @@ function fix_center_pult_inner () {
 	20_05_14
 	Переработка отработчика завершения запроса ajax
 */
+/* 
+	20_05_14
+	Переработка отработчика завершения запроса ajax
+
+	21_05_14
+	Вроде корректировка была удачной, свернуто ~ 500 строк, но теперь перестала 
+	работать саблаймовская функция С+m от самых внешний скобок, т.е. быть
+	может нема корректности
+	UPD - Все в порядке, корректная работа C+m возможна только в документах без фолдинга
+	активного кода
+
+*/
 	$(document).ajaxComplete(function(event, xhr, settings) {
 		// $( ".con" ).append( ">>>> " + settings.url );
-		if (/load_uni.pl/m.test(settings.url)) {
+		if (/load_uni.pl/m.test(settings.url)) { // (1-1)
 
 		$( ".con2" ).append( ">>>> load_uni executed <br/>" );
 
@@ -3120,14 +3189,95 @@ function fix_center_pult_inner () {
 			подсвечиваем иконку корзины
 		*/
 		for(var key in hash) {
-			// [fold~h44s]
+						// $('#wrk_area').append('<div id="wrap_cont_m3"><div id="block_a"><span id="cat_name">СУПЕРЦЕНА</span></div><div id="block_b"><div id="block_b_img" class="lit_e"></div></div><div id="block_c"><img src="img/cat/rabochaya/' + k + '.png" alt=""></div><div id="block_d"><div id="w_close"></div><div id="block_d_hollow"></div><div id="block_d_basket"></div></div><div id="block_e"><span id="cat_name">' + k + '</span><img id="more" src="img/blocks/marks/p_more.png"></div></div>');
+			/*
+			$('#wrk_area').append(key + '<br/>');
+			$('#wrk_area').append(key + '<br/>');
+			*/
+			// $('div#wrap_cont_m3').find('span#cat_name').eq(1).each(function () {
+			
+			// $('div#wrap_cont_m3').find('span#cat_name').each(function () {
+			$('div#wrap_cont_m3').find('div#block_c img').each(function () {
+			// Корректировка подгрузки пряжки по src
+
+
+				// $(this).css('background', 'yellow'); // :)
+				// $(this).addClass('wrappedElement');
+				// $(this).remove();
+				
+				// a = $(this).html(); // Устарело
+				a = $(this).attr('src');
+
+				var expr = new RegExp(key, 'im');
+				// var regex = '/' + a + '/gi';
+				// if (/i.FM-01481-08-7P/m.test(a)) {
+				if (expr.test(a)) {
+				// if (regex.test(a)) {
+					// $(this).addClass('wrappedElement');
+					// $(this).css('background', 'white'); // :)
+					$(this).parent().parent().find('div#block_d_basket').css('opacity','1');
+
+				}
+			});
+
 		} // for(var key in hash)
 
 		/*
 			Привязка события click к кнопке корзины в каталоге
 		*/
 	 	$('div#block_d_basket').bind('click', function() {
-		// [fold~2vSS]
+			      		// $(this).css("opacity","1");
+      		// a = $(this).parent().parent().find('span#cat_name').eq(1).html();
+      		a = $(this).parent().parent().find('div#block_c img').attr('src');
+
+      		inBasket = false; // Пряжка уже в наборе?
+ 			
+ 			// Определяем, есть ли пряжка в наборе
+      		for( var key in hash ) {
+				var expr = new RegExp(key, 'im');
+				// $('.con2').prepend('a> ' + a + 'key> ' + key +'<br/>');
+
+				if (expr.test(a)) {
+				    // $('.con2').append('Эта пряжка уже в ls!' +'<br/>');
+				    inBasket = true;
+				    // Повторый выбор пряжки удаляет ее из набора
+				    delete hash[a]; 				// Удаляем логически
+				   	$(this).css('opacity','0.2');	// И визуально
+
+					// Get the size of an object
+					var bsize = Object.size(hash); 
+
+					// $('.con2').append('Пряжка ' + a + ' удалена. Размер корзины: ' + bsize + '<br/>');
+
+
+			    } 
+			}
+
+			
+			// Пряжки еще нет в наборе, добавляем
+			if (inBasket==false) {
+				hash[a] = a;
+				
+				// Get the size of an object
+				var bsize = Object.size(hash); 
+
+				// $('.con2').append('Пряжка ' + a + ' добавлена. Размер корзины: ' + bsize + '<br/>');
+
+				// Перманентно подсвечиваем пряжку
+				$(this).css('opacity','1');
+
+
+			}
+
+      		
+			// В конце обработчика сбрасываем измененный набор в ls
+			localStorage.as_01 = "";
+			localStorage.as_01 = hashToStr(hash); // Их хеша в строку, а из строки обратно в ls
+			// Обновляем счетчик пряжки в корзине
+			var bsize = Object.size(hash); 
+			$('div#basket_count').html(bsize);
+
+
   		});
 
 
@@ -3139,7 +3289,7 @@ function fix_center_pult_inner () {
 			// $('.con2').append('B<br/>');
 		}
 		else {
-			// Ветка рисования подсказок при нажатии на кнопку подсказок
+						// Ветка рисования подсказок при нажатии на кнопку подсказок
 			// $('.con2').append('C Ветка отрисовки подсказок<br/>');
 
 			/*
@@ -3166,6 +3316,7 @@ function fix_center_pult_inner () {
 				localStorage.as_options = "";
 				localStorage.as_options = 'hints:1';
 				// $('.con2').append('Инициализация ls опций подсказок (hints = true) <br/>');
+
 			}
 			else {
 
@@ -3208,7 +3359,7 @@ function fix_center_pult_inner () {
 						UPD После переверстки 960 работает коряво нужно поправить двойную отрисовку
 					*/
 					// if ()
-///*
+				///*
 					if ($('div#hint1').length==0) {
 
 					// Отключение подсказок
@@ -3228,7 +3379,7 @@ function fix_center_pult_inner () {
 					$('div#basket_wrap').append('<div id="hint3"></div>');
 					    
 					}
-//*/
+				//*/
 
 					// $('div#hint_button').bind('click', function() {
 					$('div#cat_hint_but').bind('click', function() {
@@ -3282,7 +3433,7 @@ function fix_center_pult_inner () {
 				} // if 1
 		//*/
 			} // else dev-machine
-		} // else 
+		} // else ?
 
 		/*
 			Отрисовка подсказок. Происходит проверка нет ли их сейчас на экране, чтобы не рисовать их повторно
@@ -3322,6 +3473,7 @@ function fix_center_pult_inner () {
 
 		/* Пересчет позиции семафора при скроллинге */
 		// [fold~ oxD8]
+// #winscroll
 		$(function(){
 			$(window).scroll(function() {
 				/*
@@ -3376,7 +3528,8 @@ function fix_center_pult_inner () {
 		// Секция обработки нового дизайна
 
 		// Бирка сбоку с отображением имени секции
-		$('body').append('');
+		// (?)
+		// $('body').append('');
 
 		/*
 			Удаление пустых секций (описание)
@@ -3390,8 +3543,10 @@ function fix_center_pult_inner () {
 		});
 
 		// Корректное место для пересчета переключений семафора по классам
+/*
+		// w, отключение
 		recalc_semafor();
-
+*/
 		// Раскрашивание. Если секция относится к типу super или zakaz, то расцвечиваем ее в более серый цвет
 		// [fold~ VLjS]
 		/* Альтернативное решение для iPad */
@@ -3554,6 +3709,12 @@ function fix_center_pult_inner () {
 
 			// Эксперименты разные
 // [fold~ adxK]
+
+
+/*
+	Вычисление границы, после которой должнен скрываться HUD в блоке обрабоке
+	ниже. Также устаревшая обработка для каталога 1 версии
+*/
 	try {
 		var pnt1=$('#footer').get(0).getBoundingClientRect();
 		$('.con2').append('footer top: ' + pnt1.top + '<br/>');
@@ -3579,7 +3740,10 @@ function fix_center_pult_inner () {
 		// hold_pult = pnt3.bottom; // + 800;
 //*/
 
-
+/* 
+	Сокрытие пульта и проч. элементов при достижении дна области контента
+	Фрагмент для старого каталога, больше не нужен
+*/
 $(window).scroll(function() {
 
 				// Текущее смещение
@@ -3613,20 +3777,52 @@ $(window).scroll(function() {
 }); // $(window).scroll(function()
 
 
-
-/* Высплывающее меню сверху */
+// (!!) Два нижеследующих блока нужно будет протестировать в составе catalog2
+// вроде как одно и тоже делаю, но почему-то оба активны
+	/* Высплывающее меню сверху, актуально */
 	 $(function() {
-		// [fold~gLwU]
+				
+	 	est_pos = $('#long_block #film').position().top;
+
+		var offset = $("#stripe").offset(); // запоминаем первоначальные отсупы
+		$(window).scroll(function() { // во время скроллинга
+			// if ($(window).scrollTop() > 700) { // Если скроллинг больше первоначальной позиции
+			if (est_pos > -700) { // Если скроллинг больше первоначальной позиции
+			// $("#stripe").stop().animate({marginTop: $(window).scrollTop() - offset.top}); // увиличиваем отступ сверху
+				$("#stripe").stop().animate({marginTop: 90}, 50); // увиличиваем отступ сверху
+			}else{
+				$("#stripe").stop().animate({marginTop: 0 }, 50); // Иначе отступ нулевой
+			}
+		});
+		
+
 	});
 
-// (!) Не нужно ли это перенести в куда-то в иное место?
-	 /* Реакция на прокрутку "длинного блока" */
-$(function(){
-  $('div#long_block').scroll(function(){
-// [fold~YYjp]
-});
+	// (!) Не нужно ли это перенести в куда-то в иное место?
+	/* Реакция на прокрутку "длинного блока" ? */
+	$(function(){
+	  $('div#long_block').scroll(function(){
+		
+		    var aTop = $('#ad').height();
+		    // if($(this).scrollTop()>=aTop){
+		    if($(this).scrollTop()>=500){
+		        // alert('ad just passed.');
+		        $('.con3').append("ad just passed. : " + $(this).scrollTop() + " ~ " + aTop + "<br/>");
 
-		} // if(/load_uni/)
+		        $("#stripe").stop().animate({marginTop: 90}, 50); // увиличиваем отступ сверху
+		    }
+		    else {
+				$("#stripe").stop().animate({marginTop: 0 }, 50); // Иначе отступ нулевой
+			}
+		  });
+		  
+
+	});
+
+} // if(/load_uni/) (1-2)
+
+
+/* --- --- --- --- --- */
 
 		/* Скрипт загрузки результатов запроса по контенту */
 		if (/get_stats.pl/m.test(settings.url)) {
@@ -3658,6 +3854,7 @@ $(function(){
 			// $('.con2').append("stat_reg: " + stat_reg + " stat_reg: " + stat_sup + " stat_zak: " + stat_zak + "<br/>");
 
 
+// #ajaxover
 		/* Загрузка порции контента в суперблок #film */
 		if (/load_portion.pl/m.test(settings.url)) {
 
@@ -3702,6 +3899,7 @@ $(function(){
 	Детектирование дна проктутки блока film, наступает когда сколл достигает 
 	~последних пряжек. Затем событие должно анбиндиться и загружается 
 	дополнительная порция пряжки
+	#autofeed
 */
 	$(function(){
 	  $('div#long_block').scroll(function(){
@@ -3733,6 +3931,182 @@ $(function(){
 
 // check if a user has scrolled to the bottom
 // [fold~ pHW9]
+
+
+
+
+/* Кусок по черным квадратам из load_uni */
+// #blackbox
+	var x = 4; // Кол-во пряжек в ряд в каталоге
+
+		// Секция обработки нового дизайна
+
+		// Бирка сбоку с отображением имени секции
+		// (?)
+		// $('body').append('');
+
+		/*
+			Удаление пустых секций (описание)
+			// [fold~ pOnW]
+		*/
+		$('div#frame').each(function () {
+			// a = $(this).find('#wrap_cont_m3').size();
+			a = $(this).children('#wrap_cont_m3').size();
+			if (a == 0) {$(this).remove();}
+			// $('.con2').append(a + '<br/>');
+		});
+
+		// Корректное место для пересчета переключений семафора по классам
+/*
+		// w, отключение
+		recalc_semafor();
+*/
+		// Раскрашивание. Если секция относится к типу super или zakaz, то расцвечиваем ее в более серый цвет
+		// [fold~ VLjS]
+		/* Альтернативное решение для iPad */
+		// [fold~ mgAv]
+		$('div#frame').each(function () {
+		// [fold~ nss5]
+				/*
+					05_02_15
+					Проблемы с черными квадратами на iPad/iPhone (описание)
+					// [fold~ H57M]
+				*/
+				var res = 0; // Предварительная инициализация перед каждой итерацией
+				// [fold~ WACA]
+				// if ($(this).hasClass('regular')) {
+
+				// UPD Если секция еще не обрабатывалась
+				if (($(this).hasClass('regular')) && !($(this).hasClass('black_ok'))) {
+					$(this).addClass('black_ok');
+				// [fold~ x3ZK]
+    				// Нахождение числа блоков, которыми нужно дополнить секцию до кратности 4
+    				// Вычисляем число блоков и если число не кратно  4, то бополняем
+
+    				// w рабочий вариант для десктопов
+    				// cnt = $(this).find('div#wrap_cont_m3').size();
+    				cnt = $(this).children('div#wrap_cont_m3').size();
+					// [fold~ V8Hx]
+					if ((cnt % x) == 0) {
+						// $('.con2').append("БЕЗ ОСТАТКА<br/>");
+
+						// Комментарий по поводу правок
+						// [fold~ dwfV]
+					}
+					else {
+						n = cnt / x | 0; // Такое вот хитрое бинарное извлечение целой части деления
+						// $('.con2').append("n " + n + ", ");
+						res = (n+1)*x - cnt;
+						// $('.con2').append("дополнить " + res + "<br/>");
+					}
+					// [fold~ y6Td]
+						for (var i = 0; i < res; i++) {
+							$(this).append('<div id="wrap_cont_m3_hollow"></div>');
+							// $('.con2').prepend(i + " ");
+						};
+						// $('.con2').append("<br/>");
+						res = 0; // Сбрасываем счетчик дополнения
+					
+					// (!) Правка с заменой children в данном случае не дает желаемого результата
+    				// $(this).children('div#block_a').css("background","#9b9b9b");
+
+    				$(this).contents('div#block_a').css("background","#5a5a5a");
+    				$(this).contents('div#block_b').css("background","#5a5a5a");
+	    			$(this).contents('div#block_d').css("background","#5a5a5a");
+	    			$(this).contents('div#block_e').css("background","#5a5a5a");
+	    			$(this).contents('div#wrap_cont_m3_hollow').css("background","#5a5a5a");
+    			}
+    			// alert(32);
+		});
+
+		$('div#frame').each(function () {
+		res = 0; // Похоже сбрасывать нужно перед каждым блоком?
+				// if ($(this).hasClass('super')) {
+
+				// UPD Если секция еще не обрабатывалась
+				if (($(this).hasClass('super')) && !($(this).hasClass('black_ok'))) {
+					$(this).addClass('black_ok');
+    				// $('.con2').append("Обработка super<br/>");
+
+			// alert(33);
+    				// Нахождение числа блоков, которыми нужно дополнить секцию до кратности 4
+    				// cnt  = $(this).find('div#wrap_cont_m3').size();
+    				cnt  = $(this).children('div#wrap_cont_m3').size();
+					// $('.con2').append("cnt = " + cnt + ", ");
+					if ((cnt % x) != 0) {
+						n = cnt / x | 0; // Такое вот хитрое бинарное извлечение целой части деления
+						res = (n+1)*x - cnt;
+					}
+					// $('.con2').append("res "+ res + ", ");
+
+					for (var i = 0; i < res; i++) {$(this).append('<div id="wrap_cont_m3_hollow"></div>');};
+					res = 0; // Сбрасываем счетчик дополнения
+
+    				$(this).find('div#block_a').css("background","#747474");
+    				$(this).find('div#block_b').css("background","#747474");
+	    			$(this).find('div#block_d').css("background","#747474");
+	    			$(this).find('div#block_e').css("background","#747474");
+	    			$(this).find('div#wrap_cont_m3_hollow').css("background","#747474");
+	    		}
+		});
+
+		$('div#frame').each(function () {
+		res = 0; // Похоже сбрасывать нужно перед каждым блоком?
+
+    			// if ($(this).hasClass('zakaz')) {
+				// UPD Если секция еще не обрабатывалась
+				if (($(this).hasClass('zakaz')) && !($(this).hasClass('black_ok'))) {
+					$(this).addClass('black_ok');
+
+    				// $('.con2').append("Обработка zakaz<br/>");
+
+    				// Нахождение числа блоков, которыми нужно дополнить секцию до кратности 4
+    				// cnt  = $(this).find('div#wrap_cont_m3').size();
+    				cnt  = $(this).children('div#wrap_cont_m3').size();
+					if ((cnt % x) != 0) {
+						n = cnt / x | 0; // Такое вот хитрое бинарное извлечение целой части деления
+						res = (n+1)*x - cnt;
+					}
+					for (var i = 0; i < res; i++) {$(this).append('<div id="wrap_cont_m3_hollow"></div>');};
+					res = 0; // Сбрасываем счетчик дополнения
+
+    				$(this).find('div#block_a').css("background","#9b9b9b");
+    				$(this).find('div#block_b').css("background","#9b9b9b");
+	    			$(this).find('div#block_d').css("background","#9b9b9b");
+	    			$(this).find('div#block_e').css("background","#9b9b9b");
+	    			$(this).find('div#wrap_cont_m3_hollow').css("background","#9b9b9b");
+    			}
+		});
+
+		/* Что-то от механизма обработки возврата */
+
+			if (isBack == "") {}
+			else { window.scrollTo(0, scroll); }
+
+			localStorage.as_back_scroll = "0";
+
+			// (!) Хак, подводка раздела хольнитенов к заданному виду
+			// UPD (!) Это еще актуально?!
+			if (pryajka_type=='holnitenu') {
+				// alert(1);
+				
+				// $('div#wrap_cont').eq(10).remove();
+				// $('div#wrap_cont').eq(10).remove();
+
+				a = $('div#wrap_cont').eq(10).detach();
+				b = $('div#wrap_cont').eq(10).detach();
+
+				$('div#bline').eq(0).append('<div id="wrap_cont_hollow"></div>');
+				$('div#bline').eq(0).append('<div id="wrap_cont_hollow"></div>');
+
+				// $('<div id="wrap_cont_hollow"></div>').insertAfter($('div#wrap_cont').eq(9)); // Тоже верно
+
+				$('div#bline').eq(0).append(a);				
+				$('div#bline').eq(0).append(b);				
+
+			}
+
+
 
 		} // if(/load_portion/)
 
@@ -3836,14 +4210,8 @@ $(function(){
 
 			}); // $('div#sizes_el_img, div#sizes_el_mark').bind()
 		} // if(/load_sizes/)
-		
-
-
-		// $('body').append("CORRECT<br/>");
 
 	}); // ajaxComplete 'load_uni.pl'
-
-
 
 
 
