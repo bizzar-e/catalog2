@@ -1,0 +1,88 @@
+div#g_menu_wrap {
+	/*background: #2782BB;*/
+	height: 290px;
+	width: 630px;
+	padding-left: 10px;
+	float: left;
+
+
+}
+/* Левая кулиса меню */
+div#g_menu_side_A {
+	/*background: #76ADB0;*/
+	height: 280px;
+	width: 310px;
+	float: left;
+
+}
+/* Правая кулиса меню */
+div#g_menu_side_B {
+	/*background: #01865B;*/
+	height: 280px;
+	width: 310px;
+	float: left;
+	
+	margin-left: 10px;
+}
+
+/* Субблоки меню галереи */
+/* Левая панель */
+div#g_menu_bl_1A {
+	/*background: #C4CACA;*/
+	background: url(../img/backp_3.png) repeat; /* Прозрачный png */
+	height: 138px;
+	width: 310px;
+	float: left;
+	margin-bottom: 4px;
+	cursor: pointer;
+}
+div#g_menu_bl_1A:hover { background: url(../img/backp.png) repeat; /* Прозрачный png */ }
+div#g_menu_bl_2A {
+	/*background: #B1B3B0;*/
+	background: url(../img/backp_3.png) repeat; /* Прозрачный png */
+	height: 138px;
+	width: 152px;
+	float: left;
+	cursor: pointer;
+}
+div#g_menu_bl_2A:hover { background: url(../img/backp.png) repeat; /* Прозрачный png */ }
+div#g_menu_bl_3A {
+	/*background: #7F8375;*/
+	background: url(../img/backp_3.png) repeat; /* Прозрачный png */
+	height: 138px;
+	width: 152px;
+	float: left;
+	margin-left: 6px;
+	cursor: pointer;
+}
+div#g_menu_bl_3A:hover { background: url(../img/backp.png) repeat; /* Прозрачный png */ }
+/* Правая панель */
+div#g_menu_bl_1B {
+	background: #C4CACA;
+	height: 138px;
+	width: 310px;
+	float: left;
+	margin-bottom: 4px;
+}
+div#g_menu_bl_2B {
+	background: #B1B3B0;
+	height: 138px;
+	width: 152px;
+	float: left;
+}
+div#g_menu_bl_3B {
+	background: #7F8375;
+	height: 138px;
+	width: 152px;
+	float: left;
+	margin-left: 6px;
+}
+
+
+div#g_ad {
+    background: #2782BB;
+    height: 2px;
+    width: 640px;
+    float: left;
+
+}
