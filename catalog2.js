@@ -1691,11 +1691,13 @@ else {
 		a1 = cat + '_' + 'xx' + '_' + 'xx';
 		// a1 = "kolca_xx_xx"; 
 
-		$('body').prepend(a1);
+		// (!)
+		// $('body').prepend(a1);
 		a2 = "";	dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
 
 		// $('html, body').animate({scrollTop: scroll}, 800); // К каталогу	
+		jQuery('#long_block').animate({ scrollTop: 500 }, 800);		
 }
 
 
@@ -1757,6 +1759,12 @@ if ($('td#one').length == 1) {
 */
 		// $('html, body').animate({scrollTop: 600}, 800); // К каталогу
 
+
+/*
+		$('div#proto_up_button').trigger('click');
+		$('.con3').prepend('UP! trigger<br/>');
+*/
+		jQuery('#long_block').animate({ scrollTop: 500 }, 800);
 	}
 
 
@@ -1793,6 +1801,7 @@ if ($('td#one').length == 1) {
 		ajax4("load_uni.pl", a1, a2, dest);
 
 		// $('html, body').animate({scrollTop: 600}, 800); // К каталогу
+				jQuery('#long_block').animate({ scrollTop: 500 }, 800);
 	}
 
 	// Перетяжки peretyagki
@@ -1817,7 +1826,7 @@ if ($('td#one').length == 1) {
 		ajax4("load_uni.pl", a1, a2, dest);
 
 		// $('html, body').animate({scrollTop: 600}, 800); // К каталогу
-
+		jQuery('#long_block').animate({ scrollTop: 500 }, 800);
 	}
 
 
