@@ -163,9 +163,20 @@ var cur_portion = 0; // Счетчик текущей порции
 $(document).ready(function(){
 // [fold~ 4wfR]
 
+	// 27_05_14
+	// Кусок для обеспечения работы гелереи2 в окружении каталога
+
+	// $('div#div_ic_block_A').append('<div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div>');	
+	$('div#div_ic_block_A').append('<a id="magnif_1" class="test-popup-link" href="img/gallery2/520/54_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/54_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/55_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/55_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/56_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/56_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/53.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/53.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/50.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/50.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/47.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/47.jpg" alt="" /></div> </a>');	
 
 
-	
+$('.test-popup-link').magnificPopup({ 
+  type: 'image'
+	// other options
+});
+
+
+
 	// $('body').prepend(col_hash['7P'] + '<br/>');
 	// $('body').prepend('jjj<br/>');
 

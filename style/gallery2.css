@@ -6,6 +6,8 @@ div#g_menu_wrap {
 	float: left;
 
 
+	margin-bottom: 50px;
+
 }
 /* Левая кулиса меню */
 div#g_menu_side_A {
@@ -77,12 +79,32 @@ div#g_menu_bl_3B {
 	float: left;
 	margin-left: 6px;
 }
-
-
+/* Маркер */
 div#g_ad {
     background: #2782BB;
     height: 2px;
     width: 640px;
     float: left;
+}
+/* Контент */
+div#g_pic_wrap {
+	background: #DECD97;
+	height: 150px;
+	width: 150px;
+	float: left;
+	margin-top: 8px;
+	margin-left: 8px;
 
+	/* Временно, прототип */
+	cursor: pointer;
+
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+}
+
+/* Затенение корзины */
+/* wraith - призрак */
+.wraith {
+	opacity: 0.1;
 }
