@@ -167,12 +167,15 @@ $(document).ready(function(){
 	// Кусок для обеспечения работы гелереи2 в окружении каталога
 
 	// $('div#div_ic_block_A').append('<div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div> <div id="g_pic_wrap"></div>');	
-	$('div#div_ic_block_A').append('<a id="magnif_1" class="test-popup-link" href="img/gallery2/520/54_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/54_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/55_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/55_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/56_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/56_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/53.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/53.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/50.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/50.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/47.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/47.jpg" alt="" /></div> </a>');	
+	// $('div#div_ic_block_A').append('<a id="magnif_1" class="test-popup-link" href="img/gallery2/520/54_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/54_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/55_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/55_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/56_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/56_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/53.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/53.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/50.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/50.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/47.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/47.jpg" alt="" /></div> </a>');	
+	$('div#div_ic_block_A').append('<a id="magnif_1" class="test-popup-link" href="img/gallery2/520/54_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/54_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/55_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/55_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/56_A6.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/56_A6.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/53.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/53.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/50.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/50.jpg" alt="" /></div> </a> <a id="magnif_1" class="test-popup-link" href="img/gallery2/520/47.jpg"> <div id="g_pic_wrap"><img src="img/gallery2/150/47.jpg" alt="" /></div> </a><a id="magnif_1" class="test-popup-link" href="img/gallery2/520/47.jpg"> <div id="g_bigpic_wrap"><img src="img/gallery2/360/47.jpg" alt="" /></div> </a>');	
 
 
 $('.test-popup-link').magnificPopup({ 
-  type: 'image'
-	// other options
+  type: 'image',
+  gallery:{
+    enabled:true
+  }
 });
 
 
@@ -4255,7 +4258,15 @@ $(function(){
 	// $("div#pan_c").append('<a href="basket1.html"><div id="basket_wrap"><div id="basket"><div id="basket_reg"></div></div><div id="basket_count">0</div></div></a>');
 	
 	// $("div#pan_c").append('<div id="basket_wrap"><div id="basket"><a href="my_cabinet2.html"><div id="basket_reg"></div></a></div><a href="basket1.html"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
-	$("div#bite1").append('<div id="basket_wrap"><div id="basket"><a href="my_cabinet2.html"><div id="basket_reg"></div></a></div><a href="basket1.html"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
+
+
+/*
+	#basket
+
+	Место в котором вставляется корзина, пока отключаем
+*/
+
+	// $("div#bite1").append('<div id="basket_wrap"><div id="basket"><a href="my_cabinet2.html"><div id="basket_reg"></div></a></div><a href="basket1.html"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
 
 
 

@@ -88,7 +88,8 @@ div#g_ad {
 }
 /* Контент */
 div#g_pic_wrap {
-	background: #DECD97;
+	/*background: #DECD97;*/
+	background: white;
 	height: 150px;
 	width: 150px;
 	float: left;
@@ -102,9 +103,41 @@ div#g_pic_wrap {
 	-moz-box-shadow:    0px 0px 9px 0px rgba(50, 50, 50, 0.75);
 	box-shadow:         0px 0px 9px 0px rgba(50, 50, 50, 0.75);
 }
+div#g_pic_wrap img {
+	margin-left: 22px;
+}
 
 /* Затенение корзины */
 /* wraith - призрак */
 .wraith {
 	opacity: 0.1;
+}
+
+div#g_basket {
+	margin-top: 50px;
+	margin-left: 60px;
+}
+
+/* Идея с большим квадратом для Жени */
+div#g_bigpic_wrap {
+	/*background: #DECD97;*/
+	background: white;
+	height: 308px;
+	width: 308px;
+	float: left;
+	margin-top: 8px;
+	margin-left: 8px;
+
+	/* Временно, прототип */
+	cursor: pointer;
+
+	-webkit-box-shadow: 0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+	-moz-box-shadow:    0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+	box-shadow:         0px 0px 9px 0px rgba(50, 50, 50, 0.75);
+}
+div#g_bigpic_wrap img {
+	height: inherit;
+	width: auto;
+
+	margin-left: 45px;
 }

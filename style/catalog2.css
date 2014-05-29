@@ -49,7 +49,7 @@ input, textarea { outline:none; }
 }
 
 
-    /* Почему-то понадобилось изменить заголовок медиа и дописывать импортант теперь */
+/* Почему-то понадобилось изменить заголовок медиа и дописывать импортант теперь */
 /*@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {*/
 @media all and (orientation:landscape) {
 
@@ -480,8 +480,13 @@ ul#l_main_menu li a {
 
     text-decoration: none;
     font-family: Corbel;
+    
+
     font-size: 11px;
+    
+
     color: #000000;
+    /*color: white;*/
 
     margin-top: -15px;
 
@@ -490,8 +495,46 @@ ul#l_main_menu li a {
 
 ul#l_main_menu li a:hover {
     color: #f10606;
+    /*color: black;*/
     /*font-weight: bold;*/
 }
+
+/* Для stripe-меню */
+ul#l_main_menu3 {
+    list-style-type: none;
+    position: relative;
+    
+}
+ul#l_main_menu3 li {
+    /*display: inline;*/
+    vertical-align: middle;
+
+    display:    inline-block;
+    margin-left: 23px;
+}
+
+ul#l_main_menu3 { padding: 0; }
+ul#l_main_menu3 li a {   
+    float: left;
+
+    height: 19px;
+    display: block;
+
+    text-decoration: none;
+    font-family: Corbel;    
+
+    font-size: 19px;
+    color: white;
+
+    margin-top: -15px;
+
+    cursor: pointer;
+}
+
+ul#l_main_menu3 li a:hover {
+    color: black;
+}
+
 /* Новый поиск + строка навигации */
 div#ssearch {
     /*background: yellow;*/
@@ -3111,7 +3154,7 @@ div#semafor { /* Бирка сбоку с названием категории 
 
     z-index: 10;
 
-    visibility: hidden;
+    /*visibility: hidden;*/
 }
 
 
@@ -3297,6 +3340,8 @@ div#counter_1 {
     position: fixed;
     top: 210px;
     right: 0px;
+
+    z-index: 10;
 }
 div#counter_2 {
     background: yellow;
@@ -3305,6 +3350,8 @@ div#counter_2 {
     position: fixed;
     top: 232px;
     right: 0px;
+
+    z-index: 10;
 }
 div#counter_3 {
     background: yellow;
@@ -3313,6 +3360,8 @@ div#counter_3 {
     position: fixed;
     top: 254px;
     right: 0px;
+
+    z-index: 10;    
 }
 
 
@@ -4231,7 +4280,8 @@ div#ad2 {
 }
 
 div#stripe_wrap {
-    width: 640px;
+    /*width: 640px;*/
+    width: 940px;
     margin: 0 auto;
 
     /*margin-left: 100px;*/
