@@ -48,14 +48,14 @@ window.onload = function () {
 	            tp = localStorage.getItem('as_var_type');
 				localStorage.as_back_info = "";
 				localStorage.as_back_info = tp;
-				window.location="catalog1.html";
+				window.location="catalog2.html";
         	}
         	if (browser() == 'Search Bot') {
             	history.pushState('newjibberish', null, null);
 	            tp = localStorage.getItem('as_var_type');
 				localStorage.as_back_info = "";
 				localStorage.as_back_info = tp;
-				window.location="catalog1.html";
+				window.location="catalog2.html";
         	}
 
 		    if (!loaded) {
@@ -78,7 +78,7 @@ window.onload = function () {
 				localStorage.as_back_info = tp;
 
 				// alert(localStorage.getItem('as_back_info'))
-				window.location="catalog1.html";
+				window.location="catalog2.html";
 
 				// alert("bb");
 
@@ -714,7 +714,7 @@ Object.size = function(obj) {
 		localStorage.as_back_info = "";
 		localStorage.as_back_info = tp;
 
-		window.location="catalog1.html";
+		window.location="catalog2.html";
 	});
 	/* Оформить заказ */
 

@@ -173,6 +173,18 @@ $(document).ready(function(){
 	// Вспомогательная
 	$('body').append('<div class="con3"></div>');
 
+
+	/* Функция для внесения информации в консоль */
+	function con2 (str) {
+		$('.con2').append(str);
+	}
+	// Со стиранием консоли
+	function xcon2 (str) {
+		$('.con2').html('');
+		$('.con2').append(str);
+	}
+
+
 /* This way will allow scrollable elements while still preventing the overscroll in the browser itself */
 /*
 // На айпаде этот кусок запрещает какие-либо скроллинги вообще, приложение становится статичным
@@ -181,6 +193,9 @@ $(function() {
 });
 
 */
+
+
+
 
 
 
@@ -218,6 +233,9 @@ $('#long_block').on('touchmove','.scrollable',function(e) {
 	Тем секциям, которые должны двигаться нужно присвоить класс scrollable
 	<div id="div_ic_block_A" class="scrollable">
 */
+
+
+// #touch
 
 // Disable overscroll / viewport moving on everything but scrollable divs
  $('body').on('touchmove', function (e) {
@@ -389,7 +407,7 @@ function browser()
 		localStorage.as_menu_state = "initial_state";
 
 		var mstate = localStorage.getItem('as_menu_state');
-		$('.con2').append('"state" : ' + mstate +  '<br/>');
+		// $('.con2').append('"state" : ' + mstate +  '<br/>');
 
 //*/
 	}
@@ -1039,7 +1057,8 @@ function browser()
 			ajax_data = data; // Помещение ответа в глобальную переменную
 			
 			// $('.con2').append("AJAX7, " + script_name + " res: " + data + "<br/>");
-			$('.con2').append("AJAX7, " + script_name + " res: " + ajax_data + "<br/>");
+			// Отладка
+			// $('.con2').append("AJAX7, " + script_name + " res: " + ajax_data + "<br/>");
 
 		} // success
 		}); // ajax
@@ -1051,7 +1070,19 @@ function browser()
 /* Добавить какую-то кнопку, которая бы стартовала запрос по умолчанию загрузки рабочей пряжки */
 	// Окно поиска
  	// $('body').append('<div id="search"><input /></div>');
- 	$('div#ssearch').append('<div id="search"><input type=search /><div id="search_but"></div>');
+
+
+ 	
+
+/* 	29_05_14
+	Перенос Поиска на IND
+*/
+
+
+
+
+ 	// $('div#ssearch').append('<div id="search"><input type=search /><div id="search_but"></div>');
+  	$('div#bite1').append('<div id="search"><input type=search /><div id="search_but"></div>');
 	
 	// Навигация
 	// $('#breadcrumbs').append('<span id="bc1">ЛИТЬЕ </span>');
@@ -1075,6 +1106,8 @@ function browser()
 	function cat_1_click () {
 		$('#film').remove(); // $('#sblock').remove();
 
+			xcon2("cat_1_click");
+
 			$('div#side_color_sel img').remove(); 
 			$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  '03_7P' +'.png"></img>');
 			$('div#side_color_sel span').html('7P');
@@ -1093,11 +1126,17 @@ function browser()
 			// Место, в котором отключается загрузка по умолчанию (рабочая пряжка)
 
 ///*
+			// Старый способ
 			ajax4("load_uni.pl", a1, a2, dest);
 //*/
 
+			// Новый, порционный
+
 
 		// $('html, body').animate({scrollTop: 600}, 800); // К каталогу
+
+          jQuery('#long_block').animate({ scrollTop: 500 }, 800); 
+
 } // cat_1_click ()
 
 
@@ -1208,6 +1247,10 @@ function browser()
 
 			// Кол-во порций
 			// ajax7("get_stats.pl", a1, a2, portions);
+
+			/*
+			(!) В виду кода once_1, нужен ли этот кусок?
+			*/
 			ajax7("get_stats.pl", a1, a2);
 			// $('.con2').append("portions: " + portions + '<br/>');
 
@@ -1237,7 +1280,10 @@ function once_1(){
 			// ajax4("load_portion.pl", a1, a2, $('.con2'));
 
 
-			$('.con2').append('<div id="but_portion">more</div>');
+			/*
+				Для целей отдаки кнопка в отладочной консоли
+			*/
+			// $('.con2').append('<div id="but_portion">more</div>');
 
 			$('#but_portion').bind('click', function() {
 				$('.con2').append('more click - деактивирована<br/>');
@@ -3010,7 +3056,7 @@ function bind_lit_e () {
 	*/
 function fix_center_pult () {
 		/* Корректировка по центру */
-		$('.con2').prepend('fix pult'  +'<br/>');
+		// $('.con2').prepend('fix pult'  +'<br/>');
 		el = $('div#pult');
 	    var wwidth  = (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
 		var wheight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
@@ -3861,7 +3907,7 @@ $(window).scroll(function() {
 			
 			// $('.con2').html('');
 			// $('.con2').html("stat_reg: " + stat_reg + " stat_reg: " + stat_sup + " stat_zak: " + stat_zak + "<br/>");
-			$('.con2').append("stat_reg: " + stat_reg + " stat_reg: " + stat_sup + " stat_zak: " + stat_zak + "<br/>");
+			// $('.con2').append("stat_reg: " + stat_reg + " stat_reg: " + stat_sup + " stat_zak: " + stat_zak + "<br/>");
 
 			// Из конт. #film переносим инф. li в консоль
 			$('#film li.info').appendTo('.con2');
@@ -4234,9 +4280,203 @@ $(function(){
 				$('div#ind_pryajka_m2').find('div#pr_block_c img').attr('src', res);
 
 			}); // $('div#sizes_el_img, div#sizes_el_mark').bind()
+
+/* 
+	Перенос кода по обслуживанию корзины сюда, в каталог2
+*/
+
+		/*	
+			Определяем постоянное имя текущей пряжки, разбираем для последующей подстановки размера
+		*/
+		a_src = $('div#ind_pryajka_m2').find('div#pr_block_c img').attr('src');
+/*	
+				(-)	0                      1 	 2  3 
+					img/cat/rabochaya/i.FM-01496-08-1V.png
+*/		
+		a_arr = a_src.split('-');
+
+
+/* При загружке ростовки проверка, быть может что-то лежит в корзине */
+
+		for(var key in hash) {
+			/*
+				Чет не пойму оптимален ли обход? Для каждого ключа хеша прокручиваем весь список... вроде верно
+			*/
+			// $('#wrk_area').append('<div id="wrap_cont_m3"><div id="block_a"><span id="cat_name">СУПЕРЦЕНА</span></div><div id="block_b"><div id="block_b_img" class="lit_e"></div></div><div id="block_c"><img src="img/cat/rabochaya/' + k + '.png" alt=""></div><div id="block_d"><div id="w_close"></div><div id="block_d_hollow"></div><div id="block_d_basket"></div></div><div id="block_e"><span id="cat_name">' + k + '</span><img id="more" src="img/blocks/marks/p_more.png"></div></div>');
+/*
+			$('#wrk_area').append(key + '<br/>');
+			$('#wrk_area').append(key + '<br/>');
+*/
+			// $('div#wrap_cont_m3').find('span#cat_name').eq(1).each(function () {
+
+
+			// Содержимое корзины
+			// $('.con2').append('bsk> ' + key +'<br/>');
+
+			$('div#sizes_el_wrap').find('div#sizes_el_mark').each(function () {
+				// $(this).css('background', 'yellow'); // :)
+				// $(this).addClass('wrappedElement');
+				// $(this).remove();
+
+				/* размер */
+				/*
+					UPD pareseInt съедает ноль! 08 -> 8
+				*/
+				// a_sz = parseInt($(this).html()); // В ростовке определям размер текущего элемента - цифру
+
+				a_sz = $(this).text().replace(/(\d+)(.*)/mg, "$1"); // В ростовке определям размер текущего элемента - цифру
+/*	
+				(-)	0                      1 	 2  3 
+					img/cat/rabochaya/i.FM-01496-08-1V.png
+				Собираем имя с подстановкой текущего размера пряжки
+*/		
+
+				/*
+					(!)
+					Нет хвоста, значит алгоритм не будет работать для пряжки с тех. признаками 
+					или будет это делат не корректно
+					(#!_check)
+					Для его корректного просчета нужно сплит применять к .png, соединять постоянную часть (как это происходит
+					ниже), а затем соединять все оставшиеся фрагменты массива
+
+					UPD - Стоп! Ничего делать не надо и все будет корректно работать, т.к. 
+													   3
+					img/cat/rabochaya/i.FM-01496-08-1V-44x44.png
+
+					хвост по сути будет всегда постоянным
+				*/
+				is_a = a_arr[0] + "-" + a_arr[1] +  "-" + a_sz + "-" + a_arr[3]; // Это не учитывая хвост
+
+				// $('.con2').append('a_sz> ' + is_a +'<br/>');
+
+										// p_nom_short 				// col
+				// $('.con2').append('a> ' + h_arr[4] + "-" + a + "-" + h_arr[6] +'<br/>');
+				
+				// is_a = h_arr[4] + "-" + a + "-" + h_arr[6]; // Это только номенклатура, а нужен src картинки пряжки
+
+				/*
+					Место, где определяется, есть пряжки из ростовки в корзине, но из-за 
+					фотографий 360-150 нужно дополнительно модифицировать cat/cat_large
+				*/
+				// Костыль
+	    		tmp_arr = is_a.split('/');
+	    		tmp_arr[1] = 'cat';
+	    		is_a = tmp_arr.join('/');
+
+
+
+///*				
+				var expr = new RegExp(key, 'im');
+				// var regex = '/' + a + '/gi';
+				// if (/i.FM-01481-08-7P/m.test(a)) {
+				if (expr.test(is_a)) {
+					/*
+						Пряжка найдена в хеше, нужно ее выделить визуально в ростовке
+					*/
+					
+					// $('.con2').append('___Пряжка в корзине ' + is_a + '<br/>');
+					
+					// $('.con2').append('___a> ' + h_arr[4] + "-" + a + "-" + h_arr[6] +'<br/>');
+					// $('.con2').append('__im> ' + key +'<br/>');
+					
+					// $(this).parent().parent().find('div#block_d_basket').css('opacity','1');
+					el = $(this).parent().find('div#sizes_el_bsk_but');
+					el.css('opacity','1');
+					// el.addClass('wrappedElement');
+					// $(this).parent().parent().find('div#sizes_el_bsk_but').remove();
+					var s = el.attr('id');
+
+					// $('.con2').append('s> ' + s +'<br/>');
+				}
+//*/
+			});
+		} // for(var key in hash)
+
+
+
+
+
+		/*
+			Привязка события click к кнопке корзины на индивидуальной
+		*/
+///*		
+	 	$('div#sizes_el_bsk_but').bind('click', function() {
+      		// $(this).css("opacity","1");
+      		// a = $(this).parent().parent().find('span#cat_name').eq(1).html();
+
+      		/* Определяем что за пряжка */
+    		a_sz = $(this).parent().find('div#sizes_el_mark').text().replace(/(\d+)(.*)/mg, "$1"); // В ростовке определям размер текущего элемента - цифру
+			is_a = a_arr[0] + "-" + a_arr[1] +  "-" + a_sz + "-" + a_arr[3];
+    		/*
+				Проблемное место, добавляет в корзину пряжки с огромными картинками
+
+    			Для корректной работы алгоритма нужно изменить проходящую через алгоритм пряжку, например
+				0   1 		  2 		3+
+				img/cat_large/rabochaya/i.FM-01481-08-7P.png
+				img/cat/rabochaya/i.FM-01481-08-7P.png
+				Наверно сплитану
+    		*/
+    		tmp_arr = is_a.split('/');
+    		tmp_arr[1] = 'cat';
+    		is_a = tmp_arr.join('/');
+
+/*			$('.con2').append('a> ' + is_a  +'<br/>');
+			$('.con2').append('t> ' + tmp  +'<br/>');
+*/
+
+      		inBasket = false; // Пряжка уже в наборе?
+ 			
+ 			// Определяем, есть ли пряжка в наборе
+      		for( var key in hash ) {
+				var expr = new RegExp(key, 'im');
+				// $('.con2').prepend('a> ' + a + 'key> ' + key +'<br/>');
+
+				if (expr.test(is_a)) {
+				    // $('.con2').append('Эта пряжка уже в ls!' +'<br/>');
+				    inBasket = true;
+				    // Повторый выбор пряжки удаляет ее из набора
+				    delete hash[is_a]; 				// Удаляем логически
+				   	$(this).css('opacity','0.2');	// И визуально
+
+					// Get the size of an object
+					var bsize = Object.size(hash); 
+
+					$('.con2').append('Пряжка ' + is_a + ' удалена. Размер корзины: ' + bsize + '<br/>');
+			    } 
+			}
+
+			
+			// Пряжки еще нет в наборе, добавляем
+			if (inBasket==false) {
+				hash[is_a] = is_a;
+				
+				// Get the size of an object
+				var bsize = Object.size(hash); 
+
+				// $('.con2').append('Пряжка ' + a + ' добавлена. Размер корзины: ' + bsize + '<br/>');
+
+				// Перманентно подсвечиваем пряжку
+				$(this).css('opacity','1');
+
+
+			}
+
+      		
+			// В конце обработчика сбрасываем измененный набор в ls
+			localStorage.as_01 = "";
+			localStorage.as_01 = hashToStr(hash); // Их хеша в строку, а из строки обратно в ls
+			// Обновляем счетчик пряжки в корзине
+			var bsize = Object.size(hash); 
+			$('div#basket_count').html(bsize);
+
+  		});
+
+
+
 		} // if(/load_sizes/)
 
-	}); // ajaxComplete 'load_uni.pl'
+
+	}); // ajaxComplete
 
 
 
