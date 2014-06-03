@@ -163,7 +163,12 @@ var cur_portion = 0; // Счетчик текущей порции
 $(document).ready(function(){
 // [fold~ 4wfR]
 
-
+/*
+// Контроль привязаных событий 
+$.each($('#element').data('events'), function(i, e) {
+    console.log(i, e);
+});
+*/
 
 	
 	// $('body').prepend(col_hash['7P'] + '<br/>');
@@ -176,12 +181,12 @@ $(document).ready(function(){
 
 	/* Функция для внесения информации в консоль */
 	function con2 (str) {
-		$('.con2').append(str);
+		$('.con2').append(str + "<br/>");
 	}
 	// Со стиранием консоли
 	function xcon2 (str) {
 		$('.con2').html('');
-		$('.con2').append(str);
+		$('.con2').append(str + "<br/>");
 	}
 
 
@@ -1234,6 +1239,7 @@ function browser()
 
 			/*
 			(!) В виду кода once_1, нужен ли этот кусок?
+				UPD once че-та не используется...
 			*/
 			ajax7("get_stats.pl", a1, a2);
 			// $('.con2').append("portions: " + portions + '<br/>');
@@ -1694,6 +1700,9 @@ else {
 	// function cat_u15 () { cat_click_uni('', 'Разное', 'xx', 'xx', '500'); }
 
 	function cat_click_uni (cat, aux_nfo, col, size, scroll) {
+
+
+		// $('.con2').append('AAA cat uni func()<br/>');
 		// Заготовка универсальной функции загрузки
 /*
 		i_arr = aux_nfo.split('_');
@@ -1712,19 +1721,86 @@ else {
 
 		$('#film').remove(); // Очистка области вывода
 
+
 		// decor kolca peretyagki holnitenu blochka krjuchki
 		pryajka_type = cat; // Устанавливаем тип выбранной пряжки
+
+		
 		// $('div#side_cat_name').html('Кольца');
 		$('div#side_cat_name').html(aux_nfo);
 		
 		// a1 = cat + '_' + col + '_' + size;
+		
+		/*
+			(!) Временный отладочный трюк
+		if (cat == 'petli') cat = 'rabochaya'
+		*/
+
 		a1 = cat + '_' + 'xx' + '_' + 'xx';
 		// a1 = "kolca_xx_xx"; 
-
+/*
+		// Старая версия подгрузки пряжки - все сразу
 		// (!)
 		// $('body').prepend(a1);
 		a2 = "";	dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
+*/
+		/*
+			Доработка до порционной загрузки
+			Нужно сбрасывать счетчик порционной загрузки
+		*/
+		// $('.con2').append('cat uni func()<br/>');		
+
+		if (cur_portion > 0) {
+			cur_portion = 0;
+			$('.con2').append('recalc portions()<br/>');		
+			// ajax7("get_stats.pl", a1, a2);
+			// Отложенная обработка
+
+/*				
+			ajaxstr =  '/cgi-bin/get_stats.pl?' + "username=" + a1 + "&password=" + a2 + "&note=" + 'note';				
+			// $.when( ajax7("get_stats.pl", a1, a2) ).then(function() {
+			$.when( $.ajax(ajaxstr) ).then(function( data, textStatus, jqXHR ) {
+				// alert( jqXHR.status ); // Alerts 200
+				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
+				$('.con2').append('when DATA ' + data + ' <br/>');	
+			});
+*/
+
+			ajaxstr1 = '/cgi-bin/get_stats.pl'
+			ajaxstr2 = "username=" + a1 + "&password=" + a2;		
+
+			$.when( 
+				$.ajax({
+					type: "GET", url: ajaxstr1, contentType: "text/html; charset=utf-8",
+					dataType: "text html", data: ajaxstr1,
+					success: function(data){ ajax_data = data; } 
+				})
+			).then(function( data, textStatus, jqXHR ) {
+				// alert( jqXHR.status ); // Alerts 200
+				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
+				$('.con2').append('when DATA ' + data + ' <br/>');	
+			});
+
+
+		}
+
+
+
+		cur_portion++;
+
+		// Восст. контейнер для загрузки результатов порции (выше удаляется)
+		$('#wrk_area').append('<div id="film"></div>');
+
+		a2 = cur_portion;
+
+		// $('.con2').append('recalc portions()<br/>');	
+
+		con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
+
+		ajax4("load_portion.pl", a1, a2, $('div#film'));
+
+
 
 		// $('html, body').animate({scrollTop: scroll}, 800); // К каталогу	
 		jQuery('#long_block').animate({ scrollTop: 500 }, 800);		
@@ -3919,14 +3995,15 @@ $(window).scroll(function() {
 			// Информация из перловки
 			$('div#perl').appendTo('.con2');
 
-
+/*
+			// Уже не надо
 			$('div#more_but2').bind('click', function() {
 				$(this).remove();
 
 				a1 = "rabochaya_xx_xx"; a2 = "arg2_JS";
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
 			});		
-
+*/
 
 	 /* Реакция на прокрутку "длинного блока" */
 // Копия из load_uni
