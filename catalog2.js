@@ -1756,6 +1756,7 @@ else {
 
 		a1 = cat + '_' + 'xx' + '_' + 'xx';
 		// a1 = "kolca_xx_xx"; 
+		$('.con2').append("a1: " + a1 + '<br/>');		
 /*
 		// Старая версия подгрузки пряжки - все сразу
 		// (!)
@@ -1767,7 +1768,7 @@ else {
 			Доработка до порционной загрузки
 			Нужно сбрасывать счетчик порционной загрузки
 		*/
-		// $('.con2').append('cat uni func()<br/>');		
+		$('.con2').append(cur_portion +' - cat uni func()<br/>');		
 
 		if (cur_portion > 0) {
 			cur_portion = 0;
@@ -1823,6 +1824,18 @@ else {
 				// $('.con2').append('recalc portions()<br/>');	
 
 				con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
+
+
+
+				/* 
+					ToDO
+
+						В этом месте вместо нужной по категории происходит загрузка 
+						рабочки, каким-то образом происходит сбой...
+				 */
+
+
+
 
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
 				// $('.con3').html('');
@@ -4115,7 +4128,10 @@ $(function(){
 
 	        $('.con3').append('Порция номер: ' + cur_portion + " порций " + portions + "<br/>");
 
-			if (cur_portion < portions-1) {
+	        // (!) Ошибка из load_portion перекочевала сюда,
+	        // теперь тут надо исправить, иначе нет для рабочки последнего размера
+			// if (cur_portion < portions-1) {
+			if (cur_portion < portions) {
 				cur_portion++;
 	        	a1 = "rabochaya_xx_xx"; a2 = cur_portion;
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
