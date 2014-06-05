@@ -1736,6 +1736,8 @@ else {
 		$('div#side_color_sel span').html(col);
 
 		$('#film').remove(); // Очистка области вывода
+		// Восст. контейнер для загрузки результатов порции (выше удаляется)
+		$('#wrk_area').append('<div id="film"></div>');
 
 
 		// decor kolca peretyagki holnitenu blochka krjuchki
@@ -1781,28 +1783,73 @@ else {
 				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
 				$('.con2').append('when DATA ' + data + ' <br/>');	
 			});
+
 */
 
-			ajaxstr1 = '/cgi-bin/get_stats.pl'
-			ajaxstr2 = "username=" + a1 + "&password=" + a2;		
+			a2 = "222";
 
+
+			ajaxstr1 = '/cgi-bin/get_stats.pl'
+			// ajaxstr1 = 'get_stats.pl'
+			// (!) Вот тут ошибка - неверная передача аргументов!
+			// ajaxstr2 = "username=" + a1 + "&password=" + a2;		
+			ajaxstr2 = "username=" + '' + "&password=" + a1;		
+
+
+
+///*
+			// Отложенная обработка запроса на сервер
 			$.when( 
 				$.ajax({
 					type: "GET", url: ajaxstr1, contentType: "text/html; charset=utf-8",
-					dataType: "text html", data: ajaxstr1,
+					dataType: "text html", data: ajaxstr2,
 					success: function(data){ ajax_data = data; } 
 				})
 			).then(function( data, textStatus, jqXHR ) {
 				// alert( jqXHR.status ); // Alerts 200
 				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
-				$('.con2').append('when DATA ' + data + ' <br/>');	
+				// $('.con3').append('when DATA ' + data + ' <br/>');	
+
+
+				// (!) Теперь известно кол-во порций и можно формировать запрос на получение
+
+				cur_portion++;
+/*
+				// Восст. контейнер для загрузки результатов порции (выше удаляется)
+				$('#wrk_area').append('<div id="film"></div>');
+*/
+				a2 = cur_portion;
+
+				// $('.con2').append('recalc portions()<br/>');	
+
+				con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
+
+				ajax4("load_portion.pl", a1, a2, $('div#film'));
+				// $('.con3').html('');
+				// ajax4("load_portion.pl", a1, a2, $('.con3'));
+				// ajax4("load_portion.pl", a1, a2, $('body'));
+
+
 			});
+//*/
+/*
+			function GetHours() {
+			    return $.ajax({
+					type: "GET", url: ajaxstr1, contentType: "text/html; charset=utf-8",
+					dataType: "text html", data: ajaxstr2,
+					// success: function(data){ ajax_data = data; } 
+					success: function(data){ ajax_data = "Ok " + data  + '<br/>'; } 
+			    });
+			};
+*/
 
-
+			// $('.con2').append('when DATA ' + data + ' <br/>');	
+			// $('.con3').append('when DATA ' + console.log(GetHours()) + ' <br/>');	
 		}
 
 
 
+/*
 		cur_portion++;
 
 		// Восст. контейнер для загрузки результатов порции (выше удаляется)
@@ -1815,7 +1862,7 @@ else {
 		con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
 
 		ajax4("load_portion.pl", a1, a2, $('div#film'));
-
+*/
 
 
 		// $('html, body').animate({scrollTop: scroll}, 800); // К каталогу	
@@ -3213,8 +3260,10 @@ function fix_center_pult_inner () {
 
 // Просчет высоты блока с контентом в зависимости от высоты области отображения
 function fix_long_block () {
+/*
+	// Отладка
 	$('.con3').append('FIX long_block<br/>');
-
+*/
 	// Вывод информации о габаритах области вывода
 	// Для коррекции расчета границы автоматической подачи контента
 	// var wwidth  = (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
@@ -3231,11 +3280,12 @@ function fix_long_block () {
 	var lbH_ = parseInt(lbH); 
 	var shH_ = parseInt(sbH);
 
-	$('.con3').prepend('lbH > ' + lbH_  + ' wheight ' + wheight + '<br/>');
+/*
 	// Отладка	
+	$('.con3').prepend('lbH > ' + lbH_  + ' wheight ' + wheight + '<br/>');
 	// $('div#counter_3').html(lbH);	
 	// $('.con2').prepend('short_block height > ' + sbH +'<br/>');
-	
+*/	
 	// Зазор блока контента от нижнего края области вывода браузера
 	treshold = 10; // px
 	// Проверка чтобы длинный блок не выступал за границу короткого при масштабировании
