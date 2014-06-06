@@ -1756,7 +1756,7 @@ else {
 
 		a1 = cat + '_' + 'xx' + '_' + 'xx';
 		// a1 = "kolca_xx_xx"; 
-		$('.con2').append("a1: " + a1 + '<br/>');		
+		// $('.con2').append("a1: " + a1 + '<br/>');		
 /*
 		// Старая версия подгрузки пряжки - все сразу
 		// (!)
@@ -1768,11 +1768,11 @@ else {
 			Доработка до порционной загрузки
 			Нужно сбрасывать счетчик порционной загрузки
 		*/
-		$('.con2').append(cur_portion +' - cat uni func()<br/>');		
+		// $('.con2').append(cur_portion +' - cat uni func()<br/>');		
 
 		if (cur_portion > 0) {
 			cur_portion = 0;
-			$('.con2').append('recalc portions()<br/>');		
+			// $('.con2').append('recalc portions()<br/>');		
 			// ajax7("get_stats.pl", a1, a2);
 			// Отложенная обработка
 
@@ -1787,7 +1787,7 @@ else {
 
 */
 
-			a2 = "222";
+			// a2 = "222";
 
 
 			ajaxstr1 = '/cgi-bin/get_stats.pl'
@@ -1821,9 +1821,19 @@ else {
 */
 				a2 = cur_portion;
 
-				// $('.con2').append('recalc portions()<br/>');	
 
-				con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
+
+				/*
+					Радости асинхронной работы, значение а1 за время работы скрипта 
+					успевает измениться...
+				*/
+				// $('.con2').append('CUR cat is: ' + cat + ' <br/>');	
+				// $('.con2').append('CUR a1 is: ' + a1 + ' <br/>');	
+				// (!) Костылим
+				// a1_ = cat + '_' + 'xx' + '_' + 'xx';
+
+				// con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
+				// con2("a1_ " + a1_ + " a2 " + a2 + " cur_portion " + cur_portion);
 
 
 
@@ -1837,12 +1847,13 @@ else {
 
 
 
+				// ajax4("load_portion.pl", a1_, a2, $('div#film'));
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
 				// $('.con3').html('');
 				// ajax4("load_portion.pl", a1, a2, $('.con3'));
 				// ajax4("load_portion.pl", a1, a2, $('body'));
 
-
+				jQuery('#long_block').animate({ scrollTop: 500 }, 800);	
 			});
 //*/
 /*
@@ -1879,7 +1890,7 @@ else {
 
 
 		// $('html, body').animate({scrollTop: scroll}, 800); // К каталогу	
-		jQuery('#long_block').animate({ scrollTop: 500 }, 800);		
+			
 }
 
 
@@ -4133,7 +4144,8 @@ $(function(){
 			// if (cur_portion < portions-1) {
 			if (cur_portion < portions) {
 				cur_portion++;
-	        	a1 = "rabochaya_xx_xx"; a2 = cur_portion;
+	        	// a1 = "rabochaya_xx_xx"; 
+	        	a2 = cur_portion;
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
 			}
 			else {$('.con3').append('Порция номер: ' + cur_portion + " - Больше нет! <br/>");}
