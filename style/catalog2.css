@@ -1984,21 +1984,31 @@ div#search {
 
     height: 17px; /* 27px */
 
-
-
-
     /*Снова ширее*/
  
-    width: 631px; /* 984px */
+    /*width: 631px;*/
+
+/* Теперь ужее, для IND */
+
+    width: 250px;
+
+
 
     margin-top: 10px;
     margin-bottom: 12px;
     margin-left: 5px;
 
+
+    position: relative;
     float: left;
+
+    top: 55px;
+
+
     /*cursor: pointer;*/
     
-/*    -webkit-appearance: none;
+/*
+    -webkit-appearance: none;
     -webkit-focus-ring-color: none;
     appearance: none;
 */    
@@ -2047,7 +2057,8 @@ div#search input {
     height: 18px;
     width: 103px;
 
-    width: 560px;
+    /*width: 560px;*/
+    width: 180px;
 
     border: none
 
@@ -3129,7 +3140,9 @@ div#semafor { /* Бирка сбоку с названием категории 
 
     z-index: 10;
 
-    visibility: hidden;
+    font-size: 12px;
+
+    /*visibility: hidden;*/
 }
 /* Вспомогательная панель */
 .con3 {
@@ -3142,7 +3155,7 @@ div#semafor { /* Бирка сбоку с названием категории 
     position: fixed; 
     
     /*desktop*/
-    left: 950px !important;
+    left: 850px !important;
 
     /*ipad*/
     /*left: 300px !important;*/
@@ -4310,6 +4323,58 @@ div#more_but2 {
     margin: 15px;
 
     margin-left: 200px;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Линейка - раметка для определения характеристик экрана */
+
+div#lpike {
+    background: #269F90;
+
+    height: 2px;
+    width: 20px;
+    
+    float: left;
+
+    position: fixed;
+
+/*    top: 100px;
+*/    
+    left: 50px;
+    
+    margin-bottom: 48px
+}
+
+div#spike {
+    background: blue;
+
+    height: 1px;
+    width: 17px;
+    
+    float: left;
+
+    position: fixed;
+
+/*    top: 100px;
+*/
+    left: 50px;
+    
+    margin-bottom: 48px
+}
+
+/* Отладочная кнопка, кот. живет в консоли */
+div#con_but1 {
+    background: #F2A7B4;
+    height: 17px;
+    padding-top: 5px;
+    width: 60px;
+
+    float: left;
+    margin: 10px;
+
+    margin-left: 15px;
 
     cursor: pointer;
     text-align: center;
