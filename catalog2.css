@@ -1,0 +1,4381 @@
+
+/* Лечение ie */
+a, a img{ border:none;}
+/*a img{display: block;}*/
+
+a       {color: #8d0000;}
+a:hover {color: #e33636;}
+
+a {
+    text-decoration: none;
+}
+
+/* Эксперименты по отображению в стиле однойстраничного веб-приложения */
+html { overflow-y: hidden; }
+
+/* Лечение рамок */
+input, textarea { outline:none; }
+
+/*@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:portrait) {*/
+@media all and (orientation:portrait) {
+    
+    /*body,html {overflow: hidden;}*/
+/*
+    div#footer{
+        width: 1500px; 
+    }
+    input[type=search] {
+        -webkit-appearance: none;
+    }
+    div#search input {
+        height: 25px;
+    }
+*/
+    /* Корректировка для iPad */
+    /* Почему-то понадобилось изменить заголовок медиа и дописывать импортант теперь */
+/*
+    ul#l_main_menu { left: -15px; }
+    ul#l_main_menu li a { 
+            color: yellow !important;
+            padding-right: 10px !important; }
+
+*/
+/* При повороте в портрет */
+    div#all_wrap {
+        /*background: blue;*/
+        height: 1270px !important;
+    }
+
+}
+
+
+/* Почему-то понадобилось изменить заголовок медиа и дописывать импортант теперь */
+/*@media all and (device-width: 768px) and (device-height: 1024px) and (orientation:landscape) {*/
+@media all and (orientation:landscape) {
+
+    /*body,html {overflow: hidden;}*/
+/*
+    div#footer{
+        width: 1500px; 
+    }    
+    input[type=search] {
+        -webkit-appearance: none;
+    }
+    div#search input {
+        height: 25px;
+    }
+*/
+    /* Корректировка для iPad */
+
+ /*    
+ ul#l_main_menu { left: -15px; }
+ ul#l_main_menu li a { 
+     color: red !important;
+     padding-right: 10px !important; }
+  */
+}
+
+
+
+/* iPhone 4 ----------- */
+@media
+only screen and (-webkit-min-device-pixel-ratio : 1.5),
+only screen and (min-device-pixel-ratio : 1.5) {
+
+
+    /*body[orient="landscape"]*/
+    
+    ul#l_main_menu li {
+         margin-left: 19px !important;
+    }    
+
+    div#basket_undebox {
+        /*font-size: 50px !important;*/
+    }
+    /* Фикс кнопок под корзиной в каталоге для айфона */
+
+    .sfix {
+        font-size: 5px !important;
+        color: red !important;
+    }
+}
+
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background: url(../img/common/leather.png);
+}
+
+div#base {
+	/*background: #AADBD3;*/
+
+	/*outline: 2px dashed green;*/
+
+	min-height: 800px;
+    /*height: 100%;*/
+	width: 960px;
+	margin: 0 auto;
+
+    margin-top: 10px;
+
+    /*margin-left: 120px;*/
+    /*margin-left: 121px;*/
+}
+div#pan_a {
+	/*background: #44D1FF;*/
+	min-height: 800px;
+	width: 160px;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	float: left;
+}
+/* Для кнопки вверх */
+div#box_a1 {
+	/*background: #DCBAD6;*/
+	height: 80px;
+	width: 160px;
+
+	float: left;	
+
+    margin-left: 58px;
+}
+/* Для пульта */
+div#box_a2 {
+	/*background: #FFD3BF;*/
+
+    background: url(../img/pult.png);
+
+    background-size: 100%;
+
+	height: 415px;
+	width: 160px;
+
+	/*margin-top: 100px;*/
+
+    position: fixed;
+
+    top: 15%;
+
+	float: left;	
+
+    z-index: 10;
+}
+/* Область каталога и меню, шапки и футера */
+div#pan_b {
+	/*background: #81AAF9;*/
+
+	min-height: 800px;
+	width: 640px;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	float: left;
+}
+img#brand_img {
+	width:620px;
+	height: auto;
+
+    margin-left: 15px;
+}
+/* Новая шапка */
+div#head_a {
+    /*background: #97D4A0;*/
+    height: 77px;
+    width: 520px;
+    float: left;
+    margin-left: -20px;
+}
+div#head_b {
+    /*background: #009F6E;*/
+    height:77px;
+    width: 20px;
+    margin-left: -15px;
+    float: left;
+}
+img#img_shapka {
+    width: 520px;
+    height: auto;
+}
+/* Иконки в шапке */
+img#img_ico {
+	width: 19px;
+	height: auto;
+}
+div#head_c {
+    /*background: #FBBC69;*/
+    height: 77px;
+    width: 115px;
+    float: left;
+
+    /*margin-left:    5px;*/
+    font-family: Arial;
+    /*font-size: 15px;*/
+    font-size: 10px;
+
+    margin-left: -2px;
+}
+/* Строки в заголовке страницы */
+div#head_line {
+    margin-top: 2px;
+    height: 17px;
+
+    font-size: 12px;
+}
+div#pan_c {
+	/*background: #46C2FE;*/
+	min-height: 1800px;
+	width: 100px;
+
+	margin-left: 10px;
+	margin-right: 10px;
+
+	float: left;
+}
+
+/* Корзина */
+div#basket_wrap {
+    /*outline: 1px solid black;*/
+
+    /*position: fixed;*/
+
+
+    top: 30%;
+    /*right: 20px;*/
+
+    /*right: 20%;*/
+    z-index: 5;
+    /*margin-left: 15px;*/
+    margin-left: 85px;
+
+    /*margin-top: 15px;*/
+    margin-top: 120px;
+}
+div#basket {
+    background: url(../img/common/catalog/basket/basket.png);    
+    background-size: 100%;
+/*    border: 20px solid yellow;
+*/
+    /*background: white;*/
+    /*height: 190px;*/
+
+/* old */
+    height: 190px;
+    width: 140px;
+/* new */
+    height: 122px;
+    width: 90px;
+
+
+/* 
+    position: fixed;
+    top: 50%;
+    right: 0px;
+ */
+    /*cursor:pointer;*/
+    margin-right: -20px; /* Где-то раньше ссылка <a> имеет марджин 20px */
+
+}
+div#basket_reg {
+    /*background: yellow;*/
+    height: 40px;
+    width: 140px;
+    float: left;
+    /*visibility:hidden;*/
+
+    position: relative;
+    top: -10px;
+    left: -26px;
+
+    font-family: Arial;
+
+        cursor:pointer;
+
+}
+
+span#bsk_line_1 {
+    display:block;
+    color: #8d0000;
+    width: 140px;
+
+    font-size: 19px;
+
+    text-align: center;
+    cursor:pointer;
+}
+span#bsk_line_1:hover {
+    color: #e33636;
+}
+span#bsk_line_2 {
+    display:block;
+    color: black;
+    width: 140px;
+
+    font-size: 10px;
+    text-align: center;
+cursor:pointer;
+}
+/* Счетчик корзины */
+div#basket_count {
+    /*background: yellow;*/
+
+    /*background: url(../img/common/catalog/basket/basket_coin.png) no-repeat;*/
+/* 
+    height: 72px;
+    width:  74px;
+ */
+    height: 47px;
+    width:  48px;
+
+    /*float: left;*/
+    position:relative;
+    left: 10px;
+    /*top: -95px;*/
+    top: -82px;
+
+    padding-top: 10px;
+
+    font-family: Arial;
+    font-weight: 200%;
+    font-size: 27px;
+    color: blue;
+
+    text-align: center;
+    cursor:pointer;
+
+}
+
+div#basket_count a {
+    color: #741313 !important;
+    text-decoration: none !important;
+}
+
+div#basket_count:hover {
+    color: #993832 !important;
+}
+
+div#basket_undebox {
+    /*background: yellow;*/
+    height: 80px;
+    width: 110px;
+    float: left;
+
+    position: relative;
+    top: -40px;
+    
+    left: -10px;
+
+    font-family: Arial;
+
+    cursor:pointer;    
+}
+
+
+/* 
+#bsk_down_but   { Скачать
+}
+*/
+#cat_down_but {
+    background: url(../img/common/catalog/basket/bsk_down_but.png);
+    background-size: 100%;
+    /*margin-left: 100px;*/
+}
+
+#cat_hint_but {
+    background: url(../img/common/catalog/basket/q_on.png);
+    background-size: 100%;
+    /*margin-left: 100px;*/
+}
+
+/* Меню навигации */
+div#main_menu {
+/*  background: #afeeee;*/
+    /*background: url(../img/page_a/main_menu_back.png) no-repeat;*/
+/*
+    height: 32px;
+    width: 1000px;
+*/
+    height: 21px;
+    width: 640px;
+
+    color: white;
+
+    /*padding-bottom: 20px;*/
+    padding-bottom: 13px;
+
+    border-top: 2px solid #654d2a;
+    border-bottom: 2px solid #654d2a;
+
+    float: left;
+}
+ul#l_main_menu {
+    list-style-type: none;
+    position: relative;
+    
+}
+ul#l_main_menu li {
+    /*display: inline;*/
+    vertical-align: middle;
+
+    display:    inline-block;
+    margin-left: 23px;
+}
+/* 
+ul#l_main_menu li a {
+    float: left;
+
+    height: 30px;
+
+    margin-top: -5px;
+      padding-right: 23px; 
+
+
+    text-decoration: none;
+    font-family: Corbel;
+    font-size: 8pt;
+    color: #000000;
+
+    cursor: pointer;
+}
+ */
+
+/* Устоявшийся набор правил для шапки */
+/*
+ul#l_main_menu li a {   
+    float: left;
+    /width: 61px; / 95px /
+    height: 19px; / 30px /
+    padding-right: 30px;    
+
+    text-decoration: none;
+    font-family: Corbel;
+    /font-size: 13pt; /iPad/
+    font-size: 7pt; /iPad/
+    color: #000000;
+
+    margin-top: -5px;
+
+    cursor: pointer;
+}
+*/
+ul#l_main_menu { padding: 0; }
+ul#l_main_menu li a {   
+    float: left;
+
+    height: 19px;
+    display: block;
+
+    /*width: 70px;*/
+    /*margin-left: 20px;*/
+    /*margin-left: 5px;*/
+    /*padding-right: 30px;    */
+    /*margin-right: 5px;*/
+
+    text-decoration: none;
+    font-family: Corbel;
+    
+
+    font-size: 11px;
+    
+
+    color: #000000;
+    /*color: white;*/
+
+    margin-top: -15px;
+
+    cursor: pointer;
+}
+
+ul#l_main_menu li a:hover {
+    color: #f10606;
+    /*color: black;*/
+    /*font-weight: bold;*/
+}
+
+/* Для stripe-меню */
+ul#l_main_menu3 {
+    list-style-type: none;
+    position: relative;
+    
+}
+ul#l_main_menu3 li {
+    /*display: inline;*/
+    vertical-align: middle;
+
+    display:    inline-block;
+    margin-left: 23px;
+}
+
+ul#l_main_menu3 { padding: 0; }
+ul#l_main_menu3 li a {   
+    float: left;
+
+    height: 19px;
+    display: block;
+
+    text-decoration: none;
+    font-family: Corbel;    
+
+    font-size: 19px;
+    color: white;
+
+    margin-top: -15px;
+
+    cursor: pointer;
+}
+
+ul#l_main_menu3 li a:hover {
+    color: black;
+}
+
+/* Новый поиск + строка навигации */
+div#ssearch {
+    /*background: yellow;*/
+    /*height: 30px;*/
+    /* Делаем поширее */
+    height: 36px;
+    /*height: 38px;*/
+    /*width: 1000px;*/
+    width: 640px;
+    /*margin-top: 2px;*/
+    padding-top: 2px;
+    /*text-align: center;*/
+/*    display:table-cell; 
+    vertical-align:top;
+*/
+
+    margin-left: 13px;
+}
+
+/*div#ssearch a {
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+}
+*/
+
+div#breadcrumbs {
+    /*background: yellow;*/
+    /*height: 26px;*/
+    height: 16px;
+    padding-top: 12px;
+    /*width: 740px;*/
+    /*Пока не ясно куда его пихачить*/
+    /*width: 1000px;*/
+
+    width: 990px;
+
+    margin-left: 10px;
+    float:left;
+    /*visibility: hidden;*/
+
+    color: #B61112;
+
+    font-family: Arial;
+
+    font-size: 14px;
+
+}
+
+/* Стили для главного меню каталога */
+
+/* Добавочные стили для основного меню Тимура */
+
+div#menu_wrap {
+    /*background: #FFA626; */
+    width: 100%;
+    /*height:500px;*/
+    height:320px;
+
+
+    /*margin-top: 100px;*/
+}
+
+.img_cat_c { /* Общий шаблон для картинок меню */
+    visibility: visible;
+    margin-left: 20px;
+    margin-top: 30px;
+    /*background: url(../img/cat_but/1P.png);*/
+    /*cursor: pointer;*/
+}
+
+.menu_1 { /* Ссылка на меню литье */
+    cursor: pointer;
+}
+/* Хакатино для ячеек таблицы шобы корректно отобразалось меню литья */
+
+table#tbl_lit td {
+    height: 150px;
+    width: 150px;
+
+}
+
+div#basement {
+    /*background: #97D4A0;*/
+
+    width: 100%;
+    height: 100px;
+
+    /*margin-top: -60px;    */
+    float: left;
+}
+div#footer {
+    margin-top: -60px;    
+}
+
+/* 
+    Классы для обработки ленты каталога
+    переработанные с учетом нового дизайна-960
+*/
+
+div#wrk_area {
+    width: 640px;
+    /*margin: 0 auto;*/
+    /*padding-bottom:250px;   */
+    /*float: left; */
+    clear: left;
+}
+
+
+div#film {          /* Контейнер для всех секций пряжки (regular, super, zakaz) */
+    /*background: #5DCEC6;*/
+    width: 615px; /* 959px */
+    /*min-height: 128px; /* 200px */
+    min-height: 167px; /* 260px */
+    
+    margin-left: 20px;
+    /*float: left;*/
+
+    clear:both;   
+
+}
+
+div#frame {         /* Контейнер-секция (regular, super, zakaz) */  
+    /*background: #B4B0B4;*/
+    background: black;
+
+    /*min-height: 227px; /* 354px */
+    /* 3 + 236 + 3 + 80 */
+    min-height: 206px; /* 322px */
+
+    /*width: 615px; /* 959px */
+    /*width: 620px;*/
+    width: 618px;
+    /*float: left;*/
+}
+
+div#frame_title {   /* Лента заголовка для каждой секции (regular, super, zakaz) */
+    /*background: red;*/
+    background: white;
+    height: 50px; /* 80px */
+    /*width: 615px; /* 959px */
+    width: 619px; /* 959px */
+    margin-bottom: 3px;
+
+    float: left;    
+}
+
+div#frame_title img {
+/* 
+    height: 85%;
+    width: 85%;
+*/
+    height: 51px;
+    width: 541px;
+}
+img#p1 {
+    margin-top: 10px;
+    height: 22px !important;
+    width: 22px !important;
+}
+
+div#f_size {        /* Блок с указанием размера секции */
+    background: #b61112;
+    height: 51px; /* 80px */
+    width:  48px; /* 75px */
+    float: right;    
+    color: white;
+
+    text-align: center;
+
+}
+div#f_size h2 {
+    display: inline; 
+    text-align: center;
+    /*font-size: 0px;*/
+    margin:0;
+    margin-left: 4px;
+
+    font-family: Arial Regular;
+    /*font-size: 52px;*/
+    font-size: 26px;
+}
+
+div#f_check {        /* Блок с кнопкой палитры цветов */
+    /*background: #5A96DC;*/
+    
+    background: #E8E8E8;
+    
+    padding-top: 4px;
+
+    height: 47px; /* 76px */
+    width:  26px; /* 40px */
+    float: right; 
+}
+/* Логотипы партнеров */
+
+img#logo {
+    height: 30px;
+    width: 56px;
+
+    margin-top: 5px;
+}
+
+
+
+div#f_logo {        /* Блок с картинкой-баннером секции */
+    /*background: #B88115;*/
+    background: #E8E8E8;
+    height: 51px; /* 80px */
+    /*width: 541px; /* 844px */
+    /*width: 100%;*/
+    /*float: right;    */
+}
+
+.regular {          /* Класс для обозначения принадлежности фрейма к категории "в наличии" */
+    /*background: bla;*/
+
+}
+.super {            /* Класс для обозначения принадлежности фрейма к категории "суперцена" */
+
+}
+.zakaz {            /* Класс для обозначения принадлежности фрейма к категории "под заказ" */
+
+}
+
+div#wrap_cont_m3 {  /* Новый контейнер для пряжки */
+    /*background:#1c1c1c;*/
+    background: white;
+
+    /*height: 151px; /* 236px */
+    /*min-height: 192px; /* 300px */
+    /*min-height: 151px; /* 236px */
+    height: 152px; /* 236px */
+    width: 152px; /* 236px */
+    /*float: left;*/
+    margin-left: 2px;
+    margin-bottom: 2px;
+
+    display: inline-block;
+
+    /*cursor: pointer;*/
+}
+
+/* (!) Заменить более точным расчетом */
+div#block_c img {
+/*    height: 85%;
+    width: 85%;
+*/
+    height: 96px;
+    width: 96px;
+}
+
+div#wrap_cont_m3_hollow {  /* Пустой конт. для декорации каталога */    
+    background: gray;
+/* 
+    height: 151px;
+    width: 151px;
+*/
+    height: 152px;
+    width:  152px;
+
+    margin-left: 2px;
+    margin-bottom: 2px;
+
+    display: inline-block;
+}
+
+div#block_a {
+    /*background:#CB4847;*/
+    background:#5e5e5e;
+    height: 28px; /* 43px */
+    width: 152px; /* 236px */
+    float: left;    
+}
+div#block_b {
+    /*background:#AF5F0F;*/
+    background:#5e5e5e;
+    height: 96px; /* 150px */
+    width: 28px; /* 43px */
+    float: left;    
+}
+div#block_b_img {
+    height: 28px; /* 43px */
+    width: 28px; /* 43px */
+    float: left;
+    position:relative;
+    /*left: 42px;*/
+    left: 27px;
+}
+.lit_e {
+    background:url(../img/l_2.png);   
+    background-size: 100%; 
+    /*background:url(../img/l.png);    */
+}
+
+.shtamp {
+    background:url(../img/sh_2.png);    
+    background-size: 100%; 
+    /*background:url(../img/l.png);    */
+}
+
+div#block_c {           /* Блок с картинкой пряжки */
+    /*background:#AA9714;*/
+    height: 96px; /* 150px */
+    width: 96px; /* 150px */
+    float: left;    
+    cursor:pointer;
+}
+div#block_d {
+    /*background:#428E36;*/
+    background:#5e5e5e;
+    height: 96px; /* 150px */
+    width: 28px; /* 43px */
+    float: left;    
+}
+/* Блок с кнопкой удаления пряжки, для корзины */
+div#w_close {
+    background:url(../img/common/catalog/basket/cl_2.png);    
+    background-size: 100%; 
+
+    position:relative;
+    top: -26px;
+    height: 28px; /* 43px */
+    width: 28px; /* 43px */
+    float: left;
+
+    visibility:hidden;
+}
+/* Присваивается, когда кнопка #w_close разрешена */
+/* Блок получет класс .active и переписывает свойство видимости ! */
+.active { 
+    cursor:pointer; 
+    visibility:visible !important; 
+}
+div#w_close:hover {
+    /*background: #75C7D1; */
+    background:url(../img/common/catalog/basket/cl_1.png);    
+    background-size: 100%; 
+}
+
+div#block_d_hollow {
+    /*background: yellow;*/
+    /*height: 69px; /* 107px */
+    height: 41px; /* 64px */
+    width: 28px; /* 43px */
+    float: left;
+}
+div#block_d_basket {
+    /*background: yellow;  */
+    background:url(../img/common/catalog/basket/basket_ico.png); opacity: 0.2;
+    background-size: 100%; 
+    height: 28px; /* 43px */
+    width: 28px; /* 43px */
+    float: left;
+    cursor:pointer;
+/*
+    position: relative;
+    top: 32px;
+   */ 
+}
+div#block_d_basket:hover {
+    background:url(../img/common/catalog/basket/basket_ico.png); opacity: 1;
+    background-size: 100%; 
+}
+
+div#block_e {
+    /*background:#13646B;*/
+    background:#5e5e5e;
+    height: 28px; /* 43px */
+    width: 152px; /* 236px */
+    float: left;    
+}
+
+span#cat_name {         /* Описание типа контейнера */
+    /*background: yellow;*/
+    height: 14px; /* 22px */
+    width: 151px; /* 236px */
+    display: block;
+    text-align: center;
+
+    font-family: Arial;
+    /*font-size: 12px;*/
+    /*font-size: 16px;*/
+    font-size: 10px;
+
+    color: white;
+
+    margin-top: 10px;
+}
+
+span#prj_name {         /* Номенклатура пряжки */
+    /*background: yellow;*/
+    height: 14px; /* 22px */
+    width: 151px; /* 236px */
+    display: block;
+    text-align: center;
+
+    font-family: Arial;
+    font-size: 12px;
+
+
+    color: white;
+
+    margin-top: 10px;
+}
+
+/* Плашка 'подробнее', скрыта */
+img#more {
+    /*position: absolute;*/
+    position: relative;
+    top: -52px;
+    left: 43px;
+    margin-left: 0;
+    visibility: hidden;
+    /*visibility: visible;*/
+}
+/* Конец описания классов для ленты пряжек */
+
+
+/* 
+    Набор правил, выдранный алгоритмом ref_7.pl 
+    на основании макета пульта
+*/
+
+
+
+/* Описание тежыка */
+
+img#img_shapka {
+    
+    margin-top:  38px;
+    padding: 0;
+
+    position: relative;
+    left: 0px;
+}
+img#img_shapka {margin-top: 0px;}
+
+div#side_color_sel {
+    /*background: #afeeee;*/
+    position: absolute;
+    top: 85px;
+    left: 25px;
+    width: 85%;
+    cursor: pointer;
+
+    /*overflow:none;*/
+
+}
+div#side_color_sel a {
+    position: relative;
+    float: left;
+    left: 25%;
+}
+
+div#side_color_sel img {
+    /*background: #afeeee;  */
+    /*background: none;*/
+    position: relative;
+    left: 18px;
+    margin-top: 25px;
+}
+div#side_color_sel span {
+    left: 100px;
+    margin-top: 10px;
+}
+
+div#side_list_size {
+    /*background: #afeeee;*/
+    position: absolute;
+    top: 230px;
+    left: 28px;
+    width: 85%;
+    margin-top: 20px;
+    margin-left: -10px;
+
+    font-family: Tahoma;
+    font-size: 8pt;
+
+
+}
+/* Ñïèñîê ðàçìåðîâ â ïóëüòå */
+ul#l_size {
+    list-style-type: none;
+}
+ul#l_size li {
+/*  padding-bottom: 8px;*/
+}
+ul#l_size li a {
+    color: black;
+    font-weight: bold;
+    font-size: 100%;
+    text-decoration: none;
+}
+
+div#side_images {
+    /*background: #afeeee;*/
+    position: absolute;
+    top: 350px;
+    left: 10px;
+    width: 150px;
+    height: 50px;
+}
+div#side_images img {
+    display: inline;
+    vertical-align: middle;
+    margin: 2px;
+
+    height: 25%;
+    width: 25%;
+}
+
+ul#l_side_images li {
+    list-style: none;
+    color: black;
+    /*font-weight: bold;*/
+    /*font-size: 90%;*/
+    font-size: 10px;
+    text-decoration: none;
+
+    position: relative;
+    /*top: -50px;*/
+    top: 5px;
+}
+
+div#side_cat_name {
+    position: relative;
+    /*left: 0px;*/
+    /*top: 140px;*/
+    top: 136px;
+    left: 10px;
+    text-align: center;
+
+    /*font-weight: bolder;*/
+    
+/*    font-family: Corbel;
+    font-size: 13pt;
+*/
+    /*font-family: Tahoma;*/
+    font-family: Arial;
+    /*font-size: 13pt;*/
+    font-size: 7pt;
+
+    color: #000000;
+
+    cursor: pointer;
+
+}
+
+/* Дополнительные элементы пульта */
+div#side_col_anchor {
+    background: url(../img/pult/col_p.png);
+    background-size: 100%;
+    /*background: red;*/
+    position: relative;
+    top: 60px;
+    /*left: 45px;*/
+    height: 29px; /* 45px */
+    width: 160px; /* 240px */ 
+
+    
+    /*font-weight: bold;*/
+    font-family: Arial;
+   
+    /*opacity: 0.8;*/
+    cursor: pointer;
+
+}
+div#side_col_anchor:hover {
+    background: url(../img/pult/col_a.png);
+    background-size: 100%;
+}
+
+
+div#side_cat_anchor {
+    background: url(../img/pult/type_p.png);
+    background-size: 100%;
+    /*background: red;*/
+    position: relative;
+    top: 180px;
+    /*left: 45px;*/
+    height: 16px; /* 25px */
+    width: 160px; /* 240px */ 
+
+    
+    /*font-weight: bold;*/
+    font-family: Arial;
+   
+    /*opacity: 0.8;*/
+    cursor: pointer;
+}
+div#side_cat_anchor:hover {
+    background: url(../img/pult/type_a.png);
+    background-size: 100%;
+}
+div#side_cat_anchor a {
+    color: black;
+    /*font-weight: bold;*/
+    /*font-size: 100%;*/
+    text-decoration: none;
+}
+
+div#side_size_anchor {
+    background: url(../img/pult/size_p.png);
+    background-size: 100%;
+    position: relative;
+    top: 200px;
+    height: 16px; /* 25px */
+    width: 160px; /* 240px */ 
+    font-family: Arial;
+}
+
+div#side_but_1_anchor {
+    background: url(../img/pult/cat_p.png);
+    background-size: 100%;
+    position: relative;
+    /*top: 350px;*/
+    top: 230px;
+    height: 16px; /* 25px */
+    width: 160px; /* 240px */ 
+    font-family: Arial;
+
+    visibility: hidden;
+}
+div#side_but_1_anchor:hover {
+    background: url(../img/pult/cat_a.png);
+    background-size: 100%;
+}
+
+div#side_but_2_anchor {
+    background: url(../img/pult/brand_p.png);
+    background-size: 100%;
+    position: relative;
+    top: 250px;
+    height: 16px; /* 25px */
+    width: 160px; /* 240px */ 
+    font-family: Arial;
+}
+div#side_but_2_anchor:hover {
+    background: url(../img/pult/brand_a.png);
+    background-size: 100%;
+}
+
+/* Пульт, кнопка "Брендирование" */
+div#side_but_2_anchor {
+    background-size: 100%;
+    cursor:pointer;
+}
+
+/* Кнопка "Загрузить" */
+li#print_link {
+    cursor:pointer;
+
+    font-family: Tahoma;
+    font-size: 10pt;
+    
+    font-weight: none !important;
+}
+
+/* Подскажки, пока в каталоге */
+
+/* Кнопка управления подсказками */
+div#hint_button {
+    /*background: yellow;*/
+    background: url(../img/common/hints/hint_but_2.png);    
+    background-size: 100%;
+    height: 19px; /* 30px */
+    width: 80px; /* 125px */
+    /*float: left;*/
+    position:relative;
+    /*top: 315px;*/
+    top: 325px;
+    left: 52px;
+    cursor:pointer;
+
+    visibility: hidden;
+}
+
+div#hint_button:hover {
+}
+
+div#hint1 {
+    /*background: yellow;*/
+    background: url(../img/common/hints/hint1.png);  
+    background-size: 100%;  
+    height: 112px; /* 175px */
+    /*width: 141px; /* 220px */
+    width: 157px; /* 245px */
+    position:relative;
+
+    left: -25px;
+    top: -18px;
+ 
+   z-index: 3;
+
+   cursor: pointer;
+}
+div#hint2 {
+    /*background: yellow;*/
+    /*outline: 1px dashed yellow;*/
+    background: url(../img/common/hints/hint2.png);    
+    background-size: 100%;  
+
+    height: 47px;
+    width: 74px;
+    position:relative;
+    /*top: -97px;*/
+    left: 220px;
+    
+    /*z-index: 3;*/
+
+}
+div#hint3 {
+    /*background: yellow;*/
+    background: url(../img/common/hints/hint3.png);    
+background-size: 100%;
+/* 
+    height: 337px;
+    width:  358px;
+ */
+    height: 103px;
+    width:  122px;
+    position:relative;
+    right:  10px;
+    top:   -300px;
+    
+    /*z-index: 3;*/
+
+}
+
+
+
+/* Добавки в пульт - селектор металл-пластик */
+div#cat_selector {
+    /*background: yellow;*/
+    height: 13px; /* 20px */
+    width: 130px; /* 180px */
+    float: left;
+    position:relative;
+    left: 33px;
+    top: 18px;
+}
+div#csel_1 {
+    /*background: green;*/
+    background: url(../img/common/catalog/pult/metal.gif);
+    background-size: 100%;
+
+    height: 13px; /* 20px */
+    width: 58px; /* 90px */
+    float: left;
+    margin-left: -5px;
+}
+div#csel_2 {
+    /*background: red;*/
+    background: url(../img/common/catalog/pult/plastic.gif);
+    background-size: 100%;
+
+    height: 13px; /* 20px */
+    width: 58px; /* 90px */
+    float: left;
+
+    margin-left: 8px;
+}
+
+
+/* Конец секции правил, предполагаемых нужными для пульта */
+
+/* Секция правил, преобразованных ref_6_css к 1.56 */
+/* Футер */
+div#footer{
+    /*width: 962px; /* 1500px */
+
+        /*font-size: 8px;*/
+
+        height: 310px;
+
+    z-index: 5;
+}
+
+
+
+table#tbl_logo { 
+    margin-top: -30px;
+    width: 100%; 
+    position: relative;
+    left: 7%;
+    width: 577px; /* 900px */
+    border-color: black;
+    border-width: 1px;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: gray;
+    border-collapse: collapse;
+}
+
+td#l_one   { width: 45%; }
+td#l_two   { width: 25%; }
+
+/* Подвал */
+div#footer{
+    /*background: #523e35;*/
+    background: url(../img/common/leather_4.png);
+
+    /*background-size: auto 100%;*/
+    /*background-width: 100%;*/
+
+    
+    position:relative; 
+
+/* m1 модификации */
+/*
+    margin-top:-200px; /* отрицательный маргин, равный высоте футера
+*/
+    /*float: left;*/ /* Че-то отключал, почему? */
+}
+
+div#footer p { /* Метаинформация для поисковика */
+    color: #f2f0e8;
+    /*width: 641px;*/
+    width: 560px;
+    margin: 0 auto;
+
+    font-family: Arial;
+    font-size: 10px;
+}
+
+/* Меню навигации в подвале */
+div#navcontainer {
+    padding-top: 50px;
+    width: 641px; /* 1000px */
+    margin: 0 auto;
+    /*padding-left: 140px; /* Не очень */
+    /*margin-left: 10px;*/
+
+    /*font-size: 12px;*/
+}
+
+#navlist_foot li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 20px;
+    position: relative; 
+}
+
+#navlist_foot li a {
+    text-decoration: none;
+    font-family: Corbel;
+    /*font-size: 13pt; */
+    font-size: 8pt; /*iPad*/
+    color: #000000;
+}
+
+#navlist_foot li a:hover {
+    color: white;
+    /*font-weight: bold;*/
+}
+
+
+/* Логотипы партнеров */
+table#tbl_logo { 
+    margin-top: -30px;
+    width: 100%; 
+    position: relative;
+    left: 7%;
+    width: 577px; /* 900px */
+    border-color: black;
+    border-width: 1px;
+    border-spacing: 2px;
+    border-style: none;
+    border-color: gray;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
+
+td#l_one   { width: 45%; }
+td#l_two   { width: 25%; }
+/* Конец правил для футера */
+
+/* Сконвертированное правила для меню */
+/* Тимура стили для меню литья */
+
+#cat_menu_lit {
+  /*background-image:url(../img/cat_type_cover.png);*/
+  height:449px; /* 700px */
+  margin-bottom:30px;
+  width:641px; /* 1000px */
+  /*position: relative;*/
+  /*top:30px;*/
+  outline:0px solid #333333;
+  /*margin-top: 10px;*/
+}
+
+/* Уточнение стилей для штамповки */
+#cat_menu_sht {
+  height:349px;
+  margin-bottom:30px;
+  width:640px;
+}
+
+
+.b-cat-title{
+    margin-left: 12px;
+    font:14px Verdana, sans-serif;
+}
+
+.cat-img-wrap{
+    margin-left: 25px;
+    margin-bottom: 16px;
+}
+.cat-img-wrap img {
+    height: 64px;
+    width: 64px;
+}
+
+#tbl_lit{
+    margin: 20px auto;
+    padding-top: 50px;
+    position:relative;
+    left: -30px;
+    top: -40px;
+}
+#p_12{
+    display: block;
+    /*margin-top: 10px;*/
+    position: relative;
+    /*top:8px;*/
+    top:-37px;
+    left: 60px;
+}
+#p_21{
+    display: block;
+    /*margin-top: 10px;*/
+    position: relative;
+    top:8px;
+    left: 10px;
+}
+#zag_lit{
+
+    top: 20px;
+    /*font:18px Verdana, sans-serif;*/
+    font:15px Verdana, sans-serif;
+    margin-left: 15px;
+    /*position: absolute;*/
+}
+/* 
+div#basket {
+    background: url(../img/common/catalog/basket/basket.png);    
+    height: 83px; 
+    width: 90px; 
+    position: fixed;
+    top: 50%;
+    right: 0px;
+    cursor:pointer;
+
+}
+div#log{
+    background: url(../img/button.png);    
+    height: 13px; 
+    width: 64px; 
+    position: fixed;
+    top: 51%;
+    right: 0px;
+    cursor:pointer;
+}
+div#reg{
+    background: url(../img/button.png);    
+    height: 13px; 
+    width: 64px; 
+    position: fixed;
+    top: 65%;
+    right: 0px;
+    cursor:pointer;
+}
+ */
+
+/* Тимур, стартовое меню */
+
+
+#cat_menu_1 {
+  /*background-image:url(../img/cat_type_cover.png);*/
+    background: url(../img/backp_3.png) repeat; /* Прозрачный png */
+
+  /*background: yellow;*/
+  height:296px; /* 462px */
+  
+  margin-bottom:30px;
+  width:317px; /* 495px */
+  float: left;
+  outline: 0px solid #333333;
+  /*margin-top: 10px;*/
+  /*visibility:hidden;*/
+}
+/* Подложка */
+div#mount_1 {
+    /*background-image:url(../img/cat_type_cover.png);*/
+
+  
+    /* Из-за нового меню */
+
+  height:309px; /* 482px */
+
+  
+  /*margin-bottom:10px;*/
+  width:317px; /* 495px */
+  float: left;
+  outline: 0px solid #333333;
+  /*margin-top: 10px;*/
+  /*visibility:hidden;  */
+
+  /* Св-во добавлено из-за новой шапки */
+  margin-bottom: 45px;
+}
+
+div#mount_2 {
+  height:296px; /* 462px */
+  
+  /*margin-bottom:10px;*/
+  width:317px; /* 495px */
+  float: left;
+  outline: 0px solid #333333;
+  /*margin-top: 10px;*/
+  /*visibility:hidden;  */
+
+  /* Св-во добавлено из-за новой шапки */
+  margin-bottom: 45px;
+}
+
+#cat_menu_1:hover {
+  /*background-image:url(../img/cat_type_cover.png);*/
+  /*background-color: gray;*/
+    background: url(../img/backp.png) repeat; /* Прозрачный png */
+}
+
+#cat_menu_2 {
+  /*margin-top: 10px;*/
+  /*background-image:url(../img/cat_type_cover.png);*/
+  /*background: yellow;*/
+    background: url(../img/backp_3.png) repeat; /* Прозрачный png */
+
+  height:296px; /* 462px */
+  /*margin-bottom:10px;*/
+  width:317px; /* 495px */
+  float: left;
+  outline: 0px solid #333333;
+  position: relative;
+  left: 5px;
+
+  cursor: pointer;
+}
+
+#cat_menu_2:hover {
+    background: url(../img/backp.png) repeat; /* Прозрачный png */
+}
+
+#tbl_cat_menu_1, #tbl_cat_menu_2{
+    margin: 0 50px;
+    padding-top: -20px;
+}
+#zag_1, #zag_2{
+
+ 
+    font:18px Verdana, sans-serif;
+    margin-left: 12px;
+    /* Из-за абсолюта метка ездит по экрану */
+    /*position: absolute;*/
+
+    width: 30px;
+    height: 30px;
+}
+#lit, #sht{
+    /*float: left;*/
+    
+    height: 25px;
+    width: 25px;
+
+    margin-top: 15px;
+
+}
+/* Сука, блеать! */
+#lit { margin-left: 25px !important; }
+
+.ie_menu_fix {
+    /*font-size: 25px !important;*/
+    top:-12px !important;
+    left: 6px !important;
+}
+
+#p_1{
+/* 
+   margin: 0;
+   padding: 0;
+   border: 0;
+   font-size: 100%;
+   font: inherit;
+   vertical-align: baseline;
+ */
+
+   position: relative;
+    /*top:-22px;*/
+    top:-36px;
+    /*left: 30px;*/
+    left: 52px;
+
+    /*margin: 0;       */
+    
+    font-size: 15px;
+
+}
+/* 
+#p_1 p {
+}
+ */
+#p_2{
+    position: relative;
+/* 
+    top:-32px;
+    left: 15px;
+ */
+    /*top:-22px;*/
+    top:-36px;
+    left: 30px;
+
+font-size: 15px;
+
+}
+
+.cat-img-wrap{
+    margin-left: 10px;
+    margin-bottom: 11px;
+}
+.b-cat-title{
+    margin-left: 50px;
+    font:14px Verdana, sans-serif;
+}
+.b-cat-title_ {
+    margin-left: 33px;
+    /*font:14px Verdana, sans-serif;*/
+    font-family: Arial;
+    /*font-size: 16px;*/
+    font-size: 12px;
+    display: block;
+    position:relative;
+    top: -10px;
+    text-align: center;
+}
+
+
+
+/* Добавочные стили для основного меню Тимура */
+
+div#menu_wrap {
+    width: 100%;
+    height:321px; /* 500px */
+    /*margin-top: 100px;*/
+}
+
+img.img_cat_c {
+/*    height: 85%;
+    width: 85%;
+*/
+
+}
+.img_cat_c { /* Общий шаблон для картинок меню */
+    visibility: visible;
+    margin-left: 20px;
+    margin-top: 30px;
+    /*background: url(../img/cat_but/1P.png);*/
+    /*cursor: pointer;*/
+}
+
+.menu_1 { /* Ссылка на меню литье */
+    cursor: pointer;
+}
+/* Хакатино для ячеек таблицы шобы корректно отобразалось меню литья */
+
+table#tbl_lit td {
+    height: 96px; /* 150px */
+    width: 96px; /* 150px */
+
+}
+
+
+
+#sz_1 {
+    /*font-weight: bold;*/
+}
+
+#sz_1, #sz_2, #sz_3, #sz_4 {
+/*  background: #e2e9e4;*/
+    cursor: pointer;
+}
+
+#sz_1:hover {
+    /*background: red;*/
+    /*color:blue;*/
+    font-weight: bold;
+    /*font-size: 105%;*/
+} 
+#sz_2:hover {
+    /*background: red;*/
+    /*color:blue;*/
+    font-weight: bold;
+    /*font-size: 105%;*/
+} 
+#sz_3:hover {
+    font-weight: bold;
+} 
+#sz_4:hover {
+    font-weight: bold;
+} 
+/*#sz_2:hover {color:red;} */
+/*#sz_3:hover {color:red;} #sz_4:hover {color:red;}*/
+
+
+
+
+/* Пересечение категорий литься и штамповки, неверное проектирование Тимуром */
+
+
+/* 
+    Очередная переделка меню - после Тимурки уже
+ */
+
+
+img#img_cat_lit_1 {
+    cursor: pointer;
+}
+div#img_cat_lit_1 {
+    cursor: pointer;
+    background: yellow;
+}
+div#img_cat_lit_2 {
+    cursor: pointer;
+    background: yellow;
+}
+div#img_cat_lit_3 {
+    cursor: pointer;
+    background: yellow;
+}
+/* Наброски по анимации элементов меню */
+
+img#img_cat_lit_1:hover {
+    /*background: yellow;*/
+    /*transform: scale(1.2, 1.2);*/
+    /*background: url(../img/lit/b1_1.png);*/
+}
+
+img#img_cat_lit_2:hover {
+    /*background: yellow;*/
+/*    transform: scale(1.2, 1.2);
+    transition: color 0.3s ease;
+*/    
+    /*background: url(../img/lit/b1_2.png);*/
+
+}
+img#img_cat_lit_3:hover {
+    /*background: yellow;*/
+/* 
+        transform: scale(1.2, 1.2);
+        transition: color 0.5s ease;
+        -webkit-transform:scale(1.2, 1.2);
+    
+        -webkit-filter: drop-shadow(0 0 8px rgba(254, 252, 59, 0.7));
+        color: #cc0404;    
+     */    
+    /*background: url(../img/lit/b1_11.png);*/
+}
+img#img_cat_lit_4:hover {
+    /*background: yellow;*/
+/*     
+transform: scale(1.2, 1.2);
+-webkit-transform:scale(1.2, 1.2);
+
+-webkit-filter: drop-shadow(0 0 8px rgba(155, 37, 117, 0.7));
+ */
+
+   /*background: url(../img/lit/b1_4.png); */
+}
+img#img_cat_lit_5:hover {
+/*     background: yellow;
+transform: scale(1.05, 1.05);
+ */
+    /*background: url(../img/lit/b1_5.png);*/
+}   
+
+
+
+img#img_cat_lit_6:hover {
+/*    background: yellow;
+    transform: scale(1.05, 1.05);
+*/
+/*background: url(../img/lit/b1_6.png);*/
+}   
+
+img#img_cat_lit_7:hover {
+/*           transform: scale(1.2, 1.2);
+       */      
+    /*background: url(../img/lit/b1_3.png);*/
+      }   
+img#img_cat_lit_8:hover {
+/*     transform: scale(1.2, 1.2);
+-webkit-filter: drop-shadow(0 0 8px rgba(155, 37, 117, 0.7));
+-webkit-transform:scale(1.2, 1.2);
+filter: drop-shadow(0 0 8px rgba(155, 37, 117, 0.7));
+ */
+    /*background: url(../img/lit/b1_10.png);*/
+
+}   
+img#img_cat_lit_9:hover {
+/*     transform: scale(1.2, 1.2);
+ */
+     /*background: url(../img/lit/b1_12.png);*/
+
+}   
+/* 
+img#img_cat_lit_10:hover { background: url(../img/lit/b1_13.png);}
+
+img#img_cat_lit_11:hover { background: url(../img/lit/b1_7.png);}   
+img#img_cat_lit_12:hover { background: url(../img/lit/b1_8.png);}   
+img#img_cat_lit_13:hover { background: url(../img/lit/b1_9.png);}   
+img#img_cat_lit_14:hover { background: url(../img/lit/b1_14.png);}   
+
+img#img_cat_lit_15:hover { background: url(../img/lit/b1_15.png);}   
+ */
+/* img#img_cat_lit_11:hover {transform: scale(1.2, 1.2);}   
+img#img_cat_lit_12:hover {transform: scale(1.2, 1.2);}   
+img#img_cat_lit_13:hover {transform: scale(1.2, 1.2);}   
+img#img_cat_lit_14:hover {transform: scale(1.2, 1.2);}   
+ */
+/*img#img_cat_lit_15:hover {transform: scale(1.2, 1.2);}   */
+
+
+
+
+
+
+/* Стрелка раздела штамповка */
+
+div#anilink_1 {
+    /*border: 1px solid red;*/
+    height: 45px; /* 70px */
+    width: 641px; /* 1000px */
+    float: left;
+    position:relative;
+    
+    /*top: -10px;*/
+    top: 0px;
+    /*left: 20px;*/
+    left: 10px;
+
+/*    left:100px;
+    top:200px;
+*/
+    /*visibility:hidden;*/
+    cursor:pointer;
+}
+div#anilink_1 img {
+    height: 45px;
+    width: 640px;
+
+    /*margin-top: -20px;*/
+    margin-top: -6px;
+}
+div#anilink_2 {
+    /*border: 1px solid red;*/
+    height: 45px; /* 70px */
+    width: 641px; /* 1000px */
+    position:relative;
+    
+    top: 70px;
+    /*left: -25px;*/
+    left: 2px;
+
+/*    left:100px;
+    top:200px;
+*/
+    /*visibility:hidden;*/
+
+    /*margin-top: -20px;*/
+    margin-top: -6px;
+
+    cursor:pointer;    
+}
+div#anilink_2 img {
+    height: 45px;
+    width: 640px;
+}
+
+div#anilink_1:hover {
+    transform: scale(1.02, 1.02);
+    -webkit-transform:scale(1.02, 1.02);    
+}
+
+/* Добавки в пульт - селектор металл-пластик */
+/* 
+ Дублирование!
+
+div#cat_selector {
+    background: yellow;
+    height: 13px; 20px
+    width: 115px; 180px
+    float: left;
+    position:relative;
+    left: 46px;
+    top: 25px;
+}
+div#csel_1 {
+    background: green;
+    background: url(../img/common/catalog/pult/metal.gif);
+    height: 13px; 20px
+    width: 58px; 90px
+    float: left;
+}
+div#csel_2 {
+    background: red;
+    background: url(../img/common/catalog/pult/plastic.gif);
+    height: 13px; 20px
+    width: 58px; 90px
+    float: left;
+}
+
+ *//* Окончание правил для анимированного меню */
+
+
+
+
+/* Преобразования для поиска */
+
+/* Поиск */
+div#search {
+    /*background: chucknorris;*/
+    /*background: url(../img/common/search/search_p.png) no-repeat;*/
+    /*background: url(../img/common/search/new/search_back.png) no-repeat;*/
+    /*background: red;*/
+    /*position: fixed;*/
+    /*top: 20px;*/
+    /* left: 82px; */
+
+    
+    
+    /*border: 2px solid gray;*/
+
+
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;    
+
+
+    height: 17px; /* 27px */
+
+    /*Снова ширее*/
+ 
+    /*width: 631px;*/
+
+/* Теперь ужее, для IND */
+
+    width: 250px;
+
+
+
+    margin-top: 10px;
+    margin-bottom: 12px;
+    margin-left: 5px;
+
+
+    position: relative;
+    float: left;
+
+    top: 55px;
+
+
+    /*cursor: pointer;*/
+    
+/*
+    -webkit-appearance: none;
+    -webkit-focus-ring-color: none;
+    appearance: none;
+*/    
+}
+div#search_but {
+    background: url(../img/common/search/new/search_but.png);
+    background-size: 100%;
+    height: 16px; /* 25px */
+    width: 51px; /* 80px */
+    float: left;    
+    cursor: pointer;
+        -moz-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5); /* Параметры тени */
+    /*padding-left: 2px;*/
+}
+
+div#search:hover {
+    /*background: url(../img/common/search/search_a.png) no-repeat;*/
+}
+
+/*div#txtIn {
+    border: 2px solid #FF5600;
+    background: #EAECEA;
+    position: fixed;
+    top: 755px;
+    left: 550px;
+
+    width: 256px;
+    height: 19px;
+    padding: 5px;
+    opacity: 0.8;   
+}
+*/
+div#search input {
+    /*background: ;*/
+    /* Прозрачный png */
+    /*background: url(../img/common/trans.png);*/
+
+    /* Фикс для ff, чтобы он считал инпат также, как хром */
+    -moz-box-sizing: border-box;
+
+    /* Фикс для ie */
+    box-sizing: border-box;
+
+    height: 18px;
+    width: 103px;
+
+    /*width: 560px;*/
+    width: 180px;
+
+    border: none
+
+    display: block;
+
+    float: left;
+
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance: none;
+
+/*    -webkit-appearance: none;
+    -webkit-focus-ring-color: none;
+*/
+/*opacity: 0.1;*/
+}
+
+/* Новый поиск + строка навигации */
+div#ssearch {
+    /*background: yellow;*/
+
+    /* Делаем поширее */
+    height: 23px; /* 36px */
+
+    width: 641px; /* 1000px */
+    /*margin-top: 2px;*/
+    padding-top: 2px;
+    /*text-align: center;*/
+/*    display:table-cell; 
+    vertical-align:top;
+*/
+
+}
+
+/*div#ssearch a {
+    margin-bottom: 5px;
+    padding-bottom: 10px;
+}
+*/
+
+div#breadcrumbs {
+    /*background: yellow;*/
+    height: 10px; /* 16px */
+    padding-top: 12px;
+    /*Пока не ясно куда его пихачить*/
+
+    width: 635px; /* 990px */
+
+    margin-left: 10px;
+    float:left;
+    /*visibility: hidden;*/
+
+    color: #B61112;
+
+    font-family: Arial;
+
+    font-size: 14px;
+
+}
+/*  */
+
+
+/* Добавночные стили для палитры */
+
+/* Калибровка меню литья */
+/* Добавление стилей для меню литья */
+img#img_cat_lit_1_ { cursor:pointer; } /* Очередной хак */
+img#img_cat_lit_1  { cursor:pointer; }
+img#img_cat_lit_2  { cursor:pointer; }
+img#img_cat_lit_3  { cursor:pointer; }
+img#img_cat_lit_4  { cursor:pointer; }
+img#img_cat_lit_5  { cursor:pointer; }
+img#img_cat_lit_6  {
+ cursor:pointer; 
+ margin-top: 15px; /* Шобы по-быстрому поправить верстку Тимурки */
+}
+img#img_cat_lit_6:hover  { /* Это полный пиздец! */
+ /*background: url(../img/lit/b1_6.png); */
+}
+img#img_cat_lit_7  { cursor:pointer; }
+img#img_cat_lit_9  { cursor:pointer; }
+img#img_cat_lit_10 { cursor:pointer; }
+img#img_cat_lit_11 { cursor:pointer; }
+img#img_cat_lit_12 { cursor:pointer; }
+img#img_cat_lit_13 { cursor:pointer; }
+img#img_cat_lit_14 { cursor:pointer; }
+img#img_cat_lit_15 { cursor:pointer; }
+
+
+/* Очередное переосмысление главного меню (Литье) */
+div#menu_lit_e { /* Очередной враппер */
+    /*background: yellow;*/
+    height: 404px; /* 630px */
+    width: 577px; /* 900px */
+
+    margin-left: 50px;
+    margin-top: 50px;
+
+    float: left;
+}
+
+/* Уточнение стилей для штамповки */
+div#menu_sht {
+    
+    /*height: 304px;*/
+    height: 205px;
+    width: 577px;
+
+    margin-left: 50px;
+    margin-top: 50px;
+
+    float: left;
+}
+/* Верхняя строка меню с подписью категории */
+div#m_1 {
+    /*background: red;*/
+    height: 38px; /* 60px */
+    width: 577px; /* 900px */
+    float: left;
+    position:relative;
+    top:  -40px;
+    left: -50px;
+}
+div#m_2 {
+    /*background: blue;*/
+    height: 365px; /* 570px */
+    width: 600px; /* 900px */
+    float: left;
+    position:relative;
+
+    top: -50px;
+    left: -50px;
+}
+/* Обертка для элемента меню */
+div#m_block {
+    /*background: #489555;*/
+    height: 109px; /* 170px */
+    width: 100px; /* 160px */
+    float: left;
+
+    margin-left: 20px;
+    margin-top: 18px;
+}
+div.m_pic {
+    /*background: #FEE0BA;*/
+    height: 96px; /* 150px */
+    width: 96px; /* 150px */
+    float: left;    
+    margin-left: 5px;
+
+    cursor: pointer;
+}
+/* Меню литье, поэлементно 15 категорий */
+div#menuitem_1          { background: url(../img/lit/1_1.png);  background-size: 100%;}
+div#menuitem_1:hover    { background: url(../img/lit/b1_1.png); background-size: 100%;}
+div#menuitem_2          { background: url(../img/lit/1_2.png);  background-size: 100%;}
+div#menuitem_2:hover    { background: url(../img/lit/b1_2.png); background-size: 100%;}
+div#menuitem_3          { background: url(../img/lit/1_3.png);  background-size: 100%;}
+div#menuitem_3:hover    { background: url(../img/lit/b1_3.png); background-size: 100%;}
+div#menuitem_4          { background: url(../img/lit/1_4.png);  background-size: 100%;}
+div#menuitem_4:hover    { background: url(../img/lit/b1_4.png); background-size: 100%;}
+div#menuitem_5          { background: url(../img/lit/1_5.png);  background-size: 100%;}
+div#menuitem_5:hover    { background: url(../img/lit/b1_5.png); background-size: 100%;}
+
+div#menuitem_6          { background: url(../img/lit/1_6.png);  background-size: 100%;}
+div#menuitem_6:hover    { background: url(../img/lit/b1_6.png); background-size: 100%;}
+div#menuitem_7          { background: url(../img/lit/1_7.png);  background-size: 100%;}
+div#menuitem_7:hover    { background: url(../img/lit/b1_7.png); background-size: 100%;}
+div#menuitem_8          { background: url(../img/lit/1_8.png);  background-size: 100%;}
+div#menuitem_8:hover    { background: url(../img/lit/b1_8.png); background-size: 100%;}
+div#menuitem_9          { background: url(../img/lit/1_9.png);  background-size: 100%;}
+div#menuitem_9:hover    { background: url(../img/lit/b1_9.png); background-size: 100%;}
+div#menuitem_10          { background: url(../img/lit/1_10.png);  background-size: 100%;}
+div#menuitem_10:hover    { background: url(../img/lit/b1_10.png); background-size: 100%;}
+
+div#menuitem_11          { background: url(../img/lit/1_11.png);  background-size: 100%;}
+div#menuitem_11:hover    { background: url(../img/lit/b1_11.png); background-size: 100%;}
+div#menuitem_12          { background: url(../img/lit/1_12.png);  background-size: 100%;}
+div#menuitem_12:hover    { background: url(../img/lit/b1_12.png); background-size: 100%;}
+div#menuitem_13          { background: url(../img/lit/1_13.png);  background-size: 100%;}
+div#menuitem_13:hover    { background: url(../img/lit/b1_13.png); background-size: 100%;}
+div#menuitem_14          { background: url(../img/lit/1_14.png);  background-size: 100%;}
+div#menuitem_14:hover    { background: url(../img/lit/b1_14.png); background-size: 100%;}
+div#menuitem_15          { background: url(../img/lit/1_15.png);  background-size: 100%;}
+div#menuitem_15:hover    { background: url(../img/lit/b1_15.png); background-size: 100%;}
+
+
+/* Стили для временного меню штамповки */
+div#menuitem_1_sh          { background: url(../img/sht/2_1.png);  background-size: 100%;}
+/*div#menuitem_1_sh:hover    { background: url(../img/sht/2_1.png); background-size: 100%;}*/
+div#menuitem_2_sh          { background: url(../img/sht/2_2.png);  background-size: 100%;}
+/*div#menuitem_2_sh:hover    { background: url(../img/sht/2_2.png); background-size: 100%;}*/
+div#menuitem_3_sh          { background: url(../img/sht/2_3.png);  background-size: 100%;}
+/*div#menuitem_3_sh:hover    { background: url(../img/sht/2_3.png); background-size: 100%;}*/
+div#menuitem_4_sh          { background: url(../img/sht/2_4.png);  background-size: 100%;}
+/*div#menuitem_4_sh:hover    { background: url(../img/sht/2_4.png); background-size: 100%;}*/
+div#menuitem_5_sh          { background: url(../img/sht/2_5.png);  background-size: 100%;}
+/*div#menuitem_5_sh:hover    { background: url(../img/sht/2_5.png); background-size: 100%;}*/
+
+div#menuitem_6_sh          { background: url(../img/sht/2_6.png);  background-size: 100%;}
+/*div#menuitem_6_sh:hover    { background: url(../img/sht/2_6.png); background-size: 100%;}*/
+div#menuitem_7_sh          { background: url(../img/sht/2_7.png);  background-size: 100%;}
+/*div#menuitem_7_sh:hover    { background: url(../img/sht/2_7.png); background-size: 100%;}*/
+div#menuitem_8_sh          { background: url(../img/sht/2_8.png);  background-size: 100%;}
+/*div#menuitem_8_sh:hover    { background: url(../img/sht/2_8.png); background-size: 100%;}*/
+div#menuitem_9_sh          { background: url(../img/sht/2_9.png);  background-size: 100%;}
+/*div#menuitem_9_sh:hover    { background: url(../img/sht/2_9.png); background-size: 100%;}*/
+
+
+
+.b-cat-title2 { /* Модификация для нового меню */
+    display: block; /* Три правила для выравнивания по центру */
+
+    height: 12px; /* Нужно указывать, а то блок занимает все пространство по высоте */
+    
+    width: 100%;
+    font-family: "Tahoma";
+    text-align: center;
+    position:relative;
+    left:0px;
+
+    font-size: 12px;
+}
+
+/* Конец добавочный стилей для корзины */
+
+
+
+/* Палитра */
+
+
+/* Палитра пульта */
+
+
+/* Палитра пульта */
+div#col_menu {
+    /*background: white;*/
+    background: #f5f5f5;
+    position: fixed;
+     /*! игнорируется ?*/
+    /*left: 335px;*/
+    left: 465px;
+    top: 120px;
+    /*width: 561px;*/
+    /*width: 621px;*/
+    width: 645px; /* 22 эл */
+    /*height: auto;*/
+    height: 385px; /* 600px */
+    margin-bottom: 10px;
+    z-index: 6;
+    border: 1px double black;
+
+    margin-left: -10px; /*! inline-стиль не позволяет манипулировать св-вом left */
+}
+
+div#col_menu_mini {
+    /*background: white;*/
+    background: #f5f5f5;
+    position: fixed;
+    left: 1275px; /*! игнорируется */
+    top: 230px;
+    width: 561px; /* 875px */
+    /*width: 321px; /* 500px */
+    /*height: auto;*/
+    /*height: 212px; /* 330px */
+    height: 1px; /* 1px */
+    margin-bottom: 10px;
+    z-index: 3;
+    border: 1px double black;
+
+    margin-left: 0px; /*! inline-стиль не позволяет манипулировать св-вом left */
+}
+
+
+div.col_menu_el {
+    color: black;
+    width: 80px; /* 125px */
+    height: 106px; /* 165px */
+    /*font-weight: bolder;*/
+    text-decoration: none;
+    display: block;
+    float: left;
+    /*margin: 10px;*/
+}
+div.col_menu_el img {
+    cursor: pointer;    
+    height: 80px;
+    width: 80px;
+    margin-top: 1px;
+    margin-left: 1px;
+}
+
+div.col_menu_el span {
+    /*color: red;*/
+    display: block; /* Три правила для выравнивания по центру */
+    width: 100%;
+    text-align: center;
+
+    /*font-size: 12px;*/
+    font-family: Arial;
+    font-size: 9px;
+    cursor: pointer;
+}
+
+div.col_menu_el:hover {
+/*    background: url(../img/palitra/col_fon.png) no-repeat;
+    color: black;
+    font-weight: bolder;
+    text-decoration: none;
+    display: block;
+    float: left;
+*/    /*margin: 10px;*/
+
+    background: url(../img/palitra/col_fon.png) no-repeat;
+    background-size: 100%;
+
+}
+
+div.col_menu_el span {
+    background: none;
+}
+/* Заглушка в палитре вместо цвета */
+div.col_menu_el_dummy {
+    width: 80px; /* 125px */
+    height: 106px; /* 165px */
+    display: block;
+    float: left;
+}
+
+
+div#ral {
+    background: url(../img/palitra/ral.png);
+    background-size: 100%;
+    height: 42px; /* 65px */
+    /*width: 554px;*/
+    width: 635px;
+    display: block;
+    float: left;
+
+    margin-left: 5px;
+    margin-top: 25px;
+}
+
+/* */
+div.fade {
+    background: black;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    opacity: 0.65;
+
+    z-index: 1;
+}
+
+/* Специальный фейд для кнопки заказ */
+div.fade2 {
+    background: grey;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    opacity: 0.65;
+    z-index: 2;
+}
+/* Конец палитры */
+
+/* Стили для корзины */
+
+/* Кнопка распечатывания в корзине */
+div#print_but {
+    /*background: yellow;*/
+    /*height: 14px; /* 22px */
+    width: 64px; /* 100px */
+    /*margin: 0 auto;*/
+    margin-top: 40px;
+    margin-left: 285px;
+    /*float: left;*/
+    text-align: center;
+    /*cursor: pointer;*/
+
+    border: 2px solid gray;
+    border-radius: 10px;
+
+    padding-left: 5px;
+    padding-right: 5px;
+    /*padding-top: 8px;*/
+    padding-top: 12px;
+    height: 19px; /* 30px */
+    /*width: 96px; /* 150px */
+    float: left;
+    cursor: pointer;
+
+    /*margin-left: 140px;*/
+    font-family: Arial;
+    font-size: 15px;
+
+}
+div#print_but:hover {
+    border: 2px solid blue;
+    color: blue;        
+}
+
+
+/* Разрыв страницы, для печати остального на второй странице */
+/*.pagebreak { page-break-before: left; }*/
+/* С учетом капризов Хрома */
+.pagebreak { 
+    /*page-break-after: always;*/
+    page-break-after: left;
+    /*page-break-inside: avoid;    */
+}
+
+div#sec_page {
+    /*background: #AADBDF;*/
+    /*height: 256px; /* 400px */
+    width: 577px; /* 900px */
+    float: left;
+
+    /*transform: scale(0.8, 0.8); */
+}
+span#rec {
+    /*background: #2A5DA4;*/
+    display: block;
+    height: 14px; /* 22px */
+    float: left;
+
+}
+/* Что-то наподобии h1-6 только для спанов выше */
+/*.sp1 { width:  32px; }*/
+.sp1 { width:  38px; /* 60px */ }
+.sp2 { width: 64px; /* 100px */ text-align: center;}
+.sp3 { width: 160px; /* 250px */ }
+
+table#bask-print, table#bask-print td {
+    border: 1px solid black;
+
+    border-spacing:0;
+    border-collapse:collapse;
+    padding-left: 3px;
+}
+/* Враппер для оборачивания пряжек на странице печати */
+div#print-a {
+    /*background: #B199C4;*/
+    /*min-height: 128px; /* 200px */
+    width: 635px; /* 990px */
+    /*float: left;   */
+
+    /*page-break-before: left;*/
+
+    /*transform: scale(0.8, 0.8); */
+}
+
+@media print {
+    div#print_but {
+        display: none;
+    }
+
+    div#sec_page {
+/* 
+                position: relative;
+                top: -400px;
+         */        
+        transform: scale(0.9, 0.9);
+
+        /*tr*/
+    }
+    div#print-a {
+        /*-moz-transform: scale(0.5);*/
+        /*transform: scale(0.5);*/
+        /*transform: scale(0.6, 0.6);*/
+        transform: scale(0.6, 0.6);
+        position: relative;
+        left: -200px;
+        /*top: -200px;*/
+
+    }
+}
+
+/* Это победа! Кнопка печати в корзине */
+div#bask_print_but {
+
+    background: url(../img/common/catalog/basket/print.png);
+    background-size: 100%;
+    /*background: white;*/
+    height: 38px; /* 60px */
+    width: 45px; /* 70px */
+    float: left;
+
+    cursor: pointer;
+}
+
+/* А теперь еще немного добра для странички basket */
+
+div#bsk_A {
+    /*background: #AADBD3;*/
+    height: 64px; /* 100px */
+    width: 641px; /* 1000px */
+    float: left;
+}
+div#bsk_B {
+    /*background: #004A79;*/
+    height: 25px; /* 39px */
+    width: 641px; /* 1000px */
+    float: left;
+    margin-top: 3px;
+    border-bottom: 2px solid black;
+}
+div#bsk_zakaz_but {
+    /*background: yellow;*/
+    background: url(../img/common/catalog/basket/bsk_zakaz.png);
+    background-size: 100%;
+    height: 25px; /* 39px */
+    width: 141px; /* 220px */
+    float: left;
+    margin-left: 240px;  
+    cursor: pointer;  
+    margin-bottom: 20px;
+    margin-top: 10px;
+
+
+}
+div#bsk_zakaz_but:hover {
+    /*background: yellow;*/
+    background: url(../img/common/catalog/basket/bsk_zakaz_hover.png);
+    background-size: 100%;
+}
+
+div#bsk_back_but { /* Вернуться в каталог */
+    /*background: yellow;*/
+    /*background: url(../img/common/catalog/basket/bsk_back_but.png);*/
+    background: url(../img/common/my_cabinet/cab_back.png);
+    background-size: 100%;
+    height: 26px; /* 40px */
+    width: 194px; /* 302px */
+    float: left;
+    margin-left: 215px;  
+    cursor: pointer;  
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+div#bsk_back_but:hover {
+    /*background: yellow;*/
+    /*background: url(../img/common/catalog/basket/bsk_zakaz_hover.png);*/
+
+}
+
+
+div#bsk_C {
+    /*background: #A3BEE4;*/
+    height: 103px; /* 160px */
+    width: 641px; /* 1000px */
+    float: left;
+    margin-top: 20px;
+}
+span#bsk_label {
+    display: block;
+    height: 14px; /* 22px */
+    min-width: 50px;
+    margin-top: 30px;
+    float: left;
+    cursor: pointer;
+}
+
+span#bsk_label2 {
+    display: block;
+    height: 14px; /* 22px */
+    min-width: 50px;
+    margin-top: 30px;
+    float: left;
+    cursor: pointer;
+}
+
+/* Очередное дополнение стилей для корзины */
+div#bsk_block_A { /* Контейнер для вывода пряжки */
+    /*background: #DCBAD6;*/
+
+    background: url(../img/common/catalog/basket/basket_fon.png);
+
+    min-height: 300px; /* 80px */
+    height: 460px;
+
+    width: 650px; /* 1000px */
+    padding-right: 8px;
+
+    float: left;    
+
+    overflow-x: scroll;
+    overflow-x: hidden;
+
+    margin-left: -10px;
+}
+div.bsk_line {
+    /*background: #A3BEE4;*/
+    height: 45px; /* 70px */
+    width: 641px; /* 1000px */
+    float: left;
+    margin-top: 10px;   
+}
+/* Специальный стиль для линии под блоком */
+.bsk_underline {
+    /*border-bottom: 3px solid gray;*/
+}
+/* Стили для оформления кнопок "картинка+текст" */
+div.but_box { /* Враппер кнопки */
+    /*background: #FFD3BF;*/
+    background: none !important;
+    height: 38px; /* 60px */
+    width: 109px; /* 170px */
+    float: left;  
+    
+    cursor: pointer;
+}
+div.but_img { /* Картинка на кнопке */
+    /*background: #F8A000;*/
+    height: 38px; /* 60px */
+    width: 45px; /* 70px */
+    float: left;    
+    margin-top: 5px;    
+}
+span.but_title { /* Подпись на кнопке */
+    /*background: #ED4F27;*/
+    display: block;
+    height: 13px; /* 20px */
+    width: 64px; /* 100px */
+    float: left;
+    margin-top: 20px;
+    white-space:nowrap;
+
+        font-family: Arial;
+
+        font-size: 10px;
+
+}
+
+#bsk_clear_but  { /* Очистить корзину */
+    background: url(../img/common/catalog/basket/bsk_clear_but.png);
+    background-size: 100%;
+    float: right !important; 
+    margin-right: 100px;
+} 
+#bsk_cabine_but { /* Личный кабинет */
+    /*background: url(../img/common/catalog/basket/bsk_cabine_but.png);*/
+    /*background: yellow !important;*/
+
+    margin-right: 30px;
+    float: right !important; 
+}
+#bsk_print_but  { /* Распечать */
+    margin-left: 50px;
+} 
+#bsk_send_but   { /* Отправить заказ на почту */
+    background: url(../img/common/catalog/basket/bsk_send_but.png);
+    background-size: 100%;
+    margin-left: 100px;
+}
+#bsk_down_but   { /* Скачать */
+    background: url(../img/common/catalog/basket/bsk_down_but.png);
+    background-size: 100%;
+    margin-left: 100px;
+}
+#bsk_vhist_but { /* История просмотров */
+    margin-left: 165px;
+}
+#bsk_zhist_but { /* История заказов */
+    margin-left: 80px;
+}
+
+#img_clear_but  { background: url(../img/common/catalog/basket/bsk_clear_but.png);  background-size: 100%;} 
+#img_cabine_but { background: url(../img/common/catalog/basket/bsk_cabine_but.png); background-size: 100%;}
+#img_print_but  { background: url(../img/common/catalog/basket/bsk_print_but.png);  background-size: 100%;}
+#img_send_but   { background: url(../img/common/catalog/basket/bsk_send_but.png);   background-size: 100%;}
+#img_down_but   { background: url(../img/common/catalog/basket/bsk_down_but.png);   background-size: 100%;}
+#img_hint_but   { background: url(../img/common/catalog/basket/q_on.png);   background-size: 100%;}
+#img_vhist_but  { background: url(../img/common/catalog/basket/bsk_vhist_but.png);  background-size: 100%;}
+#img_zhist_but  { background: url(../img/common/catalog/basket/bsk_zhist_but.png);  background-size: 100%;}
+
+/* Тестирование кастомного скроллинга */
+.scroller {
+    overflow-y: scroll;
+    /* -webkit-overflow-scrolling: touch; *//* uncomment to accelerate scrolling on iOS */
+
+    background: gray;
+    color: white;
+    height: 64px; /* 100px */
+    width: 577px; /* 900px */
+    float: left;
+}
+.scroller::-webkit-scrollbar { /* Prevents webkit cross-direction scrolling bug */
+    width: 0;
+}
+
+/* Построение новых диалоговых окон (в корзине) */
+/* d1, История заказов */
+div#d1_zhist, div#d1_vhist {
+    /*background: yellow;*/
+    background: white;
+    height: 295px; /* 460px */
+    width: 641px; /* 1000px */
+
+    /*position: absolute;*/
+    position: fixed;
+    left: 200px;
+    top: 300px;
+
+    -moz-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Параметры тени */
+    z-index: 3;
+
+    font-family: Arial;
+    /*font-size: 20px;*/
+    font-size: 13px;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+div#d1_a {
+    /*background: #004A79;*/
+    height: 19px; /* 30px */
+    width: 641px; /* 1000px */
+    float: left;
+
+
+}
+div#d1_b {
+    /*background: #FAAA21;*/
+    /*height: 288px; /* 450px */
+    height: 256px; /* 400px */
+    /*width: 641px; /* 1000px */
+    width: 635px; /* 990px */
+    float: left;
+    
+    margin-top: 10px;
+    margin-left: 10px;
+    /*overflow-x: hidden;*/
+    /*overflow-y: none;*/
+}
+div#d1_close_but {
+    /*background: #004A79;*/
+    background: url("../img/common/catalog/form_zakaz/close.png");
+    background-size: 100%;
+    height: 19px; /* 30px */
+    width: 19px; /* 30px */
+    float: right;   
+
+    cursor: pointer;
+}
+div#d1_clear_vhist_but {
+    /*background: #77C881;*/
+    width: 64px; /* 100px */
+    float: right;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+    margin-right: 40px;
+
+    cursor: pointer;
+}
+div#d1_clear_vhist_but:hover {
+    color: blue;
+}
+div#d1_clear_zhist_but {
+    /*background: #77C881;*/
+    width: 64px; /* 100px */
+    float: right;
+
+    font-size: 12px;
+
+    margin-top: 8px;
+    margin-right: 40px;
+
+    cursor: pointer;
+}
+div#d1_clear_zhist_but:hover {
+    color: blue;
+}
+
+/* Разметка для горизонтальной маркерной линии */
+div.lmarker_wrap {
+    /*background: #41D2FF;*/
+    height: 13px; /* 20px */
+    width: 641px; /* 1000px */
+    /*float: left;    */
+    /*position: absolute;*/
+    position: fixed;
+    left: 800px;
+
+    /*top: 500px;*/
+    top: 370px;
+}
+div#mline {
+    /*background: #43D1FF;*/
+    border: 1px solid #43D1FF;
+    height: 1px; /* 1px */
+    width: 590px; /* 920px */
+    float: left;    
+    /*position: absolute;*/
+    /*position: fixed;*/
+}
+div#lcount {
+    background: #43D1FF;
+    height: 13px; /* 20px */
+    width: 32px; /* 50px */
+    float: left;    
+    /*position: absolute;*/
+    /*position: fixed;*/
+    font-weight: bolder;
+    text-align: center;
+
+    cursor: pointer;
+}
+
+/* Кол-во выбранной пряжки в корзине */
+/* Не понятно, че она не становится как положено эта ячейка, правим */
+div#num_sel {
+    outline: 1px solid #F1F6FA;
+    background: white;
+    /*height: 20px;*/
+    height: 19px;
+    width: 45px;
+    float: left;
+    position:relative;
+    top: -27px;
+    left: 100px;
+    margin-top: 7px;
+}
+
+/* Фикс для исключения кнопок прокрутки внутри инпата в хроме */
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Для корзины ввод кол-ва пряжки */
+input#i_col {
+
+    /* Фикс для ff, чтобы он считал инпат также, как хром */
+    -moz-box-sizing: border-box;
+
+    /* Фикс для ie */
+    box-sizing: border-box;
+
+    outline: 0;
+
+    height: inherit;
+    width: inherit;
+}
+
+input:invalid {
+  /*box-shadow: 0 0 5px 1px red;*/
+  background: #FEDEE1;
+  /*opacity: 0.2;*/
+}
+/* Задел по дереву переходов */
+/*
+div#breadcrumbs {
+    background: yellow;
+    height: 21px;
+    width: 641px;
+    float: left;
+}
+*/
+
+/* Дополнительные стили для кастомного скрола */
+/*._mCS_1 .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{*/
+
+._mCS_1 .mCSB_dragger {
+    background: #A2A2A2;
+
+    border-radius: 3px;
+    width: 15px !important;
+}
+._mCS_1 .mCSB_draggerRail {
+    /*background: red;*/
+    width: 5px !important;
+}
+
+/* Стили для vhist */
+
+ul#vhist_ul li {
+    list-style: none;
+}
+
+ul#vhist_ul a {
+    display: block;
+    margin-top: 40px;
+}
+/* Подпись давности просмотра пряжки */
+ul#vhist_ul h6 {
+    margin: 0;
+    margin-left: 10px;
+    margin-top: 5px;
+}
+
+div#vh_wrap {
+    /*background: #A3BEE4;*/
+    height: 64px; /* 100px */
+    width: 481px; /* 750px */
+    float: left;
+}
+div#vh_1 {
+    /*background: #AADBDF;*/
+    height: 64px; /* 100px */
+    /*width: 64px;*/
+    width: 100px;
+    float: left;
+}
+div#vh_1 img {
+    height: 64px;
+    width: 64px;
+}
+
+div#vh_2 {
+    /*background: #FED3B4;*/
+    height: 64px; /* 100px */
+    width: 353px; /* 550px */
+    float: left;
+}
+
+/* Стили для zhist */
+
+div#zh_wrap {
+    /*background: #A3BEE4;*/
+    height: 64px; /* 100px */
+    width: 481px; /* 750px */
+    float: left;
+    margin-top: 3px;
+    margin-left: 5px;
+    margin-bottom: 3px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+}
+
+div#zh_wrap:hover {
+    /*outline: 1px solid blue;*/
+}
+
+/* Развертнутая история заказа */
+div#zh_more {
+    /*background: #DBDBD9;*/
+    min-height: 64px; /* 100px */
+    width: 321px; /* 500px */
+    float: right;
+}
+/* Спецкласс для тоггления */
+.zh_red {
+    /*background: yellow;*/
+}
+
+
+/* Стили для корзины */
+
+
+
+/* Поцказки частичное дублирование */
+/* Доработка подсказок */
+/* Логика для работы выключателя подсказок */
+.hint_dis {}
+.hint_en {}
+
+
+/* Подскажки, пока в каталоге */
+
+/* Кнопка управления подсказками */
+/*
+div#hint_button {
+    
+    background: url(../img/common/hints/hint_but_2.png);    
+    height: 30px;
+    width: 125px;
+    
+    position:relative;
+    top: 450px;
+    left: 75px;
+    cursor:pointer;
+}
+
+div#hint1 {
+    background: url(../img/common/hints/hint1.png);    
+    height: 175px;
+
+    width: 245px;
+    position:relative;
+    left: -35px;
+    top: -123px;
+    z-index: 3;
+}
+div#hint2 {
+    background: yellow;
+
+    height: 175px;
+    width: 220px;
+
+
+}
+div#hint3 {
+    
+    background: url(../img/common/hints/hint3.png);    
+    height: 337px;
+    width:  358px;
+    position:relative;
+    right:  250px;
+    top:   -265px;
+    
+    
+}
+*//* Конец подсказок */
+
+/* Cемафор */
+
+div#semafor { /* Бирка сбоку с названием категории */
+    /*background: yellow;*/
+    background: url(../img/common/catalog/banner_regular.png);    
+    background-size: 100%;
+    
+/*    height: 288px;
+    width: 60px;
+*/
+
+    height: 184px;
+    width: 38px;
+
+    /*position: fixed;*/
+
+    left: 981px;
+    top: 360px;
+    /*visibility: hidden;*/
+}
+
+/* Классы для фиксации маркера секции */
+.s_floating {
+ background:#1c1c1c;
+ color:#fff;
+ font: normal normal 14px Tahoma;
+ /*указываем ширину*/
+ /*width: 300px; */
+ position: relative;
+ /*top: 300px;*/
+ top: 300px;
+}
+.s_fixed {
+ position: fixed;
+ top: 10px; /*здесь указываем отступ сверху*/
+ /*устанавливаем блок поверх всех элементов на странице*/
+ /*z-index: 1; */
+ /*left: 1265px;*/
+}
+/* Конец семафора 
+
+/* Консоль отладки */
+/* Почему-то не видно на айпаде */
+.con2 {
+    background: #D2D2D2;
+    border: 1px solid #999999;
+    
+    height: 150px;
+    width: 520px;
+
+    position: fixed; 
+    
+    /*desktop*/
+    /*left: 150px !important;*/
+    left: 800px !important;
+
+    /*ipad*/
+    /*left: 10px !important;*/
+    top: 10px;
+
+    padding: 5px 10px;
+
+    overflow: auto;
+
+    z-index: 10;
+
+    font-size: 12px;
+
+    /*visibility: hidden;*/
+}
+/* Вспомогательная панель */
+.con3 {
+    background: #D2D2D2;
+    border: 1px solid #999999;
+    
+    height: 150px;
+    width: 420px;
+
+    position: fixed; 
+    
+    /*desktop*/
+    left: 850px !important;
+
+    /*ipad*/
+    /*left: 300px !important;*/
+    top: 400px;
+
+    padding: 5px 10px;
+
+    overflow: auto;
+
+    z-index: 10;
+
+    /*visibility: hidden;*/
+}
+
+
+/* Стили для aux_3 */
+/* (!) Возможно эти стили лишние */
+/* Форма (отчет) заказа */
+div#report_zakaz {
+    /*background: yellow;*/
+    background: white;
+    height: 460px;
+    width: 600px;
+
+    /*position: absolute;*/
+    position: fixed;
+    left: 200px;
+    top: 300px;
+
+    -moz-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Параметры тени */
+    z-index: 3;
+}
+div#r_but_close {
+    /*background: red;*/
+    background: url(../img/common/catalog/form_zakaz/close.png); /*  */
+    height: 30px;
+    width: 30px;
+    position:relative;
+    left: 588px;
+    top: -12px;
+    cursor: pointer;
+}
+div#r_table {
+    /*background: #009999;*/
+    height: 180px;
+    width: 600px;
+    float: left;
+}
+div#r_form {
+    /*background: #33CCCC;*/
+    background: #a6a6a6;
+    height: 220px;
+    width: 550px;
+    float: left;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+div#r_form li {
+    list-style: none;
+    /*display: block;*/
+
+}
+table#r_table {
+    border: 1px solid black;
+    width: 500px;
+    margin-top: 10px;
+    margin-left: 50px;
+}
+div#r_table td {
+    border: 1px solid black;
+}
+
+tr#summary td {
+    border: none;
+}
+
+div#r_form input {
+    background: yellow;
+    display: inline-block;
+    /*float: left;*/
+}
+div#r_foot {
+    background: #a6a6a6;
+    height: 50px;
+    width: 600px;
+    float: left;
+}
+
+.agree_icon { /* Иконка, демонстр. верность введ. инф. */
+    /*background: cyan;*/
+    display: list-item;
+    height: 25px;
+    width: 25px;
+    float: left;
+}
+.agree {
+    background: url(../img/common/catalog/form_zakaz/accept.png) no-repeat; /*  */
+}
+
+/**/
+div#r_but_send {
+     /*background: yellow;*/
+    /*margin-top: 10px;*/
+    background: url(../img/common/catalog/form_zakaz/but_send.png);
+    /*float: left;*/
+    height: 25px;
+    width: 150px;
+    /*cursor: disabled;   */
+    margin-top: 5px;
+    margin-left: 29px;
+
+    -moz-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.5); /* Параметры тени */
+}
+
+.enableSend {
+    cursor: pointer;
+    /*background: url(../img/common/catalog/form_zakaz/but_send_h.png);    */
+}
+/* Конец стилей для aux_3 */
+
+/* Расширения для корзины - внутреннее окно прокрутки */
+
+div#scroll_zone {
+
+    /*background: #11ED90;*/
+    /*height: 800px;*/
+    min-height: 800px;
+    width: 640px;
+
+    float: left;
+
+    margin-left: 18px;
+}
+
+/* Настройки кнопки вверх */
+
+div.button-up {
+    display: none;
+    opacity: 1.0;
+    width: 67px; 
+/*    position: fixed;
+*/    cursor: pointer;
+    text-align: center;
+    line-height: 30px;
+    color: black;
+    font-weight: bold; 
+    font-size: 16pt;
+    
+    float: left;
+
+/*    top: 500px;
+    margin-left: -55px;
+*/}
+
+div.button-up img {
+    height: 25px;
+    width: 132px;
+}
+
+#print_link {
+    visibility: hidden;
+}
+
+div#box_a3 {
+    /*background: #DCBAD6;*/
+    height: 80px;
+    width: 160px;
+
+    float: left;    
+    position: relative;
+
+    /*top: 200px;*/
+    /*top: 170px;*/
+    top: 185px;
+    margin-left: 23px;
+
+    /*margin-left: 58px;*/
+    z-index: 1;
+}
+
+
+/* Отладочные потрошки */
+/* 
+    Окошко для вывода отладочной информации.
+    В данном случае параметры скроллинга для работы семафора
+*/
+div#counter_1 {
+    background: yellow;
+    height: 20px;
+    width: 60px;
+    position: fixed;
+    top: 210px;
+    right: 0px;
+
+    z-index: 10;
+}
+div#counter_2 {
+    background: yellow;
+    height: 20px;
+    width: 60px;
+    position: fixed;
+    top: 232px;
+    right: 0px;
+
+    z-index: 10;
+}
+div#counter_3 {
+    background: yellow;
+    height: 20px;
+    width: 60px;
+    position: fixed;
+    top: 254px;
+    right: 0px;
+
+    z-index: 10;    
+}
+
+
+/* Раздел фиксов */
+/* Кнопка "скачать каталог" тянем вверх */
+.fix_01 {
+    margin-top: 13px !important;
+}
+
+/* Временный блок для экспериментов с порционной загрузкой материала */
+div#under {
+    background: yellow;
+    height: 220px;
+    width: 640px;
+
+    margin-bottom: 30px;
+
+    float:  left;
+}
+
+/* 28_03_14 */
+/* Стили для новой версии каталога + инд. страницы */
+div#div_ic_block_A {
+    /*background: #AADBDF;*/
+    min-height: 1000px;
+    width: 640px;
+
+    float:  left;    
+
+    /* dev temporary fix */
+    /*margin-left: -20px;*/
+    margin-left: -10px;
+}
+
+div#div_ic_block_B {
+    /*background: #77C881;*/
+    /*background: white;*/
+    /*background: url(../img/common/dev/ic_test.jpg);*/
+
+    /*background: url(../img/common/page_d/white_point.png) repeat; /* Прозрачный png */
+
+
+    height: 1000px;
+    width: 260px;
+
+    /*position: fixed;*/
+    /*position: relative;*/
+
+    /*margin-left: 60%;*/
+
+    /*left: 640px;*/
+
+    float:  left;    
+}
+
+div#div_ic_block_C {
+    /*background: #A3BEE4;*/
+    /*background: #5e5e5e;*/
+    background: #afafaf;
+    
+    /*background: url(../img/common/cat_ipage/stripe_pult.png);*/
+
+    /*height: 1000px;*/
+    min-height: 1000px; /* из-за хром */
+    height: 100%;
+    width: 60px;
+
+    /*position: fixed;*/
+    /*position: relative;*/
+
+    /*margin-left: 90%;*/
+
+    float:  left;    
+
+    cursor: pointer;
+    z-index: 3 !important;
+}
+
+div#all_wrap {
+    /* розовый цвет */
+    /*background: #F4C2C2;*/
+    
+    height: 100%;
+    /*height: 1270px;*/
+    width: 960px;
+
+    /*float:  left;        */   
+
+
+}
+
+/* Блок с длинной прокруткой (#film, контент) */
+div#long_block {
+    /*background: #FFDDF4;*/
+    /*height: 1000px;*/
+    height: 800px;
+    /*min-height: 800px;*/
+    /*height: 100%;*/
+    /*width: 640px;*/
+    width: 660px;
+
+    float:  left;          
+
+    /*overflow-x: scroll;*/
+    overflow-x: hidden;
+}
+
+/* Блок с короткой прокруткой */
+div#short_block {
+    /*background: #997A8D;*/
+    background: #efefef;
+    /*background: white;*/
+    /* dev */
+    /* w */
+    /*height: 1000px;*/
+    min-height: 1000px;
+    height: 100%;
+    /*width: 320px;*/
+    /* dev */
+    /*width: 340px;*/
+    /*width: 336px;*/
+    width: 346px;
+
+    /*float:  left;            */
+
+    position: relative;
+    
+    /* (!) Магическое значение */
+    /*margin-left: 65%;*/
+    margin-left: 634px;
+
+    margin-top: -10px;
+
+    /* Тенька */
+
+    -webkit-box-shadow: 3px 0px 7px 0px rgba(50, 50, 50, 0.49);
+    -moz-box-shadow:    3px 0px 7px 0px rgba(50, 50, 50, 0.49);
+    box-shadow:         3px 0px 7px 0px rgba(50, 50, 50, 0.49);    
+
+    z-index: 3;
+
+}
+
+/* Блоки в области индивидуальной страницы */
+div#bite1 {
+    /*background: #97D4A0;*/
+    height: 250px;
+    width: 260px;
+
+    float:  left;          
+    margin-top: -55px;
+
+    margin-left: -25px;
+
+}
+div#bite2 {
+    /*background: #AADBD3;*/
+    height: 320px;
+    width: 260px;
+
+    float:  left;          
+
+    margin-top: 5px;
+
+    margin-left: -25px;
+}
+div#bite3 {
+    /*background: #AADBDF;*/
+    height: 360px;
+    width: 260px;
+
+    float:  left; 
+         
+    margin-left: -25px;
+}
+
+/* Куски стилей для индивидуальной пряжки */
+/* Определение нового большого блока с пряжкой для индивидуальной страницы page_d */
+div#ind_pryajka_m2 {
+    /*background: #DCBAD6;*/
+    background: white;
+
+    /*border: 10px solid black;*/
+    
+    /*border: 20px solid black;*/
+    /* regular color */
+    /*border: 20px solid #5a5a5a; */
+    border: 5px solid #5a5a5a; 
+
+
+    /*outline: 10px solid black;*/
+    /*  height: 231px; 360px */
+     /* width: 231px;360px */
+
+     height: 210px;
+     width: 210px;
+    float: left;    
+
+    margin-left: 15px;
+}
+div#pr_block_a {
+    /*background: #C9E8C7;*/
+    height: 38px; /* 60px */
+    width: 231px; /* 360px */
+    float: left;        
+}
+div#pr_block_b {
+    /*background: #DCDB15;*/
+    height: 154px; /* 240px */
+    width: 38px; /* 60px */
+    float: left;        
+}
+div#pr_block_c {
+    /*background: #A3BEE4;*/
+    background: white;
+    height: 154px; /* 240px */
+    width: 154px; /* 240px */
+    float: left;        
+
+    /*transform: scale(1.2, 1.2);   */
+}
+/* Изображение пряжки, синтетическое масштабирование */
+div#pr_block_c img { 
+    width: 224px; /* 350px */
+
+    height: auto;
+    position: relative;
+/*    left: -57px;
+    top: -55px;
+*/
+    left: -45px;
+    top: -45px;
+
+    cursor: pointer;
+}
+div#pr_block_d {
+    /*background: #97D4A0;*/
+    height: 154px; /* 240px */
+    width: 38px; /* 60px */
+    float: left;    
+
+}
+div#pr_block_e {
+    /*background: #FED3B4;*/
+    height: 38px; /* 60px */
+    width: 231px; /* 360px */
+    float: left;        
+}
+
+/* Блок "Характеристики модели" */
+div#ibA_c { 
+
+    font-family: Arial;
+    font-size: 13px;
+    /*background: #A8A851;*/
+    /*height: 321px; /* 500px */
+    height: 288px; /* 450px */
+    width: 173px; /* 270px */
+    float: left;    
+
+    margin-left: 20px;
+}
+
+/* Пульт (инд+кат.) */
+div#pult_wrap {
+    /*background: yellow;*/
+    background: #afafaf;
+
+
+    /*height: 600px;*/
+    /*height: 1000px;*/
+    min-height: 1000px; /* из-за хром */
+    height: 100%;
+
+    /*width: 60px;*/
+    /* Модиф. по Жене */
+    width: 90px;
+
+    position: relative;
+
+    left: -100px;
+
+    /*margin-left: 100px;*/
+    margin-left: 70px;
+
+-webkit-box-shadow: -7px 0px 8px 0px rgba(50, 50, 50, 0.4);
+-moz-box-shadow:    -7px 0px 8px 0px rgba(50, 50, 50, 0.4);
+box-shadow:         -7px 0px 8px 0px rgba(50, 50, 50, 0.4);    
+
+    z-index: 2;
+
+    /*margin-top: -20px;*/
+}
+
+div#pult {
+    /*background: #FED3B4;*/
+    /*outline: 1px solid red;*/
+
+    background: url(../img/common/cat_ipage/pult.png);
+    /*1:/domains/artstep.com.ua/public_html/xckd5a/img/common/cat_ipage/*/
+    height: 225px;
+    width: 75px;
+
+    position: relative;
+
+    top: 50%;
+
+    margin-left: -21px;
+
+    cursor: pointer;
+
+    /*visibility: hidden;*/
+}
+/* Обертка для "ручки" пульта чтобы выровнять центровку с пультом */
+/* 
+div#pult_inner {
+    background: #C9E8C7;
+    height: 370px;
+}
+*/
+/* Блоки нового пульта */
+/* Блок, объединяющий разные части пульта */
+div#pult_outer {
+    /*outline: 1px solid red;*/
+    /*background: #DAC5C2;*/
+    font-family: Arial;
+    font-size: 10px;
+
+    width: 130px;
+    height: 370px;
+
+
+    /*visibility: hidden;*/
+    /*visibility: hidden;*/
+    opacity: 0;
+
+    margin-left: -40px;
+
+    position: relative;
+
+    /*z-index: 5;*/
+
+    /*margin-top: -20px;*/
+
+}
+div#p_marker_wrap { /* Блок для маркера пунктов пульта */
+    background: yellow;
+    height: 370px;
+    width: 10px;
+
+    float: left;
+
+    position: relative;
+
+    left: -20px;
+
+
+}
+
+
+/* 
+    (!) Нижеследующие правила вызвают коллизии с палитрой диалога "Подробнее" 
+    Пока отключаю, а дальше будет видно
+*/
+
+/* 
+div#pl_1 {
+    background: #C9E8C7;
+    height: 70px;
+    width: 100px;
+}
+div#pl_1 li { list-style: none; }
+div#pl_2 {
+    height: 120px;
+    width: 100px;
+}
+div#pl_3 {
+    background: #779EBF;
+    height: 180px;
+    width: 120px;
+}
+div#pl_3 li { list-style: none; }
+img#pult_col_img {
+    height: 80px;
+    width: 80px;
+
+    margin-top: 10px;
+    margin-left: 10px;
+}
+*/
+
+/* Набросок кнопки вверх для каталога-индивидуальной */
+div#proto_up_button {
+    /*background: #EF7E0A;*/
+    /*background: yellow;*/
+
+    background: url(../img/common/cat_ipage/up_proto.png);
+
+    height: 59px;
+    /*padding-top: 2px;*/
+    width: 61px;
+    text-align: center;
+
+    float: left;
+
+    /*margin-top: 40px;*/
+    margin-left: 100px;
+
+    cursor: pointer;   
+}
+
+/* Кнопка "Подробнее" для страницы ic */
+div#ic_more_but {
+    /*background: #EF7E0A;*/
+    background: url(../img/common/cat_ipage/ic_more.png);
+    background-size: 100%;
+
+    height: 22px;
+    width: 120px;
+
+    float: left;   
+
+    margin-left: 70px; 
+
+    cursor:  pointer;
+
+    margin-top: 50px;
+}
+
+/* Полосы пульта */
+div#p_col_block {
+    /*background: #D5BDB3;*/
+    height: 120px;
+    width: 100px;    
+
+    /* Должно быть больше блока div_ic_block_C, на кот. завяз. лог. пульта */
+    z-index: 4;
+}
+/* Главные пункты меню */
+.st_wide {
+    /*background: #D7BFD9;*/
+    height: 22px;
+    width: 130px;
+    padding-left: 30px;
+    margin-top: 5px;
+}
+/* Второстепенные пункты меню */
+.st_tight {
+    /*background: #6FA448;*/
+    height: 18px;
+    width: 130px;
+    padding-left: 30px;
+}
+/*
+.st_wide:hover { background: url(../img/common/catalog/pult/p_stripe_1.png) no-repeat; }
+.st_tight:hover { background: url(../img/common/catalog/pult/p_stripe_1.png) no-repeat; }
+*/
+.st_wide:hover { background: url(../img/common/catalog/pult/hover_arr_18.png ) no-repeat; }
+.st_tight:hover { background: url(../img/common/catalog/pult/hover_arr_14.png ) no-repeat; }
+
+/* Смещение для прав. позиц. ховер-стрелки */
+/*.offset { margin-left: -23px; }*/
+.offset { margin-left: -18px; }
+/* Блок для визуального поз. второстеп. эл. меню */
+span#sub_el {
+    /*background: #4285F4;*/
+    display: block;
+    width: 80px;
+    margin-left: 15px;
+}
+/* Для центровки подписи */
+span#center_el {
+    /*background: #4285F4;*/
+    display: block;
+    width: inherit;
+    text-align: center;
+    margin-left: -15px;
+}
+
+/* Диалог "Подробнее" */
+/* 
+    Стили для диалога "Подробнее" на стр. кат.+инд.
+*/
+div#dial_more {
+        /*background: yellow;*/
+    background: white;
+    height: 550px;
+    width: 620px;
+
+    position: fixed;
+    left: 200px;
+    top: 300px;
+
+    -moz-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Firefox */
+    -webkit-box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Для Safari и Chrome */
+    box-shadow: 0 5px 5px 0 rgba(0,0,0,0.5); /* Параметры тени */
+
+    font-family: Arial;
+    font-size: 13px;
+
+    overflow-x: hidden;
+    overflow-y: hidden;
+    
+    z-index: 6;
+}
+
+div#dm_sizes {
+    /*background: #CD505E;*/
+    height: 160px;
+    width: 600px;
+    float: left;
+
+    margin-left: 15px;
+    margin-top: -6px;
+    margin-bottom: 20px;
+}
+
+div#dial_more li {
+    list-style: none;
+}
+
+div#dm_har1 {
+    /*background: #7AB9C3;*/
+    height: 160px;
+    width: 185px;
+    padding-left: 15px;
+    float: left;
+    margin-left: 10px;
+}
+
+div#dm_har2 {
+    /*background: #408885;*/
+    height: 160px;
+    width: 185px;
+    padding-left: 15px;
+    float: left;
+    margin-left: 5px;
+}
+
+div#dm_har3 {
+    /*background: #677C9B;*/
+    height: 160px;
+    width: 175px;
+    padding-left: 25px;
+    float: left;
+    margin-left: 5px;
+}
+
+div#dm_palitra {
+    /*background: #018556;*/
+    height: 140px;
+    width: 480px;
+    float: left;
+    margin-left: 75px;
+}
+/* Приписка снизу о цветах в наличии */
+div#dm_pal_label {
+    /*background: yellow;*/
+    height: 28px;
+    padding-top: 2px;
+    width: 120px;
+    float: left;
+    margin-left: 470px;
+    margin-top: 2px;
+
+    font-size: 11px;
+} 
+div#dm_pal_label img {
+    height: 30px;
+    width: 30px;
+    display: block;
+    float: left;
+    margin-top: -2px;
+}
+    
+/* Стили со старой индивид. стр. */
+/* Эксперименты с балансировкой ростовки */
+div#balance { /* Центровка результатов */
+    /*background: yellow;*/
+    height: 144px;
+    width: 540px;    display: table;
+
+    margin: 0 auto;
+    /*float: left;*/
+
+}
+/* Элементы серии пряжек */
+div#sizes_a {
+    /*background: #2A6B2E;*/
+    background: url(../img/page_a/navi/but_left.png) no-repeat;
+        background-size: 100%;
+
+    height: 41px; /* 64px */
+    width: 16px; /* 25px */
+    float: left;        
+    margin-top: 60px;   
+    cursor: pointer;    
+    /*visibility: hidden;*/
+
+    position: relative;
+    left: 5px;
+}
+div#sizes_a:hover { background: url(../img/page_a/navi/but_left_hover.png) no-repeat;   background-size: 100%; }
+div#sizes_b { /* Основная область вывода ростовки */
+    /*background: #FDC800;*/
+    height: inherit;
+    
+    width: 550px; /* 950px */
+    float: left;        
+}
+/* Элемент ростовки */
+div#sizes_el_wrap {
+    /*background: #269BFC;*/
+/*
+    height: 138px; 
+    width: 80px; 
+*/
+    height: 154px; /* 240px */
+    width: 96px; /* 150px */
+    float: left;        
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+div#sizes_el_bsk_but {
+    /*background: #7599B9;*/                 /* Ховер_ико просто более темная, а сам ховер использ. в нетрадиц. ключе */
+    background: url(../img/common/page_d/ind_bsk_hover_ico.png); opacity: 0.2;
+    background-size: 100%;
+    height: 32px; /* 50px */
+    width: 19px; /* 30px */
+/*  
+    float: left;            
+    margin-left: 48px;
+*/
+    margin: 0 auto;
+
+    cursor: pointer;
+}
+
+div#sizes_el_bsk_but:hover {
+    
+    /*background: url(../img/common/page_d/ind_bsk_hover_ico.png); */ /* Неверный подход */
+    background: url(../img/common/page_d/ind_bsk_hover_ico.png);  opacity: 1;
+        background-size: 100%;
+
+}
+div#sizes_el_img { /* Картинка пряжки */
+    /*background: #008FB1;*/
+/* 
+    height: 80px;
+    width: 80px;
+*/
+    height: 96px; /* 150px */
+    width: 96px; /* 150px */
+    /*float: left;          */
+
+    cursor: pointer;
+}
+div#sizes_el_img img {
+    height: 96px; /* 150px */
+    width: 96px; /* 150px */
+}
+
+div#sizes_el_mark {
+    /*background: #0101EF;*/
+    background: white;
+
+    border: 1px solid black;
+
+    height: 26px; /* 40px */
+    width: 19px; /* 30px */
+/*
+    float: left;            
+    margin-left: 55px;
+*/  
+    margin: 0 auto;
+
+    /*font-size: 14px;*/
+    font-size: 10px;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+div#sizes_c {
+    /*background: #7D75AF;*/
+    background: url(../img/page_a/navi/but_right.png) no-repeat;
+        background-size: 100%;
+
+    height: 41px; /* 64px */
+    width: 16px; /* 25px */
+    float: left;
+    margin-top: 60px;       
+    cursor: pointer;    
+    /*visibility: hidden;*/
+
+    position:relative;
+    left: -5px;
+}
+div#sizes_c:hover { background: url(../img/page_a/navi/but_right_hover.png) no-repeat;  background-size: 100%; }
+
+/* Элемент мини-палитры */
+div#pal_col_wrap {
+    /*background: #FEE0BA;*/
+    height: 48px; /* 75px */
+    width: 38px; /* 60px */
+    float: left;        
+    /*margin-top: 5px;*/
+    margin-left: 5px;   
+
+    cursor: pointer;
+}
+div.pal_col {
+    /*background: #368245;*/
+    height: 35px; /* 55px */
+    width: 38px; /* 60px */
+    float: left;   
+
+}
+div#pal_col_name {
+    /*background: #4FBDAA;*/
+    height: 13px; /* 20px */
+    width: 38px; /* 60px */
+    float: left;
+
+    text-align: center;
+    margin-left: -5px;      
+}
+/* Индивидуальные настройти для отдельных элементов палитры */
+#pl_1  { background: url(../img/common/page_d/palitra/01.png); background-size: 100%;}
+#pl_2  { background: url(../img/common/page_d/palitra/1V.png); background-size: 100%;}
+#pl_3  { background: url(../img/common/page_d/palitra/7P.png); background-size: 100%;}
+ 
+#pl_4  { background: url(../img/common/page_d/palitra/07.png); background-size: 100%;}
+#pl_5  { background: url(../img/common/page_d/palitra/04.png); background-size: 100%;}
+#pl_6  { background: url(../img/common/page_d/palitra/04K.png);background-size: 100%;}
+ 
+#pl_7  { background: url(../img/common/page_d/palitra/S1.png); background-size: 100%;}
+#pl_8  { background: url(../img/common/page_d/palitra/09.png); background-size: 100%;}
+#pl_9  { background: url(../img/common/page_d/palitra/S2.png); background-size: 100%;}
+
+#pl_10 { background: url(../img/common/page_d/palitra/01V.png);background-size: 100%;}
+#pl_11 { background: url(../img/common/page_d/palitra/271.png);background-size: 100%;}
+#pl_12 { background: url(../img/common/page_d/palitra/80S.png);background-size: 100%;}
+
+#pl_13 { background: url(../img/common/page_d/palitra/80.png); background-size: 100%;}
+#pl_14 { background: url(../img/common/page_d/palitra/87S.png);background-size: 100%;}
+#pl_15 { background: url(../img/common/page_d/palitra/87.png); background-size: 100%;}
+
+#pl_16 { background: url(../img/common/page_d/palitra/169.png);background-size: 100%;}
+#pl_17 { background: url(../img/common/page_d/palitra/185.png);background-size: 100%;}
+#pl_18 { background: url(../img/common/page_d/palitra/5021.png);background-size: 100%;}
+
+#pl_19 { background: url(../img/common/page_d/palitra/24.png); background-size: 100%;}
+#pl_20 { background: url(../img/common/page_d/palitra/103.png);background-size: 100%;}
+/* (!) заменить цвета */
+#pl_21 { background: url(../img/common/page_d/palitra/24.png);background-size: 100%;}
+#pl_22 { background: url(../img/common/page_d/palitra/24.png);background-size: 100%;}
+
+div#pl_col_3 {
+    /*background: #DBDBDB;*/
+    height: 32px; /* 50px */
+    width: 128px; /* 200px */
+    float: left;        
+    margin-left: 23px;
+}
+div#pl_col_3_a {
+    /*background: #FF8B8B;*/
+    background: url(../img/common/page_d/icon.png);
+    background-size: 100%;
+    height: 32px; /* 50px */
+    width: 32px; /* 50px */
+    float: left;
+    margin-left: -20px;     
+}
+div#pl_col_3_b {
+    /*background: #8EA8F1;*/
+    height: 29px; /* 45px */
+    width: 96px; /* 150px */
+    float: left;        
+    margin-top: 5px;
+}
+div#pl_col_1 {
+    /*background: #70808F;*/
+    height: 10px; /* 15px */
+    width: 128px; /* 200px */
+    float: left;        
+    margin-top: 5px;
+    margin-left: 23px;
+
+    padding-top: 9px;
+    text-align: center;
+}
+div#pl_col_2 {
+    /*background: #97D4A0;*/
+    height: 340px; /* 530px */
+    width: 130px; /* 200px */
+    float: left;        
+    margin-left: 13px;
+}
+/* Разделительная линия (блок с видимой границей) */
+div#split_line {
+    /*background: yellow;*/
+    border-bottom: 1px solid #7e7e7e;
+    height: 3px;
+    width: 500px;
+    float: left;
+    margin-left: 60px;
+    margin-top: 19px;
+}
+/* 
+    "Щеки" пульта - области выше и ниже pult_outer, на кот. нужно нажать, чтобы
+    закрыть пульт
+*/
+div#cheek_upper {
+    /*background: #9BFEE4;*/
+    height: 200px;
+    width: 160px;
+    /*float: left;*/
+    /*position: relative;*/
+/* 
+    top: -660px;
+ */
+}
+div#cheek_lower {
+    /*background: #3466FC;*/
+    height: 200px;
+    width: 160px;
+    float: left;
+    /*position: relative;*/
+/* 
+    top: -260px;
+    z-index: 5;
+ */
+
+ /*margin-top: 20px;*/
+}
+/* Для перенесенных кнопок делаем блок контейнер */
+div#but_cont {
+    /*background: #C19D9D;*/
+
+    height: 50px;
+    width: 220px;
+
+    float: left;
+
+    margin-top: 20px;
+    margin-left: 15px;
+}
+
+/* Лента навигации */
+div#stripe {
+    /*background: red;*/
+    background: url(../img/about/stripe.png);
+    height: 38px; /* 50px */
+    width:  100%;
+    left: 0;
+    top: -90px;
+    /*top: -15px;*/
+    position: fixed;
+    /*z-index: 2;*/
+
+    text-decoration: none;
+    font-family: Corbel;
+    /*font-size: 13pt;*/
+    font-size: 12px;
+    /*color: #000000;*/
+    color: white;
+
+    z-index: 3;
+
+    /*visibility: hidden;*/
+}
+/*
+div#stripe ul {
+    list-style-type: none;
+    position: relative;
+    margin: 0;
+    margin-left: 20px;
+    display: inline-block;
+
+    margin-top: 8px;
+}
+div#stripe li {
+    display: inline;
+}
+
+div#stripe span {
+    width: 95px;
+    display: inline-block;
+    margin-right: 15px;
+    text-align: center;
+    cursor: pointer;
+    padding-top: 
+}
+
+div#stripe span:hover {
+    color: red;
+}
+*/
+/* Маркер для работы всплывающего меню */
+div#ad {
+    /*background: #2782BB;*/
+    height: 2px;
+    width: 640px;
+    float: left;
+}
+/* Маркер для кнопки "Показать еще" */
+div#ad2 {
+    background: #E94B99;
+    height: 2px;
+    width: 640px;
+    float: left;
+
+    margin: 2px;
+}
+
+div#stripe_wrap {
+    /*width: 640px;*/
+    width: 940px;
+    margin: 0 auto;
+
+    /*margin-left: 100px;*/
+}
+
+/* В целях тестирования порционной загрузки добавляем кнопку */
+div#but_portion {
+    background: #F2A7B4;
+    height: 22px;
+    width: 65px;
+    /*padding-left: 10px;*/
+    float: left;
+    margin: 5px;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Порционная загрузка контента */
+div#more_but2 {
+    background: #F2A7B4;
+    height: 42px;
+    width: 200px;
+
+    float: left;
+    margin: 15px;
+
+    margin-left: 200px;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+/* Линейка - раметка для определения характеристик экрана */
+
+div#lpike {
+    background: #269F90;
+
+    height: 2px;
+    width: 20px;
+    
+    float: left;
+
+    position: fixed;
+
+/*    top: 100px;
+*/    
+    left: 50px;
+    
+    margin-bottom: 48px
+}
+
+div#spike {
+    background: blue;
+
+    height: 1px;
+    width: 17px;
+    
+    float: left;
+
+    position: fixed;
+
+/*    top: 100px;
+*/
+    left: 50px;
+    
+    margin-bottom: 48px
+}
+
+/* Отладочная кнопка, кот. живет в консоли */
+div#con_but1 {
+    background: #F2A7B4;
+    height: 17px;
+    padding-top: 5px;
+    width: 60px;
+
+    float: left;
+    margin: 10px;
+
+    margin-left: 15px;
+
+    cursor: pointer;
+    text-align: center;
+}

@@ -421,7 +421,7 @@ function browser()
 	{
 		// alert('isBack val: ' + isBack);	
 
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		// $('#film').remove(); // $('#sblock').remove();
 		// $("table#tbl_cat tr").remove();
@@ -646,7 +646,7 @@ function browser()
 
 
 /*		
-		clear_cat(); 
+		clear_wrk_area(); 
 		$('#film').remove(); 
 		// $("table#tbl_cat tr").remove(); $('img#button_foot').remove();
 		pryajka_type = "rabochaya_sh"; // Устанавливаем тип выбранной пряжки
@@ -660,7 +660,7 @@ function browser()
 		*/
 
 			// Грузим то же, что и по умолчанию в литье
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 			$('#film').remove(); // $('#sblock').remove();
 // [fold~ YiM0]
@@ -1169,7 +1169,7 @@ function browser()
 			// alert(11);
 			localStorage.as_flag_brand = "";
 
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 			$('#film').remove(); // $('#sblock').remove();
 // [fold~ kTKV]
@@ -1191,7 +1191,7 @@ function browser()
 
 		// В этой ветке грузиться содержимое по умолчанию
 
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 			/*
 				В целях порционной загрузки необходимо существование суперблока
@@ -1584,82 +1584,6 @@ else {
 	}
 
 
-	function col_click_uni () { // Универсальная функция на любой цвет
-		// alert(4);
-		// Получаем из имени файла название цвета "img/palitra/01_01.png" - "01" (чистый индекс цвета)
-		pryajka_color = $(this).find('img').attr("src").replace(/(.*?)(_(.+))(\.png)/mg, "$3");
-		// Получ. назв. цвета "img/palitra/01_01.png" - "01_01" (как в файловой системе)
-		pryajka_color_ = $(this).find('img').attr("src").replace(/(.*?)(a\/(.+))(\.png)/mg, "$3");
-
-		// Изменяем цвет пряжки в пульте с соотв. с польз. выбором
-		$('div#side_color_sel img').remove(); 
-		$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  pryajka_color_ +'.png"></img>');
-		// $('div#side_color_sel span').html('<b>' + pryajka_color + '</b>');
-		$('div#side_color_sel span').html(pryajka_color);
-		$('div#col_menu').toggle(); $('div.fade').toggle();
-		
-		// $('.con').append('img/palitra/' +  pryajka_color_ + '.png<br/>');
-
-
-
-		// Новая прорисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
-
-		$('#film').remove(); // $('#sblock').remove();
-		// $("table#tbl_cat tr").remove();
-		// // $('img#button_foot').css("visibility","hidden"); // Запрещаем кнопку показать еще
-		// $('img#button_foot').remove();
-
-		// // decor kolca peretyagki holnitenu blochka krjuchki
-		// pryajka_type = "rabochaya"; // Устанавливаем тип выбранной пряжки
-		// $('div#side_cat_name').html('Рабочая');
-
-		// a1 = pryajka_type + "_xx_" + pryajka_color; a2 = "";	dest = $('table#tbl_cat');
-		a1 = pryajka_type + "_xx_" + pryajka_color; a2 = "";	dest = $('#wrk_area');
-
-		// alert(a1);
-		ajax4("load_uni.pl", a1, a2, dest);
-
-/*
-		// Навигация
-		$('#bc2').remove();
-		if (pryajka_type=="rabochaya") {
-			$('#breadcrumbs').append('<span id="bc2">- РАБОЧАЯ </span>');
-		}
-		if (pryajka_type=="decor") {
-			$('#breadcrumbs').append('<span id="bc2">- ДЕКОР </span>');
-		}
-		
-		$('#breadcrumbs').append('<span id="bc3">' + pryajka_color + '</span>');
-*/
-	}
-
-
-
-
-	/* Секция общих функции */
-	function clear_cat () {
-		//$('.con').append('key_1_click()<br/>');
-//		$('td#two').slice(0,1).html("");
-		// $('td#two').html("");
-		//$('td#one').slice(3,10).remove(); // Убираем планшетки размеров > <h1>12</h1> MM		
-		//$('td#two').slice(3,10).remove(); // Убираем планшетки размеров > <h1>12</h1> MM
-		// $('tr#uni').slice(0,25).remove(); // Убираем планшетки размеров > <h1>12</h1> MM
-
-		// Для работы с подсветкой размеров еще немного кода...
-		$('#sz_1').css("color","black");
-		$('#sz_2').css("color","black");
-		$('#sz_3').css("color","black");
-		$('#sz_4').css("color","black");
-
-/*
-		// (!) Хак, для отработки ошибки с повотором td#one rotate 90
-		if (pryajka_type != "rabochaya") {
-			// $('body').prepend('cat_img_1_click()<br/>');
-			alert(pryajka_type);
-		}
-*/
-	}
 
 
 /*
@@ -1702,8 +1626,15 @@ else {
 	// агрументы в функцию, но не запускать ее к выполнению тотчас
 	// Поэтому придется все-таки вводить промежуточные функции, которые при выхове будут передавать
 	// параметры для cat_click_uni
+	/*
+		(!) Для чего цифра 500 была задумана?
+	*/
+	function cat_u1 () { cat_click_uni('rabochaya', 'Рабочая', 'xx', 'xx', '500'); }
+	function cat_u2 () { cat_click_uni('decor', 'Декор', 'xx', 'xx', '500'); }
+	function cat_u3 () { cat_click_uni('kolca', 'Кольца', 'xx', 'xx', '500'); }
 	function cat_u4 () { cat_click_uni('peretyagki', 'Перетяжки', 'xx', 'xx', '500'); }
 	function cat_u5 () { cat_click_uni('peretyagki-decor', 'Декоративные перетяжки', 'xx', 'xx', '500'); }
+
 	function cat_u6 () { cat_click_uni('blochka', 'Блочки', 'xx', 'xx', '500'); }
 	function cat_u7 () { cat_click_uni('petli', 'Петли', 'xx', 'xx', '500'); }
 	function cat_u8 () { cat_click_uni('krjuchki', 'Крючки', 'xx', 'xx', '500'); }
@@ -1715,90 +1646,19 @@ else {
 	function cat_u14 () { cat_click_uni('nakonechniki', 'Наконечники', 'xx', 'xx', '500'); }
 	// function cat_u15 () { cat_click_uni('', 'Разное', 'xx', 'xx', '500'); }
 
-	function cat_click_uni (cat, aux_nfo, col, size, scroll) {
-
-
-		// $('.con2').append('AAA cat uni func()<br/>');
-		// Заготовка универсальной функции загрузки
-/*
-		i_arr = aux_nfo.split('_');
-		$('body').prepend('cat: ' + cat + ' aux_nfo: ' + i_arr[0] + ' col: ' + col 
-						+ ' size: ' + size + ' scroll: ' + scroll + '<br/>');
-		$('body').append('col_dir: ' + col_hash[col] + '<br/>');
-*/
-		
-		// $('body').prepend('cat 5<br/>');
-
-		// Сброс маркера цвета в палитре
-		$('div#side_color_sel img').remove(); 
-		$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  col_hash[col] +'.png"></img>');
-		// $('div#side_color_sel span').html('01V');
-		$('div#side_color_sel span').html(col);
-
-		$('#film').remove(); // Очистка области вывода
-		// Восст. контейнер для загрузки результатов порции (выше удаляется)
-		$('#wrk_area').append('<div id="film"></div>');
-
-
-		// decor kolca peretyagki holnitenu blochka krjuchki
-		pryajka_type = cat; // Устанавливаем тип выбранной пряжки
-
-		
-		// $('div#side_cat_name').html('Кольца');
-		$('div#side_cat_name').html(aux_nfo);
-		
-		// a1 = cat + '_' + col + '_' + size;
-		
+	/*
+		Запрос порции общий для категорий и палитры
+	*/
+	function query_portion (a1) {
 		/*
-			(!) Временный отладочный трюк
-		if (cat == 'petli') cat = 'rabochaya'
-		*/
-
-		a1 = cat + '_' + 'xx' + '_' + 'xx';
-		// a1 = "kolca_xx_xx"; 
-		// $('.con2').append("a1: " + a1 + '<br/>');		
-/*
-		// Старая версия подгрузки пряжки - все сразу
-		// (!)
-		// $('body').prepend(a1);
-		a2 = "";	dest = $('#wrk_area');
-		ajax4("load_uni.pl", a1, a2, dest);
-*/
-		/*
-			Доработка до порционной загрузки
+			Версия порционной подгрузки пряжки
 			Нужно сбрасывать счетчик порционной загрузки
 		*/
-		// $('.con2').append(cur_portion +' - cat uni func()<br/>');		
-
 		if (cur_portion > 0) {
 			cur_portion = 0;
-			// $('.con2').append('recalc portions()<br/>');		
-			// ajax7("get_stats.pl", a1, a2);
-			// Отложенная обработка
-
-/*				
-			ajaxstr =  '/cgi-bin/get_stats.pl?' + "username=" + a1 + "&password=" + a2 + "&note=" + 'note';				
-			// $.when( ajax7("get_stats.pl", a1, a2) ).then(function() {
-			$.when( $.ajax(ajaxstr) ).then(function( data, textStatus, jqXHR ) {
-				// alert( jqXHR.status ); // Alerts 200
-				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
-				$('.con2').append('when DATA ' + data + ' <br/>');	
-			});
-
-*/
-
-			// a2 = "222";
-
 
 			ajaxstr1 = '/cgi-bin/get_stats.pl'
-			// ajaxstr1 = 'get_stats.pl'
-			// (!) Вот тут ошибка - неверная передача аргументов!
-			// ajaxstr2 = "username=" + a1 + "&password=" + a2;		
 			ajaxstr2 = "username=" + '' + "&password=" + a1;		
-
-
-
-///*
 			// Отложенная обработка запроса на сервер
 			$.when( 
 				$.ajax({
@@ -1807,97 +1667,203 @@ else {
 					success: function(data){ ajax_data = data; } 
 				})
 			).then(function( data, textStatus, jqXHR ) {
-				// alert( jqXHR.status ); // Alerts 200
-				// $('.con2').append('when DATA ' + ajax_data + ' <br/>');	
-				// $('.con3').append('when DATA ' + data + ' <br/>');	
-
-
 				// (!) Теперь известно кол-во порций и можно формировать запрос на получение
-
 				cur_portion++;
-/*
-				// Восст. контейнер для загрузки результатов порции (выше удаляется)
-				$('#wrk_area').append('<div id="film"></div>');
-*/
 				a2 = cur_portion;
 
-
-
-				/*
-					Радости асинхронной работы, значение а1 за время работы скрипта 
-					успевает измениться...
-				*/
-				// $('.con2').append('CUR cat is: ' + cat + ' <br/>');	
-				// $('.con2').append('CUR a1 is: ' + a1 + ' <br/>');	
-				// (!) Костылим
-				// a1_ = cat + '_' + 'xx' + '_' + 'xx';
-
-				// con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
-				// con2("a1_ " + a1_ + " a2 " + a2 + " cur_portion " + cur_portion);
-
-
-
-				/* 
-					ToDO
-
-						В этом месте вместо нужной по категории происходит загрузка 
-						рабочки, каким-то образом происходит сбой...
-				 */
-
-
-
-
-				// ajax4("load_portion.pl", a1_, a2, $('div#film'));
 				ajax4("load_portion.pl", a1, a2, $('div#film'));
-				// $('.con3').html('');
-				// ajax4("load_portion.pl", a1, a2, $('.con3'));
-				// ajax4("load_portion.pl", a1, a2, $('body'));
+
+				// Подкрутка к контенту
+				jQuery('#long_block').animate({ scrollTop: 500 }, 800);	
+			});
+		}
+
+	}
+
+	/*
+		Универсальный обработчик категорий пряжки
+	*/
+	function cat_click_uni (cat, aux_nfo, col, size, scroll) {
+		// $('.con2').append('cat_click_uni<br/>');
+
+		// decor kolca peretyagki holnitenu blochka krjuchki
+		pryajka_type = cat; // Устанавливаем тип выбранной пряжки
+/*
+		// Подготовка рабочей области для загрузки
+		$('div#side_color_sel img').remove(); 
+		$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  col_hash[col] +'.png"></img>');
+		// $('div#side_color_sel span').html('01V');
+		$('div#side_color_sel span').html(col);
+
+		$('#film').remove(); // Очистка области вывода
+		$('#wrk_area').append('<div id="film"></div>'); // Восст. контейнер для загрузки результатов порции
+
+		// (?) Как тут быть теперь
+		// $('div#side_cat_name').html('Кольца');
+		$('div#side_cat_name').html(aux_nfo);
+*/
+		
+		a1 = pryajka_type + '_' + 'xx' + '_' + 'xx';
+
+	/*
+		// $('.con2').append("a1: " + a1 + '<br/>');		
+		// a1 = "kolca_xx_xx"; 
+		// Старая версия подгрузки пряжки - все сразу
+		a2 = "";	dest = $('#wrk_area');
+		ajax4("load_uni.pl", a1, a2, dest);
+	*/
+		/*
+			Версия порционной подгрузки пряжки
+			Нужно сбрасывать счетчик порционной загрузки
+		*/
+/*
+		if (cur_portion > 0) {
+			cur_portion = 0;
+
+			ajaxstr1 = '/cgi-bin/get_stats.pl'
+			ajaxstr2 = "username=" + '' + "&password=" + a1;		
+			// Отложенная обработка запроса на сервер
+			$.when( 
+				$.ajax({
+					type: "GET", url: ajaxstr1, contentType: "text/html; charset=utf-8",
+					dataType: "text html", data: ajaxstr2,
+					success: function(data){ ajax_data = data; } 
+				})
+			).then(function( data, textStatus, jqXHR ) {
+				// (!) Теперь известно кол-во порций и можно формировать запрос на получение
+				cur_portion++;
+				a2 = cur_portion;
+
+				ajax4("load_portion.pl", a1, a2, $('div#film'));
 
 				jQuery('#long_block').animate({ scrollTop: 500 }, 800);	
 			});
-//*/
-/*
-			function GetHours() {
-			    return $.ajax({
-					type: "GET", url: ajaxstr1, contentType: "text/html; charset=utf-8",
-					dataType: "text html", data: ajaxstr2,
-					// success: function(data){ ajax_data = data; } 
-					success: function(data){ ajax_data = "Ok " + data  + '<br/>'; } 
-			    });
-			};
-*/
-
-			// $('.con2').append('when DATA ' + data + ' <br/>');	
-			// $('.con3').append('when DATA ' + console.log(GetHours()) + ' <br/>');	
 		}
+*/
+		// Запрос порции
+		query_portion(a1);
 
+	} // cat_click_uni()
 
+	function col_click_uni () { // Универсальная функция на любой цвет
+		// alert(4);
+		// Получаем из имени файла название цвета "img/palitra/01_01.png" - "01" (чистый индекс цвета)
+		pryajka_color = $(this).find('img').attr("src").replace(/(.*?)(_(.+))(\.png)/mg, "$3");
+		// Получ. назв. цвета "img/palitra/01_01.png" - "01_01" (как в файловой системе)
+		pryajka_color_ = $(this).find('img').attr("src").replace(/(.*?)(a\/(.+))(\.png)/mg, "$3");
 
 /*
-		cur_portion++;
+		// Изменяем цвет пряжки в пульте с соотв. с польз. выбором
+		$('div#side_color_sel img').remove(); 
+		$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  pryajka_color_ +'.png"></img>');
+		// $('div#side_color_sel span').html('<b>' + pryajka_color + '</b>');
+		$('div#side_color_sel span').html(pryajka_color);
+*/
+		
+		// Сокрытие меню, после старта обработчика
+		$('div#col_menu').toggle(); $('div.fade').toggle();
 
-		// Восст. контейнер для загрузки результатов порции (выше удаляется)
-		$('#wrk_area').append('<div id="film"></div>');
 
-		a2 = cur_portion;
+	
+		// $('.con').append('img/palitra/' +  pryajka_color_ + '.png<br/>');
 
-		// $('.con2').append('recalc portions()<br/>');	
 
-		con2("a1 " + a1 + " a2 " + a2 + " cur_portion " + cur_portion);
 
-		ajax4("load_portion.pl", a1, a2, $('div#film'));
+		// Новая прорисовка
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
+/*
+		$('#film').remove();
+		$('#wrk_area').append('<div id="film"></div>'); // Восст. контейнер для загрузки результатов порции		
+
+*/
+		// $("table#tbl_cat tr").remove();
+		// // $('img#button_foot').css("visibility","hidden"); // Запрещаем кнопку показать еще
+		// $('img#button_foot').remove();
+
+		// // decor kolca peretyagki holnitenu blochka krjuchki
+		// pryajka_type = "rabochaya"; // Устанавливаем тип выбранной пряжки
+		// $('div#side_cat_name').html('Рабочая');
+
+		// a1 = pryajka_type + "_xx_" + pryajka_color; a2 = "";	dest = $('table#tbl_cat');
+		// a1 = pryajka_type + "_xx_" + pryajka_color; a2 = "";	dest = $('#wrk_area');
+		a1 = pryajka_type + "_xx_" + pryajka_color; a2 = "";
+
+		con2("color query:" + a1);
+
+		// Запрос порции
+		query_portion(a1);
+/*		
+		// Старый способ
+		ajax4("load_uni.pl", a1, a2, dest);
+*/
+/*
+		// Навигация
+		$('#bc2').remove();
+		if (pryajka_type=="rabochaya") {
+			$('#breadcrumbs').append('<span id="bc2">- РАБОЧАЯ </span>');
+		}
+		if (pryajka_type=="decor") {
+			$('#breadcrumbs').append('<span id="bc2">- ДЕКОР </span>');
+		}
+		
+		$('#breadcrumbs').append('<span id="bc3">' + pryajka_color + '</span>');
 */
 
+	
 
-		// $('html, body').animate({scrollTop: scroll}, 800); // К каталогу	
-			
-}
+	}
+
+
+
+
+	/* Секция общих функции */
+	function clear_wrk_area () {
+		//$('.con').append('key_1_click()<br/>');
+//		$('td#two').slice(0,1).html("");
+		// $('td#two').html("");
+		//$('td#one').slice(3,10).remove(); // Убираем планшетки размеров > <h1>12</h1> MM		
+		//$('td#two').slice(3,10).remove(); // Убираем планшетки размеров > <h1>12</h1> MM
+		// $('tr#uni').slice(0,25).remove(); // Убираем планшетки размеров > <h1>12</h1> MM
+
+		// Для работы с подсветкой размеров еще немного кода...
+		$('#sz_1').css("color","black");
+		$('#sz_2').css("color","black");
+		$('#sz_3').css("color","black");
+		$('#sz_4').css("color","black");
+
+/*
+		// (!) Хак, для отработки ошибки с повотором td#one rotate 90
+		if (pryajka_type != "rabochaya") {
+			// $('body').prepend('cat_img_1_click()<br/>');
+			alert(pryajka_type);
+		}
+*/
+
+		/* (!) Фрагмент из col_uni */
+		// Изменяем цвет пряжки в пульте с соотв. с польз. выбором
+		$('div#side_color_sel img').remove(); 
+/*
+		//  (!) pryajka_color_ = ?
+		// (!) pryajka_color = ?
+		$('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  pryajka_color_ +'.png"></img>');
+		$('div#side_color_sel span').html(pryajka_color);
+*/
+
+		$('#film').remove();
+		$('#wrk_area').append('<div id="film"></div>'); // Восст. контейнер для загрузки результатов порции		
+
+
+	}
+
+
+
+
 
 
 	// Декор decor
 	function cat_2_click () {
 
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		// Сброс маркера цвета в палитре
 		$('div#side_color_sel img').remove(); 
@@ -1927,7 +1893,7 @@ else {
 
 /*
 // Старая рабочая ветка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 		// Переписываем колонку размеров - универсальная
 		$('td#one').html(""); $('tr#two').remove(); $('tr#three').remove();
 
@@ -1967,7 +1933,7 @@ if ($('td#one').length == 1) {
 	function cat_3_click () {
 		//$('body').prepend('cat_3_click()<br/>');
 
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		// Сброс маркера цвета в палитре
 		$('div#side_color_sel img').remove(); 
@@ -2001,7 +1967,7 @@ if ($('td#one').length == 1) {
 	function cat_4_click () {
 
 // Новая отрисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		// Сброс маркера цвета в палитре
 		$('div#side_color_sel img').remove(); 
@@ -2027,7 +1993,7 @@ if ($('td#one').length == 1) {
 	function sz_1_click () {
 
 		// Новая прорисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$('#film').remove(); // $('#sblock').remove();
 		$("table#tbl_cat tr").remove();
@@ -2042,7 +2008,7 @@ if ($('td#one').length == 1) {
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*	
-		clear_cat();
+		clear_wrk_area();
 
 
 
@@ -2091,7 +2057,7 @@ if ($('td#one').length == 1) {
 	function sz_2_click () {
 
 		// Новая прорисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$('#film').remove(); // $('#sblock').remove();
 		$("table#tbl_cat tr").remove();
@@ -2104,7 +2070,7 @@ if ($('td#one').length == 1) {
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
-		clear_cat();
+		clear_wrk_area();
 
 
 		// Мастырка для пустых блоков в каталоге по рабочке - Обратная операция $('tr#three').remove();
@@ -2152,7 +2118,7 @@ if ($('td#one').length == 1) {
 	function sz_3_click () {
 		
 		// Новая прорисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$('#film').remove(); // $('#sblock').remove();
 		$("table#tbl_cat tr").remove();
@@ -2164,7 +2130,7 @@ if ($('td#one').length == 1) {
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
-		clear_cat();
+		clear_wrk_area();
 
 
 		// Мастырка
@@ -2211,7 +2177,7 @@ if ($('td#one').length == 1) {
 	function sz_4_click () {
 
 		// Новая прорисовка
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$('#film').remove(); // $('#sblock').remove();
 		$("table#tbl_cat tr").remove();
@@ -2223,7 +2189,7 @@ if ($('td#one').length == 1) {
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
-		clear_cat();
+		clear_wrk_area();
 
 
 		// Мастырка для пустых блоков в каталоге по рабочке - Обратная операция $('tr#three').remove();
@@ -2338,7 +2304,7 @@ if ($('td#one').length == 1) {
 
 /* 
  //Устаревшая версия
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$("table#tbl_cat tr").remove();
 		$('img#button_foot').remove(); // Запрещаем кнопку показать еще
@@ -2360,7 +2326,7 @@ if ($('td#one').length == 1) {
 */
 
 		// Свежий вариант, с выводом в каталог в sblock
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 			$('#film').remove(); // $('#sblock').remove(); $("table#tbl_cat").remove(); $('img#button_foot').remove();
 
 			pryajka_type = "search"; // Устанавливаем тип выбранной пряжки
@@ -2616,7 +2582,7 @@ if ($('td#one').length == 1) {
 			// $('div#search_res div#container').addClass('wrappedElement');
 
 			// Запрос на поиск завершен, очищаем поле вывода
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 			// Переписываем колонку размеров - универсальная
 			$('td#one').html(""); $('tr#two').remove(); $('tr#three').remove();
@@ -2652,7 +2618,7 @@ if ($('td#one').length == 1) {
 			ajax5("search.pl", a, "arg2");
 */
 			
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 			$('#film').remove(); // $('#sblock').remove(); $("table#tbl_cat").remove(); $('img#button_foot').remove();
 
 			pryajka_type = "search"; // Устанавливаем тип выбранной пряжки
@@ -2751,10 +2717,19 @@ function bind_lit_e () {
 	$('img#img_cat_lit_14').bind( 'click',  cat_6_click);
 	$('img#img_cat_lit_15').bind( 'click',  cat_2_click);
 */
-	$('div#menuitem_1' ).bind( 'click',  cat_1_click );
-	$('div#menuitem_2' ).bind( 'click',  cat_2_click );
-	$('div#menuitem_3' ).bind( 'click',  cat_3_click);
-	$('div#menuitem_4' ).bind( 'click',  cat_4_click );
+	/*
+		06_06_14 Все категории через универсальную загрузку
+	*/
+	// $('div#menuitem_1' ).bind( 'click',  cat_1_click );
+	$('div#menuitem_1' ).bind( 'click',  cat_u1 );
+	// decor
+	// $('div#menuitem_2' ).bind( 'click',  cat_2_click );
+	$('div#menuitem_2' ).bind( 'click',  cat_u2 );
+
+	// $('div#menuitem_3' ).bind( 'click',  cat_3_click);
+	$('div#menuitem_3' ).bind( 'click',  cat_u3 );
+	// $('div#menuitem_4' ).bind( 'click',  cat_4_click );
+	$('div#menuitem_4' ).bind( 'click',  cat_u4 );
 	
 	// Эксперимент
 	// function cat_click_uni (cat, aux_nfo, col, size, scroll)
@@ -2883,7 +2858,7 @@ function bind_lit_e () {
 		*/
 
 ///*
-		clear_cat(); // Очистка таблицы перед загрузкой
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		// Сброс маркера цвета в палитре
 		// $('div#side_color_sel img').remove(); 
@@ -2937,7 +2912,7 @@ function bind_lit_e () {
 	UPD При нажатии на кнопку анилинк-2 происходит переход в литье
 */
 			// Грузим то же, что и по умолчанию в литье
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 			$('#film').remove(); // $('#sblock').remove();
 // [fold~ YiM0]
@@ -3043,7 +3018,7 @@ function bind_lit_e () {
 ///*
 	// (?!) WTF
 			// Дефолтная загрузка
-		clear_cat(); $('#film').remove(); // $("table#tbl_cat tr").remove(); $('img#button_foot').remove();
+		clear_wrk_area(); $('#film').remove(); // $("table#tbl_cat tr").remove(); $('img#button_foot').remove();
 		pryajka_type = "rabochaya_sh"; // Устанавливаем тип выбранной пряжки
 		$('div#side_cat_name').html('Штамповка');	
 		a1 = "rabochaya-sh_xx_xx"; a2 = "";	dest = $('#wrk_area');
@@ -3071,7 +3046,7 @@ function bind_lit_e () {
 
 			$('body').prepend('Экспериментальная штамповка ()<br/>');
 
-			clear_cat(); // Очистка таблицы перед загрузкой
+			clear_wrk_area(); // Очистка таблицы перед загрузкой
 			// Сброс маркера цвета в палитре
 			// $('div#side_color_sel img').remove(); 
 			// $('div#side_color_sel div.cat-img-wrap').append('<img height="100" width="100" src="img/palitra/' +  '11_01V' +'.png"></img>');
@@ -3120,7 +3095,7 @@ function bind_lit_e () {
 	/* Уточнение координат палитры при масштабировании и отрисовке */
 	function key_1_click () {
 //		$('.con').append('key_1_click()<br/>');
-		//clear_cat();
+		//clear_wrk_area();
 
 //		var br=this.getBoundingClientRect()
 		//$('.con')
@@ -4021,14 +3996,15 @@ $(window).scroll(function() {
 
 	// (!) Не нужно ли это перенести в куда-то в иное место?
 	/* Реакция на прокрутку "длинного блока" ? */
+	/* То же, всплывающее меню */
 	$(function(){
 	  $('div#long_block').scroll(function(){
 		
-		    var aTop = $('#ad').height();
+		    // var aTop = $('#ad').height();
 		    // if($(this).scrollTop()>=aTop){
 		    if($(this).scrollTop()>=500){
 		        // alert('ad just passed.');
-		        $('.con3').append("ad just passed. : " + $(this).scrollTop() + " ~ " + aTop + "<br/>");
+		        // $('.con3').append("ad just passed. : " + $(this).scrollTop() + " ~ " + aTop + "<br/>");
 
 		        $("#stripe").stop().animate({marginTop: 90}, 50); // увиличиваем отступ сверху
 		    }
@@ -4097,9 +4073,10 @@ $(window).scroll(function() {
 
 	 /* Реакция на прокрутку "длинного блока" */
 // Копия из load_uni
+/* Обработка всплывающего меню? */
 $(function(){
   $('div#long_block').scroll(function(){
-    var aTop = $('#ad').height();
+    // var aTop = $('#ad').height();
     // if($(this).scrollTop()>=aTop){
     if($(this).scrollTop()>=500){
         // alert('ad just passed.');
@@ -4122,22 +4099,29 @@ $(function(){
 	~последних пряжек. Затем событие должно анбиндиться и загружается 
 	дополнительная порция пряжки
 	#autofeed
+	Автоматическая подача
 */
 	$(function(){
 	  $('div#long_block').scroll(function(){
 	    // $('.con3').append(" pos. : " + ($(this).scrollTop() + 150) + "<br/>");
 
+
+///*
+		// Первый вариант автоматической прокрутки, работает с глюками, устарел
 	    if (($(this).scrollTop() + 150 ) > ($('div#film').height() - 100)){
 	        // $('.con3').append("pos - near bottom<br/>");
+	        $('.con3').append('$(this).scrollTop() + 150: ' + ($(this).scrollTop() + 150) + ", $('div#film').height() - 100: " + ($('div#film').height() - 100) + "<br/>");
 
 	        // Инструкция, отключающая функцию детекта дна при первом срабатывании
+	        // Происходит загрузка очередной порции и только после выполнения запроса 
+	        // блоку снова присваивается обработчик
 	        $('div#long_block').unbind('scroll');
 
 	    // (~2) Точка порционной загрузки
 	        // Запрос на получение следующей порции контента
 	        // a2 - номер порции
 
-	        $('.con3').append('Порция номер: ' + cur_portion + " порций " + portions + "<br/>");
+	        // $('.con3').append('Порция номер: ' + cur_portion + " порций " + portions + "<br/>");
 
 	        // (!) Ошибка из load_portion перекочевала сюда,
 	        // теперь тут надо исправить, иначе нет для рабочки последнего размера
@@ -4151,8 +4135,42 @@ $(function(){
 			else {$('.con3').append('Порция номер: ' + cur_portion + " - Больше нет! <br/>");}
 
 	    }
+//*/
+
+		/*
+			Второй вариант автоматической загрузки порций, основанный на видимости
+			послденего элемента секции. Работает довольно интересно, на опережение и для 
+			любых значений вьюпорта, а также не дает видимых рывков!
+		*/
+/*
+		if ($('div#frame_title').last().is(":visible")) {
+
+			// $('div#long_block').unbind('scroll');
+			con2('last is visible');
+			$('div#long_block').unbind('scroll');
+
+
+	        // (!) Ошибка из load_portion перекочевала сюда,
+	        // теперь тут надо исправить, иначе нет для рабочки последнего размера
+			// if (cur_portion < portions-1) {
+			if (cur_portion < portions) {
+				cur_portion++;
+	        	// a1 = "rabochaya_xx_xx"; 
+	        	a2 = cur_portion;
+				ajax4("load_portion.pl", a1, a2, $('div#film'));
+			}
+			else {$('.con3').append('Порция номер: ' + cur_portion + " - Больше нет! <br/>");}
+
+		}
+//*/
+
+
 	  });
+	
+
 	});
+
+
 //*/
 
 // check if a user has scrolled to the bottom
@@ -5088,11 +5106,30 @@ $('div#ic_more_but, div#pr_block_c img').bind('click', function() {
 });
 
 /*
-	Для целей разработки делает выдвигаем пульт при загрузке страницы
+	Отладочые триггеры
 */
-// $('div#div_ic_block_C').trigger('click');
+$('div#div_ic_block_C').trigger('click'); // Выдвинуть пульт
 
 // $('div#ic_more_but').trigger('click'); // Нарисовать диалог "Подробнее"
+
+/*
+	Кнопка для отладок, живет в консоли
+*/
+
+
+	$('.con2').append('<div id="con_but1">deb_but()</div>');
+
+///*
+	// Кнопка отладки, произвольный функционал
+	$('div#con_but1').bind('click', function() {
+		// $(this).remove();
+		con2('con_but1 click');
+
+		$('.con3').append('$(this).scrollTop() + 150: ' + ($('div#long_block').scrollTop() + 150) + ", $('div#film').height() - 100: " + ($('div#film').height() - 100) + "<br/>");
+	});		
+//*/
+
+
 
 
 
