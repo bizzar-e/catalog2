@@ -1371,7 +1371,30 @@ function once_1(){
 				
 				if (color!=0) { // Пропуская пустой цвет (0)
 					$(this).find('span').text(color);
+
+///*				
+					// Устарел					
+					// Вариант с отдельным обработчиком
 					$(this).bind( 'click', col_click_uni);
+//*/					
+
+					/*
+						Новый обработчик палитры - тот же, что и для категорий
+
+						UPD (!) Хуита из-за биндинга
+					*/
+/*					
+		// Получаем из имени файла название цвета "img/palitra/01_01.png" - "01" (чистый индекс цвета)
+		pryajka_color = $(this).find('img').attr("src").replace(/(.*?)(_(.+))(\.png)/mg, "$3");
+		// Получ. назв. цвета "img/palitra/01_01.png" - "01_01" (как в файловой системе)
+		pryajka_color_ = $(this).find('img').attr("src").replace(/(.*?)(a\/(.+))(\.png)/mg, "$3");
+
+					
+					// cat_click_uni('rabochaya', 'Рабочая', 'xx', 'xx', '500');
+					// cat_click_uni(undefined , undefined, 'xx', pryajka_color, '500');
+
+					$(this).bind( 'click', cat_click_uni(undefined , undefined, 'xx', pryajka_color, '500'));
+*/
 				}
 				//$('.con').append(index + ": " + col + '<br/>');
 			});
@@ -1683,11 +1706,38 @@ else {
 	/*
 		Универсальный обработчик категорий пряжки
 	*/
+		// cat_click_uni('rabochaya', 'Рабочая', 'xx', 'xx', '500');
 	function cat_click_uni (cat, aux_nfo, col, size, scroll) {
 		// $('.con2').append('cat_click_uni<br/>');
 
 		// decor kolca peretyagki holnitenu blochka krjuchki
+		// На случай вызова из палитры
+		if (typeof cat == 'undefined') 		{pryajka_type	='xx'}
+		if (typeof aux_nfo == 'undefined') 	{aux_nfo		='?' }
+
 		pryajka_type = cat; // Устанавливаем тип выбранной пряжки
+		pryajka_color = col;
+
+		/* 
+			Доработки для объединения палитрового обработчика
+		*/		
+		con2(pryajka_color);
+		// con2('IS_COLOR_CALL ' + is_color_call);
+
+		
+	///*		
+		if ($('div#col_menu').is(":visible")) {
+			// con2('Меню открыто');			
+
+			// Сокрытие меню, после старта обработчика
+			$('div#col_menu').toggle(); $('div.fade').toggle();
+		}
+		// else con2('Меню cкрыто');			
+	//*/
+
+
+
+
 /*
 		// Подготовка рабочей области для загрузки
 		$('div#side_color_sel img').remove(); 
@@ -1702,8 +1752,40 @@ else {
 		// $('div#side_cat_name').html('Кольца');
 		$('div#side_cat_name').html(aux_nfo);
 */
+
+		// Новая прорисовка
+		clear_wrk_area(); // Очистка таблицы перед загрузкой
+
 		
-		a1 = pryajka_type + '_' + 'xx' + '_' + 'xx';
+		// a1 = pryajka_type + '_' + 'xx' + '_' + 'xx';
+		// Из цвета
+		// a1 = pryajka_type + "_xx_" + pryajka_color;
+		a1 = pryajka_type + '_' + 'xx' + '_' + pryajka_color;
+		/*
+			Дополнительное условие для колец
+		*/
+
+		if (pryajka_type=='kolca') {
+			/*
+				(!) Тут такой момент, для load_uni ajax4 грузит в #wrk_area,
+				а для load_portion - в #film. Отсюда возникают дополнительные вопросы
+
+				Т.е. надо дополнительно рэмувить film?
+			*/
+			$('#film').remove();
+
+			a2 = "";	dest = $('#wrk_area');
+			ajax4("load_uni.pl", a1, a2, dest);	
+
+
+			// В данном случае - это несколько рагульновато потому, что
+			// не так, как это происходит при порционной загрузке
+			jQuery('#long_block').animate({ scrollTop: 500 }, 800);	
+				
+			return
+		}
+
+
 
 	/*
 		// $('.con2').append("a1: " + a1 + '<br/>');		
@@ -4106,8 +4188,8 @@ $(function(){
 	    // $('.con3').append(" pos. : " + ($(this).scrollTop() + 150) + "<br/>");
 
 
-///*
 		// Первый вариант автоматической прокрутки, работает с глюками, устарел
+/*
 	    if (($(this).scrollTop() + 150 ) > ($('div#film').height() - 100)){
 	        // $('.con3').append("pos - near bottom<br/>");
 	        $('.con3').append('$(this).scrollTop() + 150: ' + ($(this).scrollTop() + 150) + ", $('div#film').height() - 100: " + ($('div#film').height() - 100) + "<br/>");
@@ -4142,7 +4224,7 @@ $(function(){
 			послденего элемента секции. Работает довольно интересно, на опережение и для 
 			любых значений вьюпорта, а также не дает видимых рывков!
 		*/
-/*
+///*
 		if ($('div#frame_title').last().is(":visible")) {
 
 			// $('div#long_block').unbind('scroll');
@@ -5115,9 +5197,26 @@ $('div#div_ic_block_C').trigger('click'); // Выдвинуть пульт
 /*
 	Кнопка для отладок, живет в консоли
 */
-
-
 	$('.con2').append('<div id="con_but1">deb_but()</div>');
+
+/*
+	Панель управления консолями
+*/
+$('div#ctrl_box').bind('click', function() {
+		con2('ctrl_box click');
+
+		// Поскольку по умолчанию консоли имеют атрибут hidden,
+		// активированым меняем это
+		if ($('.con2').css('visibility')=='hidden') { 
+			if ($('.con3').css('visibility')=='hidden') { $('.con2').css('visibility', 'visible'); $('.con2').toggle(); }
+			$('.con2').css('visibility', 'visible'); $('.con2').toggle(); 
+			return;
+		}
+
+
+		$('.con2, .con3').toggle();
+});		
+
 
 ///*
 	// Кнопка отладки, произвольный функционал
