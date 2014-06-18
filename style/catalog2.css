@@ -3142,7 +3142,7 @@ div#semafor { /* Бирка сбоку с названием категории 
 
     font-size: 12px;
 
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 /* Вспомогательная панель */
 .con3 {
@@ -3167,7 +3167,7 @@ div#semafor { /* Бирка сбоку с названием категории 
 
     z-index: 10;
 
-    /*visibility: hidden;*/
+    visibility: hidden;
 }
 
 
@@ -3433,7 +3433,8 @@ div#div_ic_block_B {
 div#div_ic_block_C {
     /*background: #A3BEE4;*/
     /*background: #5e5e5e;*/
-    background: #afafaf;
+    /*background: #afafaf;*/
+    background: #252525;
     
     /*background: url(../img/common/cat_ipage/stripe_pult.png);*/
 
@@ -3641,7 +3642,9 @@ div#ibA_c {
 /* Пульт (инд+кат.) */
 div#pult_wrap {
     /*background: yellow;*/
-    background: #afafaf;
+    /*background: #afafaf;*/
+    /*background: #252525;*/
+    /*background: white;*/
 
 
     /*height: 600px;*/
@@ -3700,6 +3703,7 @@ div#pult_inner {
 div#pult_outer {
     /*outline: 1px solid red;*/
     /*background: #DAC5C2;*/
+    background: yellow: ;
     font-family: Arial;
     font-size: 10px;
 
@@ -3714,6 +3718,8 @@ div#pult_outer {
     margin-left: -40px;
 
     position: relative;
+
+    color: white;
 
     /*z-index: 5;*/
 
@@ -3816,6 +3822,8 @@ div#p_col_block {
 /* Главные пункты меню */
 .st_wide {
     /*background: #D7BFD9;*/
+    background: url(../img/split.png) repeat;
+
     height: 22px;
     width: 130px;
     padding-left: 30px;
@@ -3837,7 +3845,8 @@ div#p_col_block {
 
 /* Смещение для прав. позиц. ховер-стрелки */
 /*.offset { margin-left: -23px; }*/
-.offset { margin-left: -18px; }
+/*.offset { margin-left: -18px; }*/
+.offset { margin-left: 0px; }
 /* Блок для визуального поз. второстеп. эл. меню */
 span#sub_el {
     /*background: #4285F4;*/
@@ -4190,6 +4199,8 @@ div#split_line {
     закрыть пульт
 */
 div#cheek_upper {
+
+    border: 1px solid yellow;
     /*background: #9BFEE4;*/
     height: 200px;
     width: 160px;
@@ -4378,4 +4389,76 @@ div#con_but1 {
 
     cursor: pointer;
     text-align: center;
+}
+
+/* Управление отладочными опциями */
+div#ctrl_box {
+    background: #FEED77;
+    height: 23px;
+    padding-top: 4px;
+
+    width: 80px;
+
+    float: left;    
+    margin-left: 30px;
+
+    font-style: italic;
+
+    text-align: center;
+    
+    cursor: pointer;
+}
+div#ctrl_box:hover {
+    background: #FFB901;
+}
+
+/* Новый новый пульт */
+/* Верхняя планка для нового пульта */
+div#upper_stripe {
+    background: #BB1A1C;
+    height: 50px;
+    width: 160px;
+
+    margin-bottom: 80px;
+
+    /*float: left;    */
+
+}
+/* Самая верхняя кнопка в пульте */
+div#upper_pult_but {
+    /*background: white;*/
+
+    /*background: url(../img/pult/upper_pult_but.png) repeat;*/
+    background: url(../img/pult/upper_pult_but_close.png) repeat;
+    background-size: 100%;
+
+    height: 50px;
+    width: 50px;
+
+
+
+    margin: 0 auto;
+}
+/* Объединяющие блоки в пульте */
+div#pblock {
+    background: #252525;
+    /*outline-left: 30px solid red;*/
+
+    /* (!) Экспериментальное заполение плоскости пульта, на деле стрем */
+    width: 160px;
+    /*position: relative;*/
+    /*left: -16px;*/
+
+    /*background-position: right 30px center;*/
+
+    margin-left: -16px
+}
+div#pblock:hover {
+    background: url(../img/backp_76.png) repeat;
+}
+div#psplitter {
+    background: url(../img/split.png) repeat;
+
+    height: 28px;
+    width: 160px;
 }
