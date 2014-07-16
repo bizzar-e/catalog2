@@ -3288,22 +3288,73 @@ function fix_center_pult () {
 function fix_center_pult_inner () {
 		/* Корректировка по центру */
 		$('.con2').prepend('fix pult_outer'  +'<br/>');
-
+/*
+		// (!) Че-та напутано-намучено
 		el2 = $('div#cheek_upper');
 		el3 = $('div#cheek_lower');
 		cheek_lower_height = parseInt(el2.css("height"));
 		cheek_upper_height = parseInt(el3.css("height"));
 		pult_height 	   = parseInt(el.css("height"));
+*/		
+		pult_wrap			= $('div#pult_wrap');
+		cheek_hi 			= $('div#cheek_upper');
+		cheek_lo 			= $('div#cheek_lower');
+		pult_outer 			= $('div#pult_outer');
+		upper_stripe 		= $('div#upper_stripe');
 
+		pult_wrap_height 	= parseInt(pult_wrap.css("height"));
+		cheek_hi_height 	= parseInt(cheek_hi.css("height"));
+		cheek_lo_height 	= parseInt(cheek_lo.css("height"));
+		pult_outer_height 	= parseInt(pult_outer.css("height"));
+		upper_stripe_height = parseInt(upper_stripe.css("height"));
+		
+
+/*
+		el = $('div#pult_wrap');
+		pult_wrap_height 	   = parseInt(el.css("height"));
+*/
 		el = $('div#pult_outer');
-	    // var wwidth  = (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
+	    var wwidth  = (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
 		var wheight = (window.innerHeight > 0) ? window.innerHeight : screen.height;
 
 		// $('.con2').prepend('wheight ' + wheight +'<br/>');
 		// $('.con2').prepend('rea ' + (wheight - pult_height) +'<br/>');
-		cheeks_new_height = (wheight - pult_height - 150) / 2; 
-		el2.css("height",  cheeks_new_height);
+		/*
+			(!)
+				На данный момент расчет центровки пульта происходит по высоте экрана. 
+				Но поскольку сайт не заполняет полностю экран для многих разрешений, то
+				это некорректно. Необходимо отталкиватся от высоты родительского элемента,
+				т.е. от #pult_wrap
+		*/
+		// cheeks_new_height = (wheight - pult_height - 150) / 2; 
+		// cheeks_new_height = (pult_wrap_height - pult_height - 150) / 2; 
+		// el2.css("height",  cheeks_new_height);
+		// $('div#counter_1').html(cheeks_new_height);
+
+		/*
+			Новый расчет
+			(pult_wrap_height - pult_outer_height - upper_stripe_height) / 2 	- если ширина экрана больше высоты pult_wrap_height
+			или
+			(wheight - pult_outer_height - upper_stripe_height) / 2 	- если wheight < pult_wrap_height
+		*/
+		if (wheight > pult_wrap_height) {
+			cheeks_new_height = (pult_wrap_height - pult_outer_height - upper_stripe_height) / 2;
+		}
+		else {
+			cheeks_new_height = (wheight - pult_outer_height - upper_stripe_height) / 2;	
+		} 
+
+		cheek_hi.css("height",  cheeks_new_height);
+		cheek_lo.css("height",  cheeks_new_height);
+
+		con2("pult_wrap_height " + pult_wrap_height + " pult_height " + pult_outer_height + " cheeks_new_height " + cheeks_new_height );
+		con2("RES " +  cheeks_new_height );
+
+/*		
+		// До нового пульта простой расчет
 		el3.css("height",  cheeks_new_height);
+*/
+
 		// $('.con2').prepend('cheeks_new_height ' + cheeks_new_height +'<br/>');
 
 		var cH = parseInt(el.css("height")); // Уточняем габариты блока
@@ -3334,10 +3385,95 @@ function fix_center_pult_inner () {
 
 	 	// el.css("top",  mt);
 
+		
+
+		el = $('div#pult_wrap');
+		h_pult_wrap = parseInt(el.css("height"));
+
+		el = $('div#upper_stripe');
+		h_upper_stripe = parseInt(el.css("height"));
+
+		el = $('div#pult_outer');
+		h_pult_outer = parseInt(el.css("height"));
+
+		res = h_pult_wrap - h_upper_stripe - h_pult_outer;
+
+		// el3 = $('div#cheek_lower');
+		// ~w Отключаю, так как это неверные расчеты
+		// el3.css("height",  res);
+
+
+		/* Фикс для правой шторы #black_pane */
+
+		// var br4=$('#div_ic_block_C').get(0).getBoundingClientRect();
+		var br4=$('#pult_wrap').get(0).getBoundingClientRect();
+
+		// con2('br4.right = ' + br4.right);
+		el = $('div#black_pane');
+		// Ширина вьюпорта минус правая позиция кромки пульта
+		el.css("width",  wwidth - br4.right);
+
+		// red_header
+		el = $('div#red_header');
+		el.css("width",  wwidth - br4.right);
+
+
+
+		
+
 
 }
+/* 
+	Масштабирование полосок в пульте для Светы-30  
+	Ширина полосок в пульте зависит от полной ширины пульта, т.е. 
+	от ширины экрана
+
+	UPD То же для подложки
+*/
+function fix_st_wide () {
+	$('div#black_pane').css('background', '#252525');
+
+    var wwidth  	= (window.innerWidth > 0) ? window.innerWidth : screen.width; /* iPadобразно */
+	var wheight 	= (window.innerHeight > 0) ? window.innerHeight : screen.height;
+
+	pult_wrap_br	= $('#pult_wrap').get(0).getBoundingClientRect();
+
+	st_wide 		= $('div.st_wide');	
+	pblock 			= $('div#pblock');	
+	cheek_hi 		= $('div#cheek_upper');
+	cheek_lo 		= $('div#cheek_lower');
+
+	cheek_hi_height = parseInt(cheek_hi.css("height"));
+	cheek_lo_height = parseInt(cheek_lo.css("height"));
+
+	st_wide_margin 	= parseInt(pult_wrap.css("margin-left"));
+
+	// st_wide_new_width = wwidth - pult_wrap_br.left - st_wide_margin
+	// 30  - если не делать такое смещение, то появится горизонтальный скролл
+	st_wide_new_width = wwidth - pult_wrap_br.left - 30
+	pblock_new_width = wwidth - pult_wrap_br.left
+
+	st_wide.css("width", st_wide_new_width);
+	pblock.css("width", pblock_new_width);
+
+
+	/* 
+		Расчет по #back_pane оказался не вполне верным, и его использовать нельзя, 
+		так как из-за него не булет видно заднего фона. Нужно щеки сделать широкими 
+		по величине экрана
+	*/
+	cheek_hi.css("width", pblock_new_width);
+	cheek_lo.css("width", pblock_new_width);
+
+	$('div#black_pane').css('background', 'none');
+}
+
+
 	// Центровка при старте страницы
 	fix_center_pult();
+
+
+	fix_center_pult_inner();
 
 // Просчет высоты блока с контентом в зависимости от высоты области отображения
 function fix_long_block () {
@@ -3432,8 +3568,11 @@ fix_long_block();
 
 		/* Пересчет границы блока вывода контента */
 		fix_long_block();
-
-
+		
+		/* Ежели пульт открыт и происходит масштабирование, то полоски тоже надо корректировать */
+		if ($('div#pult_wrap').hasClass('p_on')) {
+			fix_st_wide();			
+		}
 	});
 
 
@@ -5015,21 +5154,40 @@ $('div#proto_up_button').bind('click', function() {
 	// $('div#div_ic_block_C').unbind('click');
 	function pult_click() { // Подсвечивание палитры
 		// $('.con2').append('pult_click<br/>');
-		// Выдвигаем пульт, показываем
+		// Пульт закрыт. Выдвигаем пульт, показываем
 		if ($('div#pult_wrap').hasClass('p_off')) {
 		  	// $('div#pult').animate({'opacity':'0'}); // Скрываем кнопку
 
 		  	// $('div#pult').remove();
 
+
+
+			/* 
+				(!)
+				Необходимо до начала анимации подкрашивать эти блоки, а замем
+				в конце анимации убирать окраску
+			*/
+///*			
+			$('div#pult_wrap').css('background', '#252525');
+			$('div#div_ic_block_C').css('background', '#252525');
+			// $('div#pult_outer').css('background', '#252525');
+//*/
+
+
 		  	// Убираем привязку к событию пульта
 		  	$('div#div_ic_block_C').unbind('click');
 		  	// Скрываем лицевую кнопку пульта и удалем в конце анимации
+		  	/*
+			  	(!) #pult?! wtf? Как это работает?
+			  	Не, таки есть такое...
+		  	*/
 		  	$('div#pult').animate({'opacity':'0'}, {
 		  		duration: 500,
 		  		complete:  function() 	{
 		  			(this).remove();
+		  			$('div#upper_stripe_2').remove();
 
-		  			
+
 		  			// Отрисовываем содержимое открытого пульта
 		  			// $('div#pult_wrap').append('<div id="cheek_upper"></div> <div id="pult_outer"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"><span id="sub_el">Металл</span></div> <div id="pstripe_3"  class="st_tight offset"><span id="sub_el">Пластик</span></div> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" > <img id="pult_col_img" src="img/palitra/05_04.png" alt="" /> </div> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> <div id="pstripe_13" class="st_wide  offset">БРЕНДИРОВАНИЕ</div> </div> <div id="cheek_lower"></div>');
 		  			// Модификация под новый пульт
@@ -5037,12 +5195,32 @@ $('div#proto_up_button').bind('click', function() {
 		  			// $('div#pult_wrap').append('<div id="cheek_upper"><div id="upper_stripe"><div id="upper_pult_but"></div> <div id="pult_outer"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"><span id="sub_el">Металл</span></div> <div id="pstripe_3"  class="st_tight offset"><span id="sub_el">Пластик</span></div> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" > <img id="pult_col_img" src="img/palitra/05_04.png" alt="" /> </div> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> <div id="pstripe_13" class="st_wide  offset">БРЕНДИРОВАНИЕ</div> </div> <div id="cheek_lower"></div>');
 		  			
 		  			// $('div#pult_wrap').append('<div id="cheek_upper"> <div id="upper_stripe"><div id="upper_pult_but"></div> <div id="pult_outer"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"> <span id="sub_el">Металл</span></div> <div id="pstripe_3"  class="st_tight offset"> <span id="sub_el">Пластик</span></div> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" > <img id="pult_col_img" src="img/palitra/05_04.png" alt="" /> </div> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> <div id="pblock"> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pstripe_13" class="st_wide  offset">БРЕНДИРОВАНИЕ</div> </div> <div id="cheek_lower"></div>');
-		  			$('div#pult_wrap').append('<div id="cheek_upper"> <div id="upper_stripe"><div id="upper_pult_but"></div> <div id="pult_outer"> <div id="pblock"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"> <span id="sub_el">Металл</span></div> <div id="pstripe_3"  class="st_tight offset"> <span id="sub_el">Пластик</span></div> </div> <div id="pblock"> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" > <img id="pult_col_img" src="img/palitra/05_04.png" alt="" /> </div> </div> <div id="pblock"> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> </div> <div id="pblock"> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div id="pstripe_13" class="st_wide  offset">БРЕНДИРОВАНИЕ</div> </div> </div> <div id="cheek_lower"></div>');
+		  			// $('div#pult_wrap').append('<div id="cheek_upper"> <div id="upper_stripe"><div id="upper_pult_but"></div> <div id="pult_outer"> <div id="pblock"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"> <span id="sub_el">Металл</span></div> <div id="pstripe_3"  class="st_tight offset"> <span id="sub_el">Пластик</span></div> </div> <div id="pblock"> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" > <img id="pult_col_img" src="img/palitra/05_04.png" alt="" /> </div> </div> <div id="pblock"> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> </div> <div id="pblock"> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div id="pstripe_13" class="st_wide  offset">БРЕНДИРОВАНИЕ</div> </div> </div> <div id="cheek_lower"></div>');
+
+		  			// $('div#pult_wrap').append('<div id="lower_plate"></div>');
+		  			
+		  			// ~w
+		  			// $('div#pult_wrap').append('<div id="cheek_upper"> <div id="upper_stripe"><div id="upper_pult_but"></div> </div> <div id="pult_outer"> <div id="pblock"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"> <span id="sub_el">Металл</span> </div> <div id="pstripe_3"  class="st_tight offset"> <span id="sub_el">Пластик</span> </div> </div> <div id="pblock"> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" ><img id="pult_col_img" src="img/palitra/05_04.png" alt="" /></div> </div> <div id="pblock"> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> </div> <div id="pblock"> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div id="pstripe_13" class="st_wide offset">БРЕНДИРОВАНИЕ</div> </div> </div> <div id="cheek_lower"></div>');
+		  			
+		  			
+
+
+
+					// (!) Содержится ошибка в верстке
+		  			// $('div#pult_wrap').append('<div id="upper_stripe"><div id="upper_pult_but"></div> </div> <div id="cheek_upper"><div> <div id="pult_outer"> <div id="pblock"> <div id="pstripe_1"  class="st_wide  offset">ТИП</div> <div id="pstripe_2"  class="st_tight offset"> <span id="sub_el">Металл</span> </div> <div id="pstripe_3"  class="st_tight offset"> <span id="sub_el">Пластик</span> </div> </div> <div id="pblock"> <div id="pstripe_4"  class="st_wide  offset">ЦВЕТ</div> <div id="p_col_block" ><img id="pult_col_img" src="img/palitra/05_04.png" alt="" /></div> </div> <div id="pblock"> <div id="pstripe_6"  class="st_wide  offset">ВЫБРАТЬ ТИП</div> <div id="pstripe_7"  class="st_tight offset"><span id="center_el">Рабочая</span></div> <div id="pstripe_8"  class="st_wide  offset">РАЗМЕР</div> </div> <div id="pblock"> <div id="pstripe_9"  class="st_tight offset"><span id="sub_el">Все размеры</span></div> <div id="pstripe_10" class="st_tight offset"><span id="sub_el">08 - 14 mm</span></div> <div id="pstripe_11" class="st_tight offset"><span id="sub_el">15 - 25 mm</span></div> <div id="pstripe_12" class="st_tight offset"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div id="pstripe_13" class="st_wide offset">БРЕНДИРОВАНИЕ</div> </div> </div> <div id="cheek_lower"></div> </div>');
+
+					// Новая версия
+					// ~w
+		  			// $('div#pult_wrap').append('<div id="upper_stripe"> <div id="upper_pult_but"> </div> </div> <!-- <div id="cheek_upper"></div> --> <div id="pult_outer" > <div id="pblock"> <div class="st_wide  offset" id="pstripe_1">ТИП</div> <div class="st_tight offset" id="pstripe_2"><span id="sub_el">Металл</span></div> <div class="st_tight offset" id="pstripe_3"><span id="sub_el">Пластик</span></div> </div> <div id="pblock"> <div class="st_wide  offset" id="pstripe_4">ЦВЕТ</div> <div id="p_col_block"><img alt="" id="pult_col_img" src="img/palitra/05_04.png" /></div> </div> <div id="pblock"> <div class="st_wide  offset" id="pstripe_6">ВЫБРАТЬ ТИП</div> <div class="st_tight offset" id="pstripe_7"><span id="center_el">Рабочая</span></div> <div class="st_wide  offset" id="pstripe_8">РАЗМЕР</div> </div> <div id="pblock"> <div class="st_tight offset" id="pstripe_9"><span id="sub_el">Все размеры</span></div> <div class="st_tight offset" id="pstripe_10"><span id="sub_el">08 - 14 mm</span></div> <div class="st_tight offset" id="pstripe_11"><span id="sub_el">15 - 25 mm</span></div> <div class="st_tight offset" id="pstripe_12"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div class="st_wide offset" id="pstripe_13">БРЕНДИРОВАНИЕ</div> </div> </div> <!-- <div id="cheek_lower"></div> -->');
+		  			
+		  			$('div#pult_wrap').append('		<div id="upper_stripe"> <div id="upper_pult_but"> </div> </div> <div id="cheek_upper"></div> <div id="pult_outer" > <div id="pblock"> <div class="st_wide  offset" id="pstripe_1">ТИП</div> <div class="st_tight offset" id="pstripe_2"><span id="sub_el">Металл</span></div> <div class="st_tight offset" id="pstripe_3"><span id="sub_el">Пластик</span></div> </div> <div id="pblock"> <div class="st_wide  offset" id="pstripe_4">ЦВЕТ</div> <div id="p_col_block"><img alt="" id="pult_col_img" src="img/palitra/05_04.png" /></div> </div> <div id="pblock"> <div class="st_wide  offset" id="pstripe_6">ВЫБРАТЬ ТИП</div> <div class="st_tight offset" id="pstripe_7"><span id="center_el">Рабочая</span></div> <div class="st_wide  offset" id="pstripe_8">РАЗМЕР</div> </div> <div id="pblock"> <div class="st_tight offset" id="pstripe_9"><span id="sub_el">Все размеры</span></div> <div class="st_tight offset" id="pstripe_10"><span id="sub_el">08 - 14 mm</span></div> <div class="st_tight offset" id="pstripe_11"><span id="sub_el">15 - 25 mm</span></div> <div class="st_tight offset" id="pstripe_12"><span id="sub_el">26 - 40 mm</span></div> </div> <div id="pblock"> <div class="st_wide offset" id="pstripe_13">БРЕНДИРОВАНИЕ</div> </div> </div> <div id="cheek_lower"></div>');
+
 
 					fix_center_pult_inner(); // Уточнение отступа сверху по высоте области отображения
+
 					
 		  			// Создаем привязку для щек пульта
-				  	$('div#cheek_lower, div#cheek_upper').bind('click', pult_click);
+				  	$('div#cheek_lower, div#cheek_upper, #upper_stripe').bind('click', pult_click);
 				  	// Привязка для основной палитры
 		
 					// Если включен каталог и открывается палитра, то не прив.
@@ -5065,10 +5243,23 @@ $('div#proto_up_button').bind('click', function() {
 		  		complete:  function() 	{
 					$('div#pult_outer').css('margin-left','15px'); 
 					$('div#pult_outer').animate({'opacity':'1'}, {duration: 100}); 
+
+					/* Убираем окраску правой шторки пульта в конце анимации */
+		  			$('div#div_ic_block_C').css('background', 'none');
+		  			$('div#pult_wrap').css('background', 'none');
+
+					/* 
+						Экспериментальное расширение полосок по просьбе Светы-30.
+						Вычисление происходит исходя из ширины экрана
+					*/
+
+					// $('.st_wide').css('width', '400px');
+					fix_st_wide();
 		  		}
 		  	});
 		  	$('div#pult_wrap').addClass('p_on');
 		  	$('div#pult_wrap').removeClass('p_off');
+
 
 		  	// $('#pult_col_img').bind('click', side_color_sel_click);
 
@@ -5078,8 +5269,11 @@ $('div#proto_up_button').bind('click', function() {
 
 		  	return;
 		}
-		// Скрываем пульт, задвигаем
+		// Пульт открыт. Скрываем пульт, задвигаем
 	  	if ($('div#pult_wrap').hasClass('p_on')) {
+			
+			// Возвращаем окраску для правой фальш-панели пульта
+	  		$('div#black_pane').css('background', '#252525');
 // [fold~ NaC6]
 			// Если палитра на экране - отключаем
 			if ( $("div#col_menu").is(":visible") ) {
@@ -5096,11 +5290,21 @@ $('div#proto_up_button').bind('click', function() {
 
 		  	// $('div#pult_wrap').animate({width: 60, marginLeft: 100}, {duration: 800});		
 
+			/* Возвращаем окраску правой шторки пульта */
+			// $('div#pult_wrap').html("");
+			$('div#pult_wrap').css('background', '#252525');
+			$('div#div_ic_block_C').css('background', '#252525');
+
 		  	// $('div#pult_wrap').animate({width: 60, marginLeft: 100}, {
 		  	$('div#pult_wrap').animate({width: 90, marginLeft: 70}, {
 		  		duration: 800,
 		  		complete:  function() 	{
+					$('div#pult_wrap').append('<div id="upper_stripe_2"><div id="upper_pult_but_2"></div></div>'); 
 					$('div#pult_wrap').append('<div id="pult"></div>'); 
+					
+
+
+
 					fix_center_pult(); // Уточнение отступа сверху по высоте области отображения
 				  	// $('div#pult').animate({'opacity':'1'}); // Показываем кнопку
 				
@@ -5229,9 +5433,16 @@ $('div#ctrl_box').bind('click', function() {
 	// Кнопка отладки, произвольный функционал
 	$('div#con_but1').bind('click', function() {
 		// $(this).remove();
+/*
 		con2('con_but1 click');
-
 		$('.con3').append('$(this).scrollTop() + 150: ' + ($('div#long_block').scrollTop() + 150) + ", $('div#film').height() - 100: " + ($('div#film').height() - 100) + "<br/>");
+*/
+		// Обзор привязанных к элементам событий
+		$.each($('#pult_col_img').data('events'), function(i, e) {
+		    console.log(i, e);
+			 con2(i,e);
+		});
+
 	});		
 //*/
 
