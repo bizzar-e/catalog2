@@ -1669,6 +1669,9 @@ else {
 	function cat_u14 () { cat_click_uni('nakonechniki', 'Наконечники', 'xx', 'xx', '500'); }
 	// function cat_u15 () { cat_click_uni('', 'Разное', 'xx', 'xx', '500'); }
 
+	
+	// function cat_s1 () { cat_click_uni('nakonechniki', 'Наконечники', 'xx', 'xx', '500'); }
+
 	/*
 		Запрос порции общий для категорий и палитры
 	*/
@@ -2073,7 +2076,7 @@ if ($('td#one').length == 1) {
 
 
 	function sz_1_click () {
-
+/*
 		// Новая прорисовка
 		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
@@ -2086,59 +2089,23 @@ if ($('td#one').length == 1) {
 							// "Все размеры, c 08 по 40-й"
 		a1 = pryajka_type + "_08-40_" + pryajka_color; a2 = "";	dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
+*/
+
+
+		// cat_click_uni('rabochaya', 'Рабочая', 'xx', 'xx', '500');
+		cat_click_uni(pryajka_type, 'Рабочая', "_08-40_", pryajka_color, '500');
 
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
-/*	
-		clear_wrk_area();
 
 
 
-		// Мастырка для пустых блоков в каталоге по рабочке - Обратная операция $('tr#three').remove();
-		if ($('td#two').length == '2') {
-			$('<tr id="three"><td id="two"></td><td id="one"></td></tr>').insertAfter('tr#two');
-		}
-		if ($('td#two').length == '1') {
-			$('<tr id="two"><td id="two"></td><td id="one"></td></tr><tr id="three"><td id="two"></td><td id="one"></td></tr>').insertAfter('tr#one');
-		}
-
-
-		// Переписываем колонку размеров
-		$('td#one').html("");
-		$('td#one').slice(0,1).html("<h1>08</h1> MM");
-		$('td#one').slice(1,2).html("<h1>10</h1> MM");
-		$('td#one').slice(2,3).html("<h1>12</h1> MM");
-
-
-		// rabochaya decor kolca peretyagki holnitenu blochka krjuchki
-		// a1 = "blochka_xx_xx"; a2 = "";	dest = $('td#two').slice(0,1);
-		pryajka_type = "rabochaya"; // Устанавливаем тип выбранной пряжки
-		$('div#side_cat_name').html('Рабочая');
-
-
-		a1 = pryajka_type + "_08_" + pryajka_color;
-		// a1 = "rabochaya_08_xx"; 
-		a2 = "";	dest = $('td#two').slice(0,1);
-		ajax4("load_uni.pl", a1, a2, dest);
-		
-		a1 = pryajka_type + "_10_" + pryajka_color;
-		// a1 = "rabochaya_10_xx"; 
-		a2 = "";	dest = $('td#two').slice(1,2);
-		ajax4("load_uni.pl", a1, a2, dest);
-
-		a1 = pryajka_type + "_12_" + pryajka_color;
-		// a1 = "rabochaya_12_xx"; 
-		a2 = "";	dest = $('td#two').slice(2,3);
-		ajax4("load_uni.pl", a1, a2, dest);
-
-			$('img#button_foot').css("visibility","hidden");
-*/
 
 	}
 
 	function sz_2_click () {
 
-		// Новая прорисовка
+/*		// Новая прорисовка
 		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
 		$('#film').remove(); // $('#sblock').remove();
@@ -2149,6 +2116,9 @@ if ($('td#one').length == 1) {
 		// a1 = pryajka_type + "_15-16-17-18-19-20-21-22-23-24-25_" + pryajka_color; a2 = "";	dest = $('table#tbl_cat');
 		a1 = pryajka_type + "_08-14_" + pryajka_color; a2 = "";	dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
+*/
+		cat_click_uni(pryajka_type, 'Рабочая', "_08-14_", pryajka_color, '500');
+
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
@@ -2198,7 +2168,7 @@ if ($('td#one').length == 1) {
 	}
 
 	function sz_3_click () {
-		
+/*		
 		// Новая прорисовка
 		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
@@ -2209,6 +2179,10 @@ if ($('td#one').length == 1) {
 
 		a1 = pryajka_type + "_15-25_" + pryajka_color; a2 = "";   dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
+
+*/
+		cat_click_uni(pryajka_type, 'Рабочая', "_15-25_", pryajka_color, '500');
+
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
@@ -2257,7 +2231,7 @@ if ($('td#one').length == 1) {
 	}
 
 	function sz_4_click () {
-
+/*
 		// Новая прорисовка
 		clear_wrk_area(); // Очистка таблицы перед загрузкой
 
@@ -2268,6 +2242,10 @@ if ($('td#one').length == 1) {
 
 		a1 = pryajka_type + "_26-40_" + pryajka_color; a2 = "";   dest = $('#wrk_area');
 		ajax4("load_uni.pl", a1, a2, dest);
+*/
+
+		cat_click_uni(pryajka_type, 'Рабочая', "_26-40_", pryajka_color, '500');
+
 
 		$(this).css("color", "red"); // Подсветка текущего выбора
 /*
@@ -5232,6 +5210,29 @@ $('div#proto_up_button').bind('click', function() {
 
 
 
+					/*
+						Привязка событий к кнопкам пульта
+					*/
+					$('div#pstripe_6, div#pstripe_6 span').bind('click', function() {
+					    $('div#proto_up_button').trigger('click');
+					});
+
+					// Кнопки размеров 
+					$('span#sub_el').eq(2).bind('click', function() {
+						// con2('sz1');
+						// $(this).remove();
+					    sz_1_click();
+					});
+					$('span#sub_el').eq(3).bind('click', function() { sz_2_click(); });
+					$('span#sub_el').eq(4).bind('click', function() { sz_3_click(); });
+					$('span#sub_el').eq(5).bind('click', function() { sz_4_click(); });
+
+					// Ссылка на брендирование
+					$('div#pstripe_13').bind('click', function() { 
+						window.location="brand1.html";
+					});
+
+
 		  		}
 		  	});
 
@@ -5401,7 +5402,7 @@ $('div#ic_more_but, div#pr_block_c img').bind('click', function() {
 /*
 	Отладочые триггеры
 */
-$('div#div_ic_block_C').trigger('click'); // Выдвинуть пульт
+// $('div#div_ic_block_C').trigger('click'); // Выдвинуть пульт
 
 // $('div#ic_more_but').trigger('click'); // Нарисовать диалог "Подробнее"
 
