@@ -428,6 +428,8 @@ function browser()
 		// $('img#button_foot').css("visibility","hidden"); // Запрещаем кнопку показать еще
 
 
+		$('.con3').append('Ветка возврата<br/>');
+
 		// (!) Засада - нужно дополнительно сохранять состояние селектора палитры...
 		// И имя категории
 		
@@ -489,7 +491,8 @@ function browser()
 
 
 		b_col = localStorage.getItem('as_back_col');
-		$('.con2').append('Возврат : _' + b_col +  '_<br/>');
+		// $('.con2').append('Возврат : _' + b_col +  '_<br/>');
+		$('.con3').append('Возврат : _' + b_col +  '_<br/>');
 
 
 
@@ -569,12 +572,24 @@ function browser()
 		a1 = pryajka_type + "_xx_" + b_col;
 
 
+
+		$('.con3').append('a1: ' + a1 + '<br/>');
+
+		h = localStorage.getItem('as_hist');		
+		
+		$('.con3').append('h: ' + h + '<br/>');
+		
+		$('.con3').append('isBack: ' + isBack + '<br/>');
+
 		// alert(a1);
 
 		// a1 = "rabochaya_08-10-12_xx"; a2 = "";	dest = $('table#tbl_cat');
 		// a1 = "rabochaya_xx_xx"; 
 
-
+		/* 
+			Установка значения подкрутики, которая будет осуществленна после возврата
+			и загрузки повторной контента
+		*/
 		scroll = localStorage.getItem('as_back_scroll');
 
 		// Окончание обработки кнопки "Назад"
@@ -778,7 +793,13 @@ function browser()
 
 				var s = window.pageYOffset;
 // [fold~ O9vT]
-				localStorage.as_back_scroll = $(document).scrollTop();
+				/* 
+					(!) Уже устарело, так как теперь прокрутка не экрана
+
+					Более того, даже не работает ибо изменилась концепция
+				*/
+				// localStorage.as_back_scroll = $(document).scrollTop();
+
 // [fold~ DQyF]
 				$('.con').append('localStorage: ' + localStorage.getItem('as_var_2') +'<br/>');
 
@@ -1720,6 +1741,19 @@ else {
 
 		pryajka_type = cat; // Устанавливаем тип выбранной пряжки
 		pryajka_color = col;
+
+		/*
+			Информация для системы возврата (истории)
+		*/
+		// as_back_info
+///*
+		localStorage.as_back_info = "";
+		localStorage.as_back_info = pryajka_type;
+
+		// (!) Нужно убрать эту привязку
+		localStorage.as_var_type  = pryajka_type;
+//*/
+
 
 		/* 
 			Доработки для объединения палитрового обработчика
@@ -4048,9 +4082,19 @@ fix_long_block();
 		});
 
 		/* Что-то от механизма обработки возврата */
+		/*
+			UPD Похоже это подкрутка была в заданную позицию после возврата
 
+		*/
 			if (isBack == "") {}
-			else { window.scrollTo(0, scroll); }
+			// else { window.scrollTo(0, scroll); }
+			else { 
+				// window.scrollTo(0, scroll); 
+				est_pos = $('#long_block #film').position().top
+														// scroll ?
+				jQuery('#long_block').animate({ scrollTop: scroll }, 800);
+
+			}
 
 			localStorage.as_back_scroll = "0";
 
@@ -4860,7 +4904,24 @@ $(function(){
 	// $("div#pan_c").append('<a href="basket1.html"><div id="basket_wrap"><div id="basket"><div id="basket_reg"></div></div><div id="basket_count">0</div></div></a>');
 	
 	// $("div#pan_c").append('<div id="basket_wrap"><div id="basket"><a href="my_cabinet2.html"><div id="basket_reg"></div></a></div><a href="basket1.html"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
+	
+// w!
 	$("div#bite1").append('<div id="basket_wrap"><div id="basket"><a href="my_cabinet2.html"><div id="basket_reg"></div></a></div><a href="basket1.html"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
+	
+// Отладочная версия без совершения перехода
+	// $("div#bite1").append('<div id="basket_wrap"><div id="basket"><a href="#"><div id="basket_reg"></div></a></div><a href="#"><div id="basket_count">0</div></a><div id="basket_undebox"></div></div>');
+	
+
+  $("div#basket_wrap a").bind('click', function() {
+    $('.con3').append("bask click"  + "<br/>");
+
+
+
+				// Сохраняем позицию проктутки для последующего возврата в эту позицию
+				localStorage.as_back_scroll = "";				
+				localStorage.as_back_scroll = $('#long_block #film').position().top;
+
+  });
 
 
 
