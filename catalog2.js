@@ -1,4 +1,4 @@
-<!-- (!) cutted mark -->
+ <!-- (!) cutted mark -->
 
 /*
 	Скрипт для нового движка по дизайну-960
@@ -177,6 +177,14 @@ $.each($('#element').data('events'), function(i, e) {
 	$('body').append('<div class="con2"></div>');
 	// Вспомогательная
 	$('body').append('<div class="con3"></div>');
+	
+
+
+	/* Подсказка по движению каталога */
+	// $('body').append('<div class="hint_a1"></div>');
+	// Широкая байда в области film
+	
+	// $('body').append('<div class="hint_a2"></div>');
 
 
 	/* Функция для внесения информации в консоль */
@@ -3480,12 +3488,31 @@ function fix_st_wide () {
 	$('div#black_pane').css('background', 'none');
 }
 
+/* Фиксация подсказок серии 'a' */
+function fix_hint_a () {
+
+	long_block_br	= $('#long_block').get(0).getBoundingClientRect();
+	hint_a2 		= $('div.hint_a2');	
+
+	// Доп. смещение - для центровки
+/*
+	// Лишак
+	if (typeof hint_a2 != "undefined") {   
+		hint_a2.css("left", long_block_br.left + 3);	
+	}
+*/
+	hint_a2.css("left", long_block_br.left + 3);	
+}
+
 
 	// Центровка при старте страницы
 	fix_center_pult();
 
 
 	fix_center_pult_inner();
+
+	// Центровка широкой подстказки в области film
+	// fix_hint_a();
 
 // Просчет высоты блока с контентом в зависимости от высоты области отображения
 function fix_long_block () {
@@ -3585,6 +3612,10 @@ fix_long_block();
 		if ($('div#pult_wrap').hasClass('p_on')) {
 			fix_st_wide();			
 		}
+
+
+		/* Перерисовка подсказок */
+		fix_hint_a();
 	});
 
 
@@ -4300,6 +4331,15 @@ $(window).scroll(function() {
 
 			// $('#film').append('<div id="ad2"></div>');
 			// $('#film').append('<div id="more_but2">ПОКАЗТЬ ЕЩЕ</div>');
+
+
+			// Добавляем подсказку
+
+			if (!($('div#col_menu').length)) { // Если элемента еще нет - создаем
+				$('body').append('<div class="hint_a2"></div>');
+				$('div.hint_a2').animate({'opacity':'0'});
+				fix_hint_a();
+			}
 
 			// Информация из перловки
 			$('div#perl').appendTo('.con2');

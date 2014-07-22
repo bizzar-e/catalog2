@@ -4559,7 +4559,7 @@ div#black_pane {
     /*background: yellow;*/
     
     background: #252525;
-    
+
 
     min-height: 1000px;
     /*height: 100%;*/
@@ -4579,4 +4579,64 @@ div#red_header {
 
     top: 0px;
     right: 0px;
+}
+
+
+/* Новые подсказки серии a */
+div.hint_a1 {
+    /*background: yellow;*/
+    background: url(../img/common/hints/updown.gif);    
+    /*background-size: 100%;*/
+
+    /*border: 1px solid #999999;*/
+    
+    height: 287px;
+    width: 50px;
+
+    position: fixed; 
+    
+    /*desktop*/
+    left: 150px !important;
+
+    /*ipad*/
+    /*left: 300px !important;*/
+    top: 400px;
+
+    padding: 5px 10px;
+
+    overflow: auto;
+
+    z-index: 10;
+
+    /*visibility: hidden;*/
+}
+div.hint_a2 {
+    /*background: yellow;*/
+    background: url(../img/common/hints/updown.png) no-repeat;    
+    /*background-size: 100%;*/
+
+    /*border: 2px dashed #999999;*/
+    
+    height: 300px;
+    width: 640px;
+
+    position: fixed; 
+    
+    /*desktop*/
+    /*left: 150px !important;*/
+    left: 150px;
+
+    /*ipad*/
+    /*left: 300px !important;*/
+    top: 300px;
+
+    padding: 5px 10px;
+
+    overflow: auto;
+
+    z-index: 10;
+
+    margin-left: -4px;
+
+    /*visibility: hidden;*/
 }
