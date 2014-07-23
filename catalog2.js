@@ -3740,7 +3740,7 @@ fix_long_block();
 
   		});
 
-
+// #hints
 	 	/* Секция работы с подсказками для старого каталога */
 		// [fold~ UFDX]
 		h = $('div#cat_hint_but');
@@ -4336,9 +4336,21 @@ $(window).scroll(function() {
 			// Добавляем подсказку
 
 			if (!($('div#col_menu').length)) { // Если элемента еще нет - создаем
-				$('body').append('<div class="hint_a2"></div>');
-				$('div.hint_a2').animate({'opacity':'0'});
-				fix_hint_a();
+				
+				// con2("PORTION #: " + cur_portion);
+
+				/* Подсказка не должна появлятся много раз при подгрузке контента... */
+				if (cur_portion==1) {
+					$('body').append('<div class="hint_a2"></div>');
+					$('div.hint_a2').animate({'opacity':'0'}, 2500).animate({'opacity':'0'}, {
+						duration: 2500, 
+						complete:  function() 	{
+							$(this).remove();
+						}
+					});
+					
+					fix_hint_a();
+				}
 			}
 
 			// Информация из перловки
